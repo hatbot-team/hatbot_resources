@@ -2,6 +2,7 @@ from resources.Resource import Resource
 
 __author__ = 'skird'
 
+import codecs
 
 class FileResource(Resource):
     """
@@ -10,7 +11,7 @@ class FileResource(Resource):
 
     def __init__(self, path_to_file):
         self.file_name = path_to_file
-        self.descriptor = open(self.file_name, 'a')
+        self.descriptor = codecs.open(self.file_name, mode='a', encoding='utf-8')
 
     def entries(self):
         return open(self.file_name)
@@ -19,4 +20,4 @@ class FileResource(Resource):
         print(entry, file=self.descriptor)
 
     def clear(self) -> None:
-        self.descriptor = open(self.file_name, 'w')
+        self.descriptor = codecs.open(self.file_name, mode='w', encoding='utf-8')
