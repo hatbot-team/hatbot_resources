@@ -8,9 +8,9 @@ def get_all_words(address, word, file):
     local_a = requests.get(address)
     local_soup = BeautifulSoup(local_a.text)
     synonyms = [candidate.span.text for candidate in local_soup.find_all('li')]
-    file.write(word + '-')
+    file.write(word + '@')
     for synonym in synonyms:
-        file.write(synonym + ',')
+        file.write(synonym + '#')
     file.write('\n')
 
 
