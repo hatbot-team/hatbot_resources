@@ -1,11 +1,7 @@
+from hb_res.lang_utils.cognates import _cognates_base
+from hb_res.lang_utils.morphology import get_initial_forms
+
 __author__ = 'Oktosha'
-
-from lang_utils.morphology import get_initial_forms
-
-try:
-    from . import _cognates_base
-except SystemError:
-    import _cognates_base
 
 
 def get_roots(word):

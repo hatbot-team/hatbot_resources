@@ -1,6 +1,6 @@
-__author__ = 'moskupols'
+from hb_res.lang_utils.morphology import morph
 
-from lang_utils.morphology import morph
+__author__ = 'moskupols'
 
 
 def get_parts_of_speech(word):

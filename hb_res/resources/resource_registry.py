@@ -1,4 +1,4 @@
-from resources import Resource
+from hb_res.resources import Resource
 
 __author__ = 'skird'
 

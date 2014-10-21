@@ -1,9 +1,10 @@
+from hb_res.resources import FileResource
+
 __author__ = 'skird'
 
 import os
 
-from resources.resource_registry import register_resource
-from resources.FileResource import FileResource
+from hb_res.resources.resource_registry import register_resource
 
 
 __all__ = ['parse_definitions']
