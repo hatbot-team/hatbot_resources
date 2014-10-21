@@ -19,7 +19,7 @@ setup(
 
     # Author details
     author='Hatbot Team',
-    #     author_email='pypa-dev@googlegroups.com',
+    # author_email='pypa-dev@googlegroups.com',
 
     # Choose your license
     license='MIT',
@@ -55,17 +55,18 @@ setup(
     packages=['hb_res.resources',
               'hb_res.resources.definitions',
               'hb_res.resources.antonyms',
-              'hb_res.resources.synonyms'],
+              'hb_res.resources.synonyms',
+              'hb_res.explanations'],
 
     package_data={
         'hb_res.resources.definitions': findall('resources/definitions/output/'),
-        'hb_res.resources.synonyms':    findall('resources/antonyms/output/'),
-        'hb_res.resources.antonyms':    findall('resources/synonyms/output/'),
+        'hb_res.resources.synonyms': findall('resources/antonyms/output/'),
+        'hb_res.resources.antonyms': findall('resources/synonyms/output/'),
     },
 
     install_requires=['pymorphy2'],
 
-    extra_requires= {
+    extra_requires={
         'web': ['beautifulsoup4', 'requests'],
-        }
+    }
 )
