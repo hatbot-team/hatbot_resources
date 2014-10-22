@@ -1,4 +1,4 @@
-from hb_res.resources import FileResource
+from hb_res.resources.FileResource import FileResource
 
 __author__ = 'skird'
 
