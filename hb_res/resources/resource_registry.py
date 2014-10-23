@@ -1,11 +1,11 @@
-from hb_res.resources.Resource import Resource
+from hb_res.resources.ExplanationStorage import ExplanationStorage
 
 __author__ = 'skird'
 
 _registered_resources = dict()
 
 
-def resource_by_name(name) -> Resource:
+def resource_by_name(name) -> ExplanationStorage:
     """
     Returns resource described by its name
     :param name: name of desired resource
@@ -26,7 +26,7 @@ def register_resource(name, resource) -> None:
     """
     global _registered_resources
     if name in _registered_resources.keys():
-        raise KeyError('Resource with name {} is already registered'.format(name))
+        raise KeyError('ExplanationStorage with name {} is already registered'.format(name))
     _registered_resources[name] = resource
 
 
