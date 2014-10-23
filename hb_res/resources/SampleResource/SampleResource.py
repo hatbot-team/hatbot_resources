@@ -1,8 +1,5 @@
-from hb_res.resources.Resource import Resource
+from hb_res.resources.Resource import gen_resource
 
-
-class SampleResource(Resource):
-    def __iter__(self):
-        def read_all():
-            yield None
-        return read_all()
+@gen_resource('My Resource', [])
+def read_all():
+    yield None

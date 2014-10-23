@@ -25,6 +25,15 @@ class Resource(metaclass=ResourceMeta):
     def __iter__(self):
         raise NotImplementedError
 
+def gen_resource(res_name, modifiers):
+    def decorator(func):
+        def __init__(self):
+            self.modifiers = modifiers
+        def __iter__(self):
+            return func()
+        ResourceMeta(res_name, tuple(), {'__iter__': __iter__, '__init__':__init__})
+    return decorator
+
 def names_registered():
     global _registered_resources
     return _registered_resources.keys()
