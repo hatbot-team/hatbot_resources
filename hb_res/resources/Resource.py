@@ -17,11 +17,9 @@ class ResourceMeta(type):
         res = super(__class__, cls).__new__(cls, name, bases, dct)
         if name not in _resource_blacklist:
             _registered_resources[name] = res
-            # because we don't want to add base class to _registered_resources
         return res
 
 class Resource(metaclass=ResourceMeta):
-    modifiers = []
     def __iter__(self):
         raise NotImplementedError
 
@@ -30,7 +28,7 @@ def gen_resource(res_name, modifiers):
         def __init__(self):
             self.modifiers = modifiers
         def __iter__(self):
-            return func()
+            return iter(func())
         ResourceMeta(res_name, tuple(), {'__iter__': __iter__, '__init__':__init__})
     return decorator
 

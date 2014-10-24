@@ -1,5 +1,5 @@
-from hb_res.resources.Resource import gen_resource
+from hb_res.resources.Resource import resource
 
-@gen_resource('My Resource', [])
+@resource('SampleResource', [])
 def read_all():
     yield None

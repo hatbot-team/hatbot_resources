@@ -1,4 +1,4 @@
-from hb_res.resources.FileResource import FileResource
+from hb_res.resources.FileExplanationStorage import FileExplanationStorage
 
 __author__ = 'Алексей'
 
@@ -14,4 +14,4 @@ PREFIX = os.path.dirname(os.path.abspath(__file__))
 INPUT_NAME = PREFIX + '/raw_data/antonyms_raw.txt'
 RESULT_NAME = PREFIX + '/output/antonyms.txt'
 
-register_resource(RESULT_RESOURCE_NAME, FileResource(RESULT_NAME))
+register_resource(RESULT_RESOURCE_NAME, FileExplanationStorage(RESULT_NAME))
