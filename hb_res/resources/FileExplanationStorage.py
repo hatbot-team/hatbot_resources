@@ -16,6 +16,7 @@ class FileExplanationStorage(ExplanationStorage):
         self.descriptor = codecs.open(self.file_name, mode='a', encoding='utf-8')
 
     def entries(self):
+        self.descriptor.flush()
         for line in open(self.file_name):
             yield Explanation.decode(line.strip())
 
@@ -24,6 +25,9 @@ class FileExplanationStorage(ExplanationStorage):
 
     def clear(self) -> None:
         self.descriptor = codecs.open(self.file_name, mode='w', encoding='utf-8')
+
+    def close(self) -> None:
+        self.descriptor.flush()
 
     def __getitem__(self, key):
         for explanation in self.entries():
