@@ -9,7 +9,7 @@ class ExplanationStorage:
     """
 
     def entries(self):
-        return NotImplementedError
+        raise NotImplementedError
 
     def add_entry(self, entry) -> None:
         raise NotImplementedError
