@@ -1,3 +1,5 @@
+from hb_res.explanations import ExplanationKey
+
 __author__ = 'moskupols'
 
 SEPARATOR = '\t'
@@ -31,7 +33,7 @@ class Explanation:
         :rtype: str
         :return: string containing attributes of explanation separated by SEPARATOR
         """
-        return self.title + SEPARATOR + self.text + SEPARATOR + str(self.key) + SEPARATOR + str(self.prior_rating)
+        return SEPARATOR.join((self.title, self.text, str(self.key), str(self.prior_rating)))
 
     @classmethod
     def decode(cls, representation):
@@ -44,7 +46,7 @@ class Explanation:
         values = representation.split(SEPARATOR)
         if values[3] == 'None':
             values[3] = None
-        return Explanation(values[0], values[1], values[2], values[3])
+        return Explanation(values[0], values[1], ExplanationKey.decode(values[2]), float(values[3]))
 
     def __repr__(self) -> str:
         """
