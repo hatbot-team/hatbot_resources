@@ -1,36 +1,41 @@
-__autor__ = "mike"
+__author__ = "mike"
 
-_resource_blacklist={'Resource'}
+_resource_blacklist = {'Resource'}
 _registered_resources = dict()
+
 
 class ResourceMeta(type):
     """
     metaclass for classes which represent resource package
     """
-    def __new__(cls, name, bases, dct):
+    def __new__(mcs, name, bases, dct):
         """
         we have to register resource in _registered_resources
         """
-        global __registered_resources
+        global _registered_resources
         if name in _registered_resources.keys():
             raise KeyError('Resource with name {} is already registered'.format(name))
-        res = super(__class__, cls).__new__(cls, name, bases, dct)
+        res = super(ResourceMeta, mcs).__new__(mcs, name, bases, dct)
         if name not in _resource_blacklist:
             _registered_resources[name] = res
         return res
+
 
 class Resource(metaclass=ResourceMeta):
     def __iter__(self):
         raise NotImplementedError
 
+
 def gen_resource(res_name, modifiers):
     def decorator(func):
         def __init__(self):
             self.modifiers = modifiers
+
         def __iter__(self):
             return iter(func())
-        ResourceMeta(res_name, tuple(), {'__iter__': __iter__, '__init__':__init__})
+        ResourceMeta(res_name, tuple(), {'__iter__': __iter__, '__init__': __init__})
     return decorator
+
 
 def names_registered():
     global _registered_resources
