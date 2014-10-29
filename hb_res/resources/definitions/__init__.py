@@ -1,4 +1,4 @@
-from hb_res.resources.FileResource import FileResource
+from hb_res.resources.FileExplanationStorage import FileExplanationStorage
 
 __author__ = 'skird'
 
@@ -22,5 +22,5 @@ DUMP_NAME = OUTPUT_PREFIX + 'ozh_dumped.txt'
 
 _raw_data = [PREFIX + PART_PREFIX + str(i) + PART_SUFFIX for i in range(1, PARTS + 1)]
 
-register_resource(RESULT_RESOURCE_NAME, FileResource(RESULT_NAME))
-register_resource(DUMP_RESOURCE_NAME, FileResource(DUMP_NAME))
+register_resource(RESULT_RESOURCE_NAME, FileExplanationStorage(RESULT_NAME))
+register_resource(DUMP_RESOURCE_NAME, FileExplanationStorage(DUMP_NAME))
