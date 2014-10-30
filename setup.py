@@ -1,7 +1,10 @@
 from setuptools import setup, find_packages, findall  # Always prefer setuptools over distutils
-from os import path
+from hb_res._essential_packages import ESSENTIAL_PACKAGES
 
-here = path.abspath(path.dirname(__file__))
+packages = ['hb_res'] + \
+           ['hb_res.' + m for m in ESSENTIAL_PACKAGES] + \
+           ['hb_res.' + m + '.*' for m in ESSENTIAL_PACKAGES]
+packages = find_packages(include=packages)
 
 setup(
     name='hatbot_resources',
@@ -52,16 +55,10 @@ setup(
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
-    packages=['hb_res.resources',
-              'hb_res.resources.definitions',
-              'hb_res.resources.antonyms',
-              'hb_res.resources.synonyms',
-              'hb_res.explanations'],
+    packages=packages,
 
     package_data={
-        'hb_res.resources.definitions': findall('resources/definitions/output/'),
-        'hb_res.resources.synonyms': findall('resources/antonyms/output/'),
-        'hb_res.resources.antonyms': findall('resources/synonyms/output/'),
+        'hb_res.storage': findall('hb_res/assets')
     },
 
     install_requires=['pymorphy2'],

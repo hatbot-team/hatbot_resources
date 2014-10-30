@@ -1,9 +1,10 @@
+from hb_res.storage import FileExplanationStorage
+
 __author__ = 'Алексей'
 
 import os
 
 from hb_res.resources.resource_registry import register_resource
-from hb_res.resources.FileExplanationStorage import FileExplanationStorage
 
 
 __all__ = ['import_from_site', 'parse_synonyms', 'init_dictionary', 'dump_dictionary']

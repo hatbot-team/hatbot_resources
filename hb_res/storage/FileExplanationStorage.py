@@ -1,4 +1,4 @@
-from hb_res.resources.ExplanationStorage import ExplanationStorage
+from hb_res.storage import ExplanationStorage
 
 __author__ = 'skird'
 

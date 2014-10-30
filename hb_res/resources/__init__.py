@@ -1,15 +1,11 @@
 resource_packages = [
-                 'SampleResource'
-                ]
+    'SampleResource'
+]
 __all__ = [
-        'Resource'
-        'build_assets'
-        ]
+    'Resource'
+]
 
 for module in resource_packages:
     globals()[module] = __import__(__name__ + '.' + module)
 
-
 from . import Resource
-from . import build_assets
-build_assets.rebuild_all()

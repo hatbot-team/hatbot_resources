@@ -1,4 +1,4 @@
-from hb_res.resources.FileExplanationStorage import FileExplanationStorage
+from hb_res.storage import FileExplanationStorage
 
 __author__ = 'skird'
 
