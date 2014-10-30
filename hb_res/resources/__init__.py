@@ -12,4 +12,4 @@ for module in resource_packages:
 
 from . import Resource
 from . import build_assets
-build_assets.build()
+build_assets.rebuild_all()
