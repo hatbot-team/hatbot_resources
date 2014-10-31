@@ -44,11 +44,15 @@ class Explanation:
         :return:
         """
         values = representation.split(SEPARATOR)
-        if values[3] == 'None':
-            values[3] = None
-        return Explanation(values[0], values[1], ExplanationKey.decode(values[2]), float(values[3]))
+        values[2] = None if values[2] == 'None' else ExplanationKey.decode(values[2])
+        values[3] = None if values[3] == 'None' else float(values[3])
+        return Explanation(*values[:4])
 
-    def __repr__(self) -> str:
+    def __repr__(self):
+        return '<Explanation({}, {}, {}, {})>'\
+            .format(*map(repr, (self.title, self.text, self.key, self.prior_rating)))
+
+    def __str__(self) -> str:
         """
         Get exact text representation of explanation
         :rtype: str
