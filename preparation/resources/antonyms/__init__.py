@@ -5,7 +5,7 @@ __author__ = 'Алексей'
 __all__ = ['parse_antonyms']
 
 import os
-from hb_res.resources.resource_registry import register_resource
+from preparation.resources.resource_registry import register_resource
 
 RESULT_RESOURCE_NAME = 'antonyms'
 

@@ -1,5 +1,7 @@
 ﻿import codecs
-from hb_res.resources.synonyms import import_from_site
+
+from preparation.resources.synonyms import import_from_site
+
 
 __author__ = 'Алексей'
 

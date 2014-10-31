@@ -1,5 +1,7 @@
 from pymorphy2.analyzer import Parse
-from hb_res.lang_utils.morphology import morph
+
+from preparation.lang_utils.morphology import morph
+
 
 __author__ = 'moskupols'
 

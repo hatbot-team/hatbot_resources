@@ -1,10 +1,4 @@
 from setuptools import setup, find_packages, findall  # Always prefer setuptools over distutils
-from hb_res._essential_packages import ESSENTIAL_PACKAGES
-
-packages = ['hb_res'] + \
-           ['hb_res.' + m for m in ESSENTIAL_PACKAGES] + \
-           ['hb_res.' + m + '.*' for m in ESSENTIAL_PACKAGES]
-packages = find_packages(include=packages)
 
 setup(
     name='hatbot_resources',
@@ -55,7 +49,7 @@ setup(
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
-    packages=packages,
+    packages=find_packages(include=('hb_res', 'hb_res.*')),
 
     package_data={
         'hb_res.storage': findall('hb_res/assets')
@@ -63,7 +57,7 @@ setup(
 
     install_requires=['pymorphy2'],
 
-    extra_requires={
+    extras_require={
         'web': ['beautifulsoup4', 'requests'],
     }
 )

@@ -1,5 +1,5 @@
-from hb_res.lang_utils.cognates import _cognates_base
-from hb_res.lang_utils.morphology import get_initial_forms
+from preparation.lang_utils.morphology import get_initial_forms
+from preparation.lang_utils.cognates import _cognates_base
 
 __author__ = 'Oktosha'
 

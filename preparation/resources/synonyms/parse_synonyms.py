@@ -2,10 +2,12 @@ __author__ = 'Алексей'
 
 import codecs
 from sys import stderr
+
 from hb_res.lang_utils.cognates import are_cognates
-from hb_res.lang_utils.morphology import get_valid_noun_initial_form
+from preparation.lang_utils.morphology import get_valid_noun_initial_form
 from hb_res.resources.resource_registry import resource_by_name
 from hb_res.resources.synonyms import INPUT_NAME, RESULT_RESOURCE_NAME
+
 
 THRESHOLD = 4
 

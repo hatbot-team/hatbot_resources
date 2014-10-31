@@ -1,4 +1,4 @@
-from hb_res.resources.Resource import gen_resource
+from preparation.resources.Resource import gen_resource
 
 
 @gen_resource('SampleResource', [])

@@ -4,7 +4,7 @@ __author__ = 'Алексей'
 
 import os
 
-from hb_res.resources.resource_registry import register_resource
+from preparation.resources.resource_registry import register_resource
 
 
 __all__ = ['import_from_site', 'parse_synonyms', 'init_dictionary', 'dump_dictionary']

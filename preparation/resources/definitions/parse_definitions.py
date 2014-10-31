@@ -3,11 +3,14 @@
 import random
 import re
 
-from hb_res.lang_utils.morphology import morph
+from preparation.lang_utils.morphology import morph
 from hb_res.lang_utils.cognates import are_cognates
 from hb_res.resources.resource_registry import resource_by_name
+
+
+
 # noinspection PyProtectedMember
-from hb_res.resources.definitions import \
+from preparation.resources.definitions import \
     _raw_data, RESULT_RESOURCE_NAME, DUMP_RESOURCE_NAME
 
 from hb_res.explanations import Explanation

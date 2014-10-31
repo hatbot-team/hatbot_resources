@@ -1,6 +1,6 @@
 from copy import copy
 
-from hb_res.resources.Resource import names_registered, resource_by_name
+from preparation.resources.Resource import names_registered, resource_by_name
 from hb_res.storage import get_storage
 
 

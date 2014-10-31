@@ -1,4 +1,4 @@
-from hb_res.lang_utils.morphology import morph
+from preparation.lang_utils.morphology import morph
 
 __author__ = 'moskupols'
 

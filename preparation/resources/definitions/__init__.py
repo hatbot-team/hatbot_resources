@@ -4,7 +4,7 @@ __author__ = 'skird'
 
 import os
 
-from hb_res.resources.resource_registry import register_resource
+from preparation.resources.resource_registry import register_resource
 
 
 __all__ = ['parse_definitions']
