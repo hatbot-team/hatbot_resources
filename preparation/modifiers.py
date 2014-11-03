@@ -30,7 +30,7 @@ class Modifier:
 
 
 class TitleOrTextModifier(Modifier):
-    def __init__(self, *args, target='text', **kwargs):
+    def __init__(self, *args, target, **kwargs):
         super().__init__(*args, target=target, **kwargs)
         if target not in {'text', 'title'}:
             raise ValueError('target should be either "text" or "title"')
@@ -39,16 +39,16 @@ class TitleOrTextModifier(Modifier):
     def __call__(self, e: Explanation):
         ret = copy.copy(e)
         if self.target == 'text':
-            self._modify(e.text)
-            if e.text is None:
+            ret.text = self._modify_str(e.text)
+            if ret.text is None:
                 return None
         else:
-            self._modify(e.title)
-            if e.title is None:
+            ret.title = self._modify_str(e.title)
+            if ret.title is None:
                 return None
         return ret
 
-    def _modify(self, s: str):
+    def _modify_str(self, s: str):
         raise NotImplementedError
 
 
@@ -67,7 +67,7 @@ class REReplace(TitleOrTextModifier):
         self.pattern = re.compile(pattern, flags)
         self.replacement = replacement
 
-    def _modify(self, s: str):
+    def _modify_str(self, s: str):
         return self.pattern.sub(self.replacement, s)
 
 
