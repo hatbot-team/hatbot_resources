@@ -75,9 +75,8 @@ def _is_valid_noun(parsed: Parse)->bool:
     return True
 
 
-
-def get_valid_noun_initial_form(word: str)->str:
-    possible_forms = [p for p in morph.parse(word) if _is_valid_noun(p)]
+def get_valid_noun_initial_form(word: str, score_threshold=0.)->str:
+    possible_forms = [p for p in morph.parse(word) if _is_valid_noun(p) and p.score >= score_threshold]
     if len(word) < 2:
         return None
     if len(possible_forms) == 0:
