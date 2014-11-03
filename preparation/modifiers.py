@@ -58,9 +58,9 @@ class Strip(TitleOrTextModifier):
 
 
 class REReplace(TitleOrTextModifier):
-    def __init__(self, pattern: str, replacement: str, target='text'):
-        super().__init__(pattern, replacement, target=target)
-        self.pattern = re.compile(pattern)
+    def __init__(self, pattern: str, replacement: str, flags=0, target='text'):
+        super().__init__(pattern, replacement, flags=flags, target=target)
+        self.pattern = re.compile(pattern, flags)
         self.replacement = replacement
 
     def _modify(self, s: str):
@@ -68,12 +68,13 @@ class REReplace(TitleOrTextModifier):
 
 
 class REFullmatchBan(TitleOrTextModifier):
-    def __init__(self, pattern: str, target='text'):
-        super().__init__(pattern, target=target)
+    def __init__(self, pattern: str, flags=0, target='text'):
+        super().__init__(pattern, flags=flags, target=target)
         self.pattern = pattern
+        self.flags = flags
 
     def _modify(self, s: str):
-        return s if re.fullmatch(self.pattern, s) else None
+        return None if re.fullmatch(self.pattern, s, self.flags) is None else s
 
 
 class CalculateKey(Modifier):
