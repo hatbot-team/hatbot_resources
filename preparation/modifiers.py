@@ -1,9 +1,10 @@
 """
 Common modifiers for use in resources.
 """
-
+import itertools
 import re
 import copy
+
 from hb_res.explanations import Explanation, ExplanationKey
 from preparation.lang_utils.cognates import are_cognates
 from preparation.lang_utils.morphology import get_valid_noun_initial_form
@@ -15,7 +16,10 @@ class Modifier:
     def __init__(self, *args, **kwargs):
         self.__repr = '{}({})'.format(
             self.__class__,
-            ', '.join(list(map(repr, args)) + list(map(repr, kwargs)))
+            ', '.join(itertools.chain(
+                map(repr, args),
+                itertools.starmap('{}={!r}'.format, kwargs.items())
+            ))
         )
 
     def __repr__(self):
