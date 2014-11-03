@@ -1,26 +1,23 @@
-from hb_res.storage import FileExplanationStorage
-
 __author__ = 'skird'
 
-import os
-
-from preparation.resources.resource_registry import register_resource
-
+from os import path
 
 __all__ = ['parse_definitions']
 
-PREFIX = os.path.dirname(os.path.abspath(__file__)) + '/raw_data/'
+PREFIX = path.join(path.dirname(path.abspath(__file__)), 'raw_data')
 PART_PREFIX, PART_SUFFIX = 'ozh', '_s.txt'
 PARTS = 5
 
 RESULT_RESOURCE_NAME = 'definitions'
 DUMP_RESOURCE_NAME = 'definitions_dump'
 
-OUTPUT_PREFIX = os.path.dirname(os.path.abspath(__file__)) + '/output/'
-RESULT_NAME = OUTPUT_PREFIX + 'ozh_full.txt'
-DUMP_NAME = OUTPUT_PREFIX + 'ozh_dumped.txt'
+OUTPUT_PREFIX = path.join(path.dirname(path.abspath(__file__)), 'output')
+RESULT_NAME = path.join(OUTPUT_PREFIX, 'ozh_full.txt')
+DUMP_NAME = path.join(OUTPUT_PREFIX, 'ozh_dumped.txt')
 
-_raw_data = [PREFIX + PART_PREFIX + str(i) + PART_SUFFIX for i in range(1, PARTS + 1)]
+_raw_data = [path.join(PREFIX, PART_PREFIX + str(i) + PART_SUFFIX) for i in range(1, PARTS + 1)]
 
-register_resource(RESULT_RESOURCE_NAME, FileExplanationStorage(RESULT_NAME))
-register_resource(DUMP_RESOURCE_NAME, FileExplanationStorage(DUMP_NAME))
+from . import parse_definitions
+
+# register_resource(RESULT_RESOURCE_NAME, FileExplanationStorage(RESULT_NAME))
+# register_resource(DUMP_RESOURCE_NAME, FileExplanationStorage(DUMP_NAME))
