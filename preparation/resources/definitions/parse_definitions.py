@@ -14,27 +14,30 @@ from preparation import modifiers
 
 # CHANGE_SAMPLE_PERCENTAGE = 5
 
-class ShadowAbbreviations(modifiers.Modifier):
-    def __call__(self, e: Explanation):
+@modifiers.modifier_factory
+def shadow_abbreviations():
+    def apply(e: Explanation):
         ret = copy.copy(e)
         abbreviation = ' ' + e.title[0] + '\.'
         ret.text = re.sub(abbreviation, modifiers.GAP_VALUE, ret.text, flags=re.IGNORECASE)
         return ret
+    return apply
 
 definitions_mods = [
-    modifiers.REFullmatchBan('.*\\.', target='title'),
-    modifiers.Strip('1234567890-', target='title'),
-    modifiers.REFullmatchBan('(?!([А-Я]+))', target='title'),
-    modifiers.REReplace('Ё', 'Е', target='title'),
-    modifiers.NormalizeTitle(),
+    modifiers.re_fullmatch_ban('.*\\.', target_field='title'),
+    modifiers.strip('1234567890-', target_field='title'),
+    modifiers.re_fullmatch_ban('(?!([А-Я]+))', target_field='title'),
+    modifiers.re_replace('Ё', 'Е', target_field='title'),
+    modifiers.normalize_title(),
 
-    modifiers.Strip(),
-    modifiers.REReplace('\\?', 'ё'),  # Fixes misOCR'ed '?' instead of 'ё'
-    modifiers.ShadowCognates(4, '[\W,:;\(\)]+'),
-    ShadowAbbreviations(),
+    modifiers.strip(),
+    modifiers.re_replace('\\?', 'ё'),  # Fixes misOCR'ed '?' instead of 'ё'
+    modifiers.shadow_cognates(4, '[\W,:;\(\)]+'),
+    shadow_abbreviations(),
 
-    modifiers.CalculateKey()
+    modifiers.calculate_key()
 ]
+
 
 @gen_resource('DefinitionsResource', modifiers=definitions_mods)
 def read_articles():
