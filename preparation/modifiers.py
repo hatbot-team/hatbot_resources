@@ -1,6 +1,27 @@
 """
-Common modifiers for use in resources.
+ Common modifiers factories for use in resources.
+
+ Although modifier concept is defined as a callable (Explanation)->Explanation,
+ different resources may need to tweak its behavior more or less.
+
+ So, most modifiers here are parametrised and all modifiers are supposed
+ to be created by their factory functions.
+
+ But for debugging convenience it could be nice to have an informative
+ representation of parametrized modifier, not just its family.
+ For this purpose every modifier is a subclass of Modifier class,
+ which remembers parameters it was constructed with in his repr.
+
+ For factory writing convenience there are two decorators:
+ - modifier_factory, which just wraps your factory with Modifier.__init__ call;
+ - title_text_modifier_factory is for modifiers such as re_replace, which can
+   equally successful work with explanations title or text.
+   So, the factory should just produce functions str->str, the decorator will
+   use them properly.
+   By default produced modifiers affect Explanation.text, but it can be changed
+   by passing target_field='title' keyword parameter to the factory.
 """
+
 import itertools
 import re
 import copy
