@@ -13,9 +13,11 @@ GAP_VALUE = '###'
 
 
 class Modifier:
-    def __init__(self, *args, **kwargs):
-        self.__repr = '{}({})'.format(
-            self.__class__,
+    def __init__(self, *args, _name=None, **kwargs):
+        if _name is None:
+            _name = self.__name__
+        self.__repr = '<modifier {}({})>'.format(
+            _name,
             ', '.join(itertools.chain(
                 map(repr, args),
                 itertools.starmap('{}={!r}'.format, kwargs.items())
@@ -29,91 +31,89 @@ class Modifier:
         raise NotImplementedError
 
 
-class TitleOrTextModifier(Modifier):
-    def __init__(self, *args, target, **kwargs):
-        super().__init__(*args, target=target, **kwargs)
-        if target not in {'text', 'title'}:
-            raise ValueError('target should be either "text" or "title"')
-        self.target = target
+def modifier_factory(factory, name=None):
+    if name is None:
+        name = factory.__name__
 
-    def __call__(self, e: Explanation):
-        ret = copy.copy(e)
-        if self.target == 'text':
-            ret.text = self._modify_str(e.text)
-            if ret.text is None:
-                return None
-        else:
-            ret.title = self._modify_str(e.title)
-            if ret.title is None:
-                return None
-        return ret
+    class DecoratedModifier(Modifier):
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, _name=name, **kwargs)
+            self._mod = factory(*args, **kwargs)
 
-    def _modify_str(self, s: str):
-        raise NotImplementedError
+        def __call__(self, e):
+            return self._mod(e)
+
+    return DecoratedModifier
 
 
-class Strip(TitleOrTextModifier):
-    def __init__(self, chars=None, target='text'):
-        super().__init__(chars=chars, target=target)
-        self.chars = chars
+def title_text_modifier_factory(factory, name=None):
+    def decorator(*args, target_field='text', **kwargs):
+        assert target_field in {'text', 'title'}
 
-    def _modify(self, s: str):
-        return s.strip(self.chars)
+        mod = factory(*args, **kwargs)
 
+        def apply(explanation):
+            ret = copy.copy(explanation)
+            setattr(ret, target_field, mod(getattr(ret, target_field)))
+            if getattr(ret, target_field) is None:
+                ret = None
+            return ret
 
-class REReplace(TitleOrTextModifier):
-    def __init__(self, pattern: str, replacement: str, flags=0, target='text'):
-        super().__init__(pattern, replacement, flags=flags, target=target)
-        self.pattern = re.compile(pattern, flags)
-        self.replacement = replacement
+        return apply
 
-    def _modify_str(self, s: str):
-        return self.pattern.sub(self.replacement, s)
+    if name is None:
+        name = factory.__name__
 
-
-class REFullmatchBan(TitleOrTextModifier):
-    def __init__(self, pattern: str, flags=0, target='text'):
-        super().__init__(pattern, flags=flags, target=target)
-        self.pattern = pattern
-        self.flags = flags
-
-    def _modify(self, s: str):
-        return None if re.fullmatch(self.pattern, s, self.flags) is None else s
+    return modifier_factory(decorator, name)
 
 
-class CalculateKey(Modifier):
-    def __init__(self):
-        super().__init__()
+@title_text_modifier_factory
+def strip(chars: str=None):
+    return lambda s: s.strip(chars)
 
-    def __call__(self, e: Explanation):
+
+@title_text_modifier_factory
+def re_replace(pattern: str, replacement: str, flags: int=0):
+    pattern = re.compile(pattern, flags)
+    return lambda s: pattern.sub(replacement, s)
+
+
+@title_text_modifier_factory
+def re_fullmatch_ban(pattern: str, flags: int=0):
+    return lambda s: s if re.fullmatch(pattern, s, flags) is None else None
+
+
+@modifier_factory
+def calculate_key():
+    def apply(e: Explanation):
         if e.key is not None:
             return e
-
         ret = copy.copy(e)
-        ret.key = ExplanationKey.for_text(e.text)
+        ret.key = ExplanationKey.for_text(ret.text)
         return ret
+    return apply
 
 
-class NormalizeTitle(Modifier):
-    def __init__(self, score_threshold=0.):
-        super().__init__(score_threshold=score_threshold)
-        self.score_threshold = score_threshold
-
-    def __call__(self, e: Explanation):
+@modifier_factory
+def normalize_title(score_threshold: float=0.):
+    def apply(e: Explanation):
+        new_title = get_valid_noun_initial_form(e.title, score_threshold)
+        if new_title is None:
+            return None
         ret = copy.copy(e)
-        ret.title = get_valid_noun_initial_form(e.title, self.score_threshold)
-        return None if ret.title is None else ret
+        ret.title = new_title
+        return ret
+    return apply
 
 
-class ShadowCognates(Modifier):
-    def __init__(self, length_threshold: int=None, sep_re='\\s+'):
-        super().__init__(length_threshold=length_threshold, sep_re=sep_re)
-        self.sep_re = re.compile(sep_re)
-        self.length_threshold = length_threshold
+@modifier_factory
+def shadow_cognates(length_threshold: int=None, sep_re: str='\\s+'):
+    sep_re = re.compile(sep_re)
 
-    def __call__(self, e: Explanation):
+    def apply(e: Explanation):
         ret = copy.copy(e)
-        for w in self.sep_re.split(ret.text):
-            if are_cognates(w, e.title, length_threshold=4):
+        for w in sep_re.split(ret.text):
+            if are_cognates(w, e.title, length_threshold=length_threshold):
                 ret.text = re.sub(w, GAP_VALUE, ret.text, flags=re.IGNORECASE)
         return ret
+    return apply
