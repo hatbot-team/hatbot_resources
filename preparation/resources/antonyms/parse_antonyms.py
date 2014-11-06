@@ -14,7 +14,7 @@ def add_antonyms_common_text():
             text = "антоним к слову " + e.text
         else:
             text = "антоним к словам" + e.text
-        return Explanation(copy.copy(e.title), text)
+        return Explanation(e.title, text)
     return apply
 
 antonyms_mods = [
