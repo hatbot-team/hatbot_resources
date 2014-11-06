@@ -6,7 +6,9 @@ from hb_res.storage import get_storage
 
 def rebuild_from_resource(resource_name: str):
     resource = resource_by_name(resource_name)()
-    with get_storage(resource_name.replace('Resource', '')) as out_storage:
+    trunk = resource_name.replace('Resource', '')
+    with get_storage(trunk) as out_storage:
+        print("Starting {} generation".format(trunk))
         out_storage.clear()
         for explanation in resource:
             r = copy(explanation)
@@ -16,6 +18,7 @@ def rebuild_from_resource(resource_name: str):
                 r = functor(r)
             if r is not None:
                 out_storage.add_entry(r)
+        print("Finished {} generation".format(trunk))
 
 
 def rebuild_all():
