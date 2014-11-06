@@ -5,7 +5,6 @@ from preparation.resources.antonyms import _raw_data
 from preparation import modifiers
 from preparation.resources.Resource import gen_resource
 from hb_res.explanations import Explanation
-import copy
 
 @modifiers.modifier_factory
 def add_antonyms_common_text():
@@ -13,7 +12,7 @@ def add_antonyms_common_text():
         if e.text.find(',') == -1:
             text = "антоним к слову " + e.text
         else:
-            text = "антоним к словам" + e.text
+            text = "антоним к словам " + e.text
         return Explanation(e.title, text)
     return apply
 
