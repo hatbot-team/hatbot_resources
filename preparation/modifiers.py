@@ -239,11 +239,3 @@ def normalize_words_in_explanation(separator: str):
         ret.text = separator.join(new_list)
         return ret
     return apply
-
-@modifier_factory
-def change_words_separator(old_separator: str, new_separator: str):
-    def apply(e: Explanation):
-        ret = copy.copy(e)
-        ret.text.replace(old_separator, new_separator)
-        return ret
-    return apply

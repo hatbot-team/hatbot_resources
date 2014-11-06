@@ -1,6 +1,7 @@
 __author__ = 'Алексей'
 
 # noinspection PyProtectedMember
+import copy
 from preparation.resources.antonyms import _raw_data
 from preparation import modifiers
 from preparation.resources.Resource import gen_resource
@@ -13,7 +14,9 @@ def add_antonyms_common_text():
             text = "антоним к слову " + e.text
         else:
             text = "антоним к словам " + e.text
-        return Explanation(e.title, text)
+        ret = copy.copy(e)
+        ret.text = text
+        return ret
     return apply
 
 antonyms_mods = [
@@ -21,7 +24,7 @@ antonyms_mods = [
     modifiers.delete_complex_words_explanation('#', ' '),
     modifiers.shadow_cognates(6, '#'),
     modifiers.normalize_words_in_explanation('#'),
-    modifiers.change_words_separator('#', ', '),
+    modifiers.re_replace('#', ', ', target_field='text'),
     add_antonyms_common_text(),
     modifiers.calculate_key()
 ]

@@ -11,7 +11,7 @@ synonyms_mods = [
     modifiers.delete_complex_words_explanation('#', ' '),
     modifiers.shadow_cognates(4, '#'),
     modifiers.normalize_words_in_explanation('#'),
-    modifiers.change_words_separator('#', ', '),
+    modifiers.re_replace('#', ', ', target_field='text'),
     modifiers.calculate_key()
 ]
 
