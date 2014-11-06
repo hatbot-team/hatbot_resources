@@ -232,7 +232,7 @@ def delete_complex_words_explanation(lexeme_separator: str, word_separator: str)
 def normalize_words_in_explanation(separator: str):
     def apply(e: Explanation):
         ret = copy.copy(e)
-        new_list = [w for w in e.text.split(separator)
+        new_list = [get_valid_noun_initial_form(w) for w in e.text.split(separator)
                     if get_valid_noun_initial_form(w) is not None]
         if len(new_list) == 0:
             return None
