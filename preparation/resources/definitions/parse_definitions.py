@@ -101,6 +101,7 @@ def read_articles():
                     title = get_title(article)
                     for meaning in extract_meanings(article):
                         yield Explanation(title, meaning)
+    print('You had hard time putting it down, and you have finally finished.')
 
 
 # def sanity_check():
