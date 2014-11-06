@@ -94,13 +94,16 @@ def strip(chars: str=None):
 
 
 @title_text_modifier_factory
-def re_replace(pattern: str, replacement: str, flags: int=0):
-    pattern = re.compile(pattern, flags)
+def re_replace(pattern, replacement: str, flags: int=0):
+    if isinstance(pattern, (str, bytes)):
+        pattern = re.compile(pattern, flags)
     return lambda s: pattern.sub(replacement, s)
 
 
 @title_text_modifier_factory
-def re_fullmatch_ban(pattern: str, flags: int=0):
+def re_fullmatch_ban(pattern, flags: int=0):
+    if isinstance(pattern, (str, bytes)):
+        pattern = re.compile(pattern, flags)
     return lambda s: s if re.fullmatch(pattern, s, flags) is None else None
 
 
@@ -112,6 +115,7 @@ def calculate_key():
         ret = copy.copy(e)
         ret.key = ExplanationKey.for_text(ret.text)
         return ret
+
     return apply
 
 
@@ -124,12 +128,14 @@ def normalize_title(score_threshold: float=0.):
         ret = copy.copy(e)
         ret.title = new_title
         return ret
+
     return apply
 
 
 @modifier_factory
-def shadow_cognates(length_threshold: int=None, sep_re: str='\\s+'):
-    sep_re = re.compile(sep_re)
+def shadow_cognates(length_threshold: int=None, sep_re='\\s+'):
+    if isinstance(sep_re, (str, bytes)):
+        sep_re = re.compile(sep_re)
 
     def apply(e: Explanation):
         ret = copy.copy(e)
@@ -137,4 +143,5 @@ def shadow_cognates(length_threshold: int=None, sep_re: str='\\s+'):
             if are_cognates(w, e.title, length_threshold=length_threshold):
                 ret.text = re.sub(w, GAP_VALUE, ret.text, flags=re.IGNORECASE)
         return ret
+
     return apply
