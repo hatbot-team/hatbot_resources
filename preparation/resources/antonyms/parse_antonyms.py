@@ -1,12 +1,37 @@
 __author__ = 'Алексей'
 
-from preparation.resources.synonyms import init_dictionary
-from preparation.resources.synonyms import dump_dictionary
-from preparation.resources.resource_registry import resource_by_name
-from preparation.resources.antonyms import INPUT_NAME, RESULT_RESOURCE_NAME
+# noinspection PyProtectedMember
+import copy
+from preparation.resources.antonyms import _raw_data
+from preparation import modifiers
+from preparation.resources.Resource import gen_resource
+from hb_res.explanations import Explanation
 
-THRESHOLD = 6
+@modifiers.modifier_factory
+def add_antonyms_common_text():
+    def apply(e: Explanation):
+        if e.text.find(',') == -1:
+            text = "антоним к слову " + e.text
+        else:
+            text = "антоним к словам " + e.text
+        ret = copy.copy(e)
+        ret.text = text
+        return ret
+    return apply
 
-antonyms = dict()
-init_dictionary(INPUT_NAME, antonyms, THRESHOLD)
-dump_dictionary(resource_by_name(RESULT_RESOURCE_NAME), antonyms)
+antonyms_mods = [
+    modifiers.normalize_title(),
+    modifiers.delete_complex_words_explanation('#', ' '),
+    modifiers.shadow_cognates(6, '#'),
+    modifiers.normalize_words_in_explanation('#'),
+    modifiers.re_replace('#', ', ', target_field='text'),
+    add_antonyms_common_text(),
+    modifiers.calculate_key()
+]
+
+@gen_resource('AntonymsResource', antonyms_mods)
+def read_data():
+    with open(_raw_data, 'r', encoding='utf-8') as source:
+        for line in source:
+            [title, text] = line.split('@')
+            yield Explanation(title, text)

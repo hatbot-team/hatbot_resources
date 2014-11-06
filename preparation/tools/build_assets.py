@@ -19,4 +19,5 @@ def rebuild_from_resource(resource_name: str):
 
 
 def rebuild_all():
-    map(rebuild_from_resource, names_registered())
+    for name in names_registered():
+        rebuild_from_resource(name)

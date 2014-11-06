@@ -29,8 +29,9 @@ class ExplanationStorage:
 
     def __enter__(self):
         """ Default implementation of context manager enter. Does nothing. """
-        pass
+        return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         """ Default implementation of context manager exit. Calls close. """
         self.close()
+        return False
