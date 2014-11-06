@@ -1,3 +1,3 @@
 __author__ = 'moskupols'
 
-__all__ = ['morphology', 'cognates']
+__all__ = ['morphology', 'cognates', 'pymystem']
