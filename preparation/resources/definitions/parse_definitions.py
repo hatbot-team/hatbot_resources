@@ -84,7 +84,7 @@ def read_articles():
     # read file and call title and meanings getters
     for part_path in _raw_data:
         print('Parsing ' + part_path + '...')
-        with open(part_path) as source:
+        with open(part_path, encoding='utf8') as source:
             while True:
                 line = source.readline()
                 if len(line) == 0:
