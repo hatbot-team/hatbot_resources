@@ -87,8 +87,9 @@ def read_articles():
         with open(part_path) as source:
             while True:
                 line = source.readline()
-                if line is None:
-                    raise StopIteration
+                if len(line) == 0:
+                    print('so good!')
+                    break
                 line = line.strip(' \n')
                 if len(line) > 0:
                     article = [line]
