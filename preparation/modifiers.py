@@ -191,7 +191,6 @@ def normalize_title(score_threshold: float=0.):
 
     return apply
 
-
 @modifier_factory
 def shadow_cognates(length_threshold: int=None, sep_re='\\s+'):
     """
@@ -215,4 +214,36 @@ def shadow_cognates(length_threshold: int=None, sep_re='\\s+'):
                 ret.text = re.sub(w, GAP_VALUE, ret.text, flags=re.IGNORECASE)
         return ret
 
+    return apply
+
+@modifier_factory
+def delete_complex_words_explanation(lexeme_separator: str, word_separator: str):
+    def apply(e: Explanation):
+        ret = copy.copy(e)
+        new_list = [w for w in e.text.split(lexeme_separator)
+                    if len(w.split(word_separator)) == 1]
+        if len(new_list) == 0:
+            return None
+        ret.text = lexeme_separator.join(new_list)
+        return ret
+    return apply
+
+@modifier_factory
+def normalize_words_in_explanation(separator: str):
+    def apply(e: Explanation):
+        ret = copy.copy(e)
+        new_list = [w for w in e.text.split(separator)
+                    if get_valid_noun_initial_form(w) is not None]
+        if len(new_list) == 0:
+            return None
+        ret.text = separator.join(new_list)
+        return ret
+    return apply
+
+@modifier_factory
+def change_words_separator(old_separator: str, new_separator: str):
+    def apply(e: Explanation):
+        ret = copy.copy(e)
+        ret.text.replace(old_separator, new_separator)
+        return ret
     return apply

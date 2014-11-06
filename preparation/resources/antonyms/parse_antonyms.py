@@ -1,12 +1,23 @@
 __author__ = 'Алексей'
 
-from preparation.resources.synonyms import init_dictionary
-from preparation.resources.synonyms import dump_dictionary
-from preparation.resources.resource_registry import resource_by_name
-from preparation.resources.antonyms import INPUT_NAME, RESULT_RESOURCE_NAME
+# noinspection PyProtectedMember
+from preparation.resources.antonyms import _raw_data
+from preparation import modifiers
+from preparation.resources.Resource import gen_resource
+from hb_res.explanations import Explanation
 
-THRESHOLD = 6
+synonyms_mods = [
+    modifiers.normalize_title(),
+    modifiers.delete_complex_words_explanation('#', ' '),
+    modifiers.shadow_cognates(6, '#'),
+    modifiers.normalize_words_in_explanation('#'),
+    modifiers.change_words_separator('#', ', '),
+    modifiers.calculate_key()
+]
 
-antonyms = dict()
-init_dictionary(INPUT_NAME, antonyms, THRESHOLD)
-dump_dictionary(resource_by_name(RESULT_RESOURCE_NAME), antonyms)
+@gen_resource('AntonymsResource', synonyms_mods)
+def read_data():
+    with open(_raw_data, 'r', encoding='utf-8') as source:
+        for line in source:
+            [title, text] = line.split('@')
+            yield Explanation(title, text)
