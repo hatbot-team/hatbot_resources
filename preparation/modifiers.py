@@ -30,7 +30,7 @@ from hb_res.explanations import Explanation, ExplanationKey
 from preparation.lang_utils.cognates import are_cognates
 from preparation.lang_utils.morphology import get_valid_noun_initial_form
 
-GAP_VALUE = '###'
+GAP_VALUE = '*пропуск*'
 
 
 class Modifier:
@@ -52,7 +52,14 @@ class Modifier:
         raise NotImplementedError
 
 
-def modifier_factory(factory, name=None):
+def modifier_factory(factory, name=None)->Modifier:
+    """
+    Wraps modifier factory's products in Modifier subclass, remembering parameters the modifier was parametrized.
+
+    :param factory:
+    :param name: factory's name
+    :return: Modifier
+    """
     if name is None:
         name = factory.__name__
 
@@ -67,7 +74,15 @@ def modifier_factory(factory, name=None):
     return DecoratedModifier
 
 
-def title_text_modifier_factory(factory, name=None):
+def title_text_modifier_factory(factory, name=None)->Modifier:
+    """
+    Adds target_field kwarg to modifier factory, allowing modification either 'title' or 'text' fields.
+
+    :param factory:
+    :param name:
+    :return: Modifier
+    """
+
     def decorator(*args, target_field='text', **kwargs):
         assert target_field in {'text', 'title'}
 
@@ -90,11 +105,31 @@ def title_text_modifier_factory(factory, name=None):
 
 @title_text_modifier_factory
 def strip(chars: str=None):
+    """
+    Constructs modifier that calls `str.strip` on field specified in `target_field` kwarg.
+
+    `target_field` is a kwarg that defaults to 'text'.
+
+    :param chars: same as for str.strip
+    :return Modifier
+    """
     return lambda s: s.strip(chars)
 
 
 @title_text_modifier_factory
 def re_replace(pattern, replacement: str, flags: int=0):
+    """
+    Constructs modifier that replaces e.`target_field`
+    with re.sub(pattern, replacement, e.`target_field`, flags=flags)
+    (for given Explanation e).
+
+    `target_field` is a kwarg that defaults to 'text'.
+
+    :param pattern: str or compiled regexp to replace
+    :param replacement: replacement
+    :param flags: re compilation flags
+    :return Modifier
+    """
     if isinstance(pattern, (str, bytes)):
         pattern = re.compile(pattern, flags)
     return lambda s: pattern.sub(replacement, s)
@@ -102,6 +137,15 @@ def re_replace(pattern, replacement: str, flags: int=0):
 
 @title_text_modifier_factory
 def re_fullmatch_ban(pattern, flags: int=0):
+    """
+    Constructs modifier that bans explanations whose `target_field` matches exactly to `pattern` regexp.
+
+    target_field is a kwarg that defaults to 'text'.
+
+    :param pattern: regexp
+    :param flags: re construction flags
+    :return Modifier
+    """
     if isinstance(pattern, (str, bytes)):
         pattern = re.compile(pattern, flags)
     return lambda s: s if re.fullmatch(pattern, s, flags) is None else None
@@ -109,6 +153,12 @@ def re_fullmatch_ban(pattern, flags: int=0):
 
 @modifier_factory
 def calculate_key():
+    """
+    Constructs modifier that fills .key field if it is None.
+
+    :return Modifier
+    """
+
     def apply(e: Explanation):
         if e.key is not None:
             return e
@@ -121,6 +171,16 @@ def calculate_key():
 
 @modifier_factory
 def normalize_title(score_threshold: float=0.):
+    """
+    Constructs modifier that replaces explanation's title with normalized noun if possible.
+    Otherwise bans the explanation (returns None).
+
+    score_threshold is used as minimum confidence enough to consider a parse variant.
+
+    :param score_threshold:
+    :return: Modifier
+    """
+
     def apply(e: Explanation):
         new_title = get_valid_noun_initial_form(e.title, score_threshold)
         if new_title is None:
@@ -134,6 +194,17 @@ def normalize_title(score_threshold: float=0.):
 
 @modifier_factory
 def shadow_cognates(length_threshold: int=None, sep_re='\\s+'):
+    """
+    Constructs modifier that splits explanation's text by sep_re regexp and replaces title's cognates with
+    GAP_VALUE.
+
+    If length_threshold is specified, the modifier treats any word having with title a common substring of
+    at least length_threshold len as cognate.
+
+    :param length_threshold:
+    :param sep_re:
+    :return: Modifier
+    """
     if isinstance(sep_re, (str, bytes)):
         sep_re = re.compile(sep_re)
 
