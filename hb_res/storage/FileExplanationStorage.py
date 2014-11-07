@@ -1,9 +1,7 @@
 from hb_res.storage import ExplanationStorage
+from hb_res.explanations.Explanation import Explanation
 
 __author__ = 'skird'
-
-import codecs
-from hb_res.explanations.Explanation import Explanation
 
 
 class FileExplanationStorage(ExplanationStorage):
@@ -13,21 +11,28 @@ class FileExplanationStorage(ExplanationStorage):
 
     def __init__(self, path_to_file):
         self.file_name = path_to_file
-        self.descriptor = codecs.open(self.file_name, mode='a', encoding='utf-8')
+        self.write_desc = None
 
     def entries(self):
-        self.descriptor.flush()
-        for line in open(self.file_name):
-            yield Explanation.decode(line.strip())
+        if self.write_desc is not None:
+            self.write_desc.flush()
+        with open(self.file_name, encoding='utf-8') as read_desc:
+            for line in read_desc:
+                yield Explanation.decode(line.strip())
 
     def add_entry(self, entry: Explanation) -> None:
-        print(entry, file=self.descriptor)
+        if self.write_desc is None:
+            self.write_desc = open(self.file_name, mode='a', encoding='utf-8')
+        print(entry, file=self.write_desc)
 
     def clear(self) -> None:
-        self.descriptor = codecs.open(self.file_name, mode='w', encoding='utf-8')
+        if self.write_desc is not None:
+            self.write_desc.close()
+        self.write_desc = open(self.file_name, mode='w', encoding='utf-8')
 
     def close(self) -> None:
-        self.descriptor.flush()
+        if self.write_desc is not None:
+            self.write_desc.close()
 
     def __getitem__(self, key):
         for explanation in self.entries():
