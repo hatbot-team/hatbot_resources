@@ -1,7 +1,7 @@
 from preparation.resources import Resource
 
 resource_packages = [
-    'synonyms', 'antonyms',
+    'synonyms', 'antonyms', 'definitions'
 ]
 __all__ = [
     'Resource'
