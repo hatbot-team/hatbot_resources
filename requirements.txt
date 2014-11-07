@@ -1,0 +1,5 @@
+pymorphy2
+DAWG
+beautifulsoup4
+requests
+

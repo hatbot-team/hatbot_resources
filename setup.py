@@ -54,10 +54,4 @@ setup(
     package_data={
         'hb_res': ['assets/*.asset']
     },
-
-    install_requires=['pymorphy2'],
-
-    extras_require={
-        'web': ['beautifulsoup4', 'requests'],
-    }
 )
