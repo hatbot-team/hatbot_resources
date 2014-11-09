@@ -60,7 +60,7 @@ def make_argparser():
     parser = argparse.ArgumentParser(description='View how some explanation(s) evolute ')
 
     formats = {
-        'oneline': '{mod!s:>50} -> ("{result.title}" := "{result.text}")',
+        'oneline': '{mod!s:>50} -> ({result.title!r} := {result.text!r})',
         'wide': '{mod!s:>60} -> {result!r}',
         'twoline': 'after {mod}:\n --> {result!r}'
     }
