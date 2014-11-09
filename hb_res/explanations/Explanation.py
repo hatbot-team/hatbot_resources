@@ -7,12 +7,12 @@ SEPARATOR = '\t'
 
 class Explanation:
     """
-    This class is representation of explanation in resource modules
-    Explanation is defined at tuple of (title, text, key, prior_rating)
-    It's essential for explanation not to contain substring equal to SEPARATOR in any part
+    This class is representation of explanation in resource modules.
+    Explanation is defined as tuple of (title, text, key, prior_rating).
+    It's essential for both title and text not to contain substring equal to '\t' in any part.
     """
 
-    def __init__(self, title, text, key=None, prior_rating=None) -> None:
+    def __init__(self, title: str, text: str, key: ExplanationKey=None, prior_rating: float=None) -> None:
         """
         Creates explanation from its attributes
         It's essential for explanation not to contain '\t' symbol in any part
@@ -33,10 +33,14 @@ class Explanation:
         :rtype: str
         :return: string containing attributes of explanation separated by SEPARATOR
         """
-        return SEPARATOR.join((self.title, self.text, str(self.key), str(self.prior_rating)))
+        assert SEPARATOR not in self.title, \
+            '{} should not contain {!r}, but {!r} contains'.format('Title', SEPARATOR, self.title)
+        assert SEPARATOR not in self.text, \
+            '{} should not contain {!r}, but {!r} contains'.format('Text', SEPARATOR, self.text)
+        return SEPARATOR.join(map(str, (self.title, self.text, self.key, self.prior_rating)))
 
     @classmethod
-    def decode(cls, representation):
+    def decode(cls, representation: str):
         """
         decodes explanation from its representation
         :param representation: string containing attributes of explanation separated by SEPARATOR
@@ -44,13 +48,15 @@ class Explanation:
         :return:
         """
         values = representation.split(SEPARATOR)
+        assert len(values) != 4, \
+            'Encoded explanation should contain exactly 3 occurrences of {!r}, not {}, as in {!r}' \
+            .format(SEPARATOR, len(values), representation)
         values[2] = None if values[2] == 'None' else ExplanationKey.decode(values[2])
         values[3] = None if values[3] == 'None' else float(values[3])
-        return Explanation(*values[:4])
+        return cls(*values)
 
     def __repr__(self):
-        return '<Explanation({}, {}, {}, {})>'\
-            .format(*map(repr, (self.title, self.text, self.key, self.prior_rating)))
+        return '<Explanation({0.title!r}, {0.text!r}, {0.key!r}, {0.prior_rating!r})>'.format(self)
 
     def __str__(self) -> str:
         """

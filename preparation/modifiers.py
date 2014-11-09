@@ -216,17 +216,6 @@ def shadow_cognates(length_threshold: int=None, sep_re='\\s+'):
 
     return apply
 
-@modifier_factory
-def delete_complex_words_explanation(lexeme_separator: str, word_separator: str):
-    def apply(e: Explanation):
-        ret = copy.copy(e)
-        new_list = [w for w in e.text.split(lexeme_separator)
-                    if len(w.split(word_separator)) == 1]
-        if len(new_list) == 0:
-            return None
-        ret.text = lexeme_separator.join(new_list)
-        return ret
-    return apply
 
 @modifier_factory
 def normalize_words_in_explanation(separator: str):

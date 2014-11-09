@@ -1,11 +1,12 @@
 __author__ = 'Алексей'
 
-# noinspection PyProtectedMember
 import copy
+# noinspection PyProtectedMember
 from preparation.resources.antonyms import _raw_data
 from preparation import modifiers
 from preparation.resources.Resource import gen_resource
 from hb_res.explanations import Explanation
+
 
 @modifiers.modifier_factory
 def add_antonyms_common_text():
@@ -21,13 +22,17 @@ def add_antonyms_common_text():
 
 antonyms_mods = [
     modifiers.normalize_title(),
-    modifiers.delete_complex_words_explanation('#', ' '),
+
+    modifiers.re_replace('[^#]+ [^#]+(#|$)', ''),  # remove multi-word antonyms (containing spaces)
+    modifiers.re_fullmatch_ban(''),
+
     modifiers.shadow_cognates(6, '#'),
     modifiers.normalize_words_in_explanation('#'),
     modifiers.re_replace('#', ', ', target_field='text'),
     add_antonyms_common_text(),
     modifiers.calculate_key()
 ]
+
 
 @gen_resource('AntonymsResource', antonyms_mods)
 def read_data():
