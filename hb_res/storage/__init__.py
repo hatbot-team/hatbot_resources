@@ -6,10 +6,12 @@ __all__ = ['ExplanationStorage', 'get_storage']
 
 from . ExplanationStorage import ExplanationStorage
 from . FileExplanationStorage import FileExplanationStorage
-from os import path
+import os
 
-ASSETS_DIR = path.abspath(path.join(path.dirname(path.abspath(__file__)), '..', 'assets'))
+ASSETS_DIR = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'assets'))
 
 
 def get_storage(trunk: str):
-    return FileExplanationStorage(path.join(ASSETS_DIR, trunk + '.asset'))
+    if not os.path.exists(ASSETS_DIR):
+        os.makedirs(ASSETS_DIR)
+    return FileExplanationStorage(os.path.join(ASSETS_DIR, trunk + '.asset'))
