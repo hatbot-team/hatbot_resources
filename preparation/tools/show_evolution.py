@@ -64,6 +64,7 @@ def make_argparser():
         'wide': '{mod!s:>60} -> {result!r}',
         'twoline': 'after {mod}:\n --> {result!r}'
     }
+    trunks = [name.replace('Resource', '') for name in names_registered()]
 
     fmt_args = parser.add_mutually_exclusive_group()
     fmt_args.add_argument('--format',
@@ -79,7 +80,7 @@ def make_argparser():
                               help='Format as ' + repr(fmt))
 
     parser.add_argument('resource',
-                        choices=names_registered(),
+                        choices=trunks,
                         help='resource to use')
     parser.add_argument('title',
                         nargs='+',
@@ -95,7 +96,7 @@ def main(args=None):
         args = parser.parse_args(args)
     first_story = True
     for title in args.title:
-        stories = evolution(title=title, resource=args.resource)
+        stories = evolution(title=title, resource=args.resource + 'Resource')
         for start_expl, story in stories:
             if first_story:
                 first_story = False
