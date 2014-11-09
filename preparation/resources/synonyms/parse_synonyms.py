@@ -8,12 +8,16 @@ from hb_res.explanations import Explanation
 
 synonyms_mods = [
     modifiers.normalize_title(),
-    modifiers.delete_complex_words_explanation('#', ' '),
+
+    modifiers.re_replace('[^#]+? [^#]+?(#|$)', ''),  # remove multi-word synonyms (containing spaces)
+    modifiers.re_fullmatch_ban(''),
+
     modifiers.shadow_cognates(4, '#'),
     modifiers.normalize_words_in_explanation('#'),
-    modifiers.re_replace('#', ', ', target_field='text'),
+    modifiers.re_replace('#', ', '),
     modifiers.calculate_key()
 ]
+
 
 @gen_resource('SynonymsResource', synonyms_mods)
 def read_data():
