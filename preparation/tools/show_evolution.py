@@ -1,3 +1,5 @@
+import argparse
+
 __author__ = 'moskupols'
 
 
@@ -34,7 +36,6 @@ def evolution(title=None, resource=None, *, modifiers=None, explanations=None):
 
 
 def make_argparser():
-    import argparse
     from preparation.resources.Resource import names_registered
 
     parser = argparse.ArgumentParser(description='View how some explanation(s) evolute ')
@@ -70,8 +71,9 @@ def make_argparser():
 
 
 def main(args=None):
-    parser = make_argparser()
-    args = parser.parse_args(args)
+    if not isinstance(args, argparse.Namespace):
+        parser = make_argparser()
+        args = parser.parse_args(args)
     first_story = True
     for title in args.title:
         stories = evolution(title=title, resource=args.resource)
