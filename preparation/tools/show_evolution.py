@@ -91,6 +91,28 @@ def make_argparser():
 
 
 def main(args=None):
+    class SafeFormatWrapper:
+        def __init__(self, towrap):
+            self.wrapped = towrap
+
+        def _hooked_call(self, func):
+            try:
+                return func(self.wrapped)
+            except AttributeError:
+                return '(n/a)'
+
+        def __repr__(self):
+            return self._hooked_call(repr)
+
+        def __str__(self):
+            return self._hooked_call(str)
+
+        def __format__(self, *args, **kwargs):
+            return self._hooked_call(lambda w: w.__format__(*args, **kwargs))
+
+        def __getattr__(self, item):
+            return getattr(self.wrapped, item, SafeFormatWrapper('({} n/a)'.format(item)))
+
     if not isinstance(args, argparse.Namespace):
         parser = make_argparser()
         args = parser.parse_args(args)
@@ -102,8 +124,9 @@ def main(args=None):
                 first_story = False
             else:
                 print()
+
             for mod, result in story:
-                print(args.format.format(mod=mod, result=result))
+                print(args.format.format(mod=SafeFormatWrapper(mod), result=SafeFormatWrapper(result)))
 
 
 if __name__ == '__main__':
