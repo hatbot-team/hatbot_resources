@@ -1,1 +1,1 @@
-from preparation.resources.SampleResource import SampleResource
+from . import SampleResource
