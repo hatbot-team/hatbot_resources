@@ -37,7 +37,7 @@ class Modifier:
     def __init__(self, *args, _name=None, **kwargs):
         if _name is None:
             _name = self.__name__
-        self.__repr = '<modifier {}({})>'.format(
+        self.__str = '{}({})'.format(
             _name,
             ', '.join(itertools.chain(
                 map(repr, args),
@@ -45,8 +45,11 @@ class Modifier:
             ))
         )
 
+    def __str__(self):
+        return self.__str
+
     def __repr__(self):
-        return self.__repr
+        return '<Modifier ' + self.__str + '>'
 
     def __call__(self, e: Explanation):
         raise NotImplementedError
