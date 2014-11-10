@@ -111,7 +111,7 @@ def main(args=None):
             return self._hooked_call(lambda w: w.__format__(*args, **kwargs))
 
         def __getattr__(self, item):
-            return getattr(self.wrapped, item, SafeFormatWrapper('({} n/a)'.format(item)))
+            return SafeFormatWrapper(getattr(self.wrapped, item, '({} n/a)'.format(item)))
 
     if not isinstance(args, argparse.Namespace):
         parser = make_argparser()
