@@ -30,3 +30,16 @@ def get_parts_of_speech(word):
             ret.append(pos)
             met.add(pos)
     return ret
+
+def is_remarkable(word, required_score):
+    """
+    Check if word can be a remarkable part of speech (not minor, like preposition)
+    :param word: passed word
+    :return: True if word can have remarkable part of speech, false otherwise
+    """
+    valid_parts = {'NOUN', 'ADJF', 'ADJS', 'COMP', 'VERB',
+                   'INFN', 'PRTF', 'PRTS', 'GRND', 'NUMR', 'ADVB', 'NPRO'}
+    for p in morph.parse(word):
+        if p.score > required_score and p.tag.POS in valid_parts:
+            return True
+    return False

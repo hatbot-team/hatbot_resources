@@ -29,6 +29,7 @@ import copy
 from hb_res.explanations import Explanation, ExplanationKey
 from preparation.lang_utils.cognates import are_cognates
 from preparation.lang_utils.morphology import get_valid_noun_initial_form
+from preparation.lang_utils.morphology import is_remarkable
 
 GAP_VALUE = '*пропуск*'
 
@@ -239,5 +240,27 @@ def delete_cognates(length_threshold: int, separator: str):
             return None
         ret.text = separator.join(new_list)
         return ret
+    return apply
 
+
+@modifier_factory
+def gapanize_title():
+    def apply(e: Explanation):
+        ret = copy.copy(e)
+        ret.text = re.sub(e.title, GAP_VALUE, ret.text, flags=re.IGNORECASE)
+        return ret
+    return apply
+
+
+@modifier_factory
+def check_contains_valid_parts(required, enough_score, sep_re):
+    def apply(e: Explanation):
+        have = 0
+        for word in re.split(sep_re, e.text):
+            if len(word) > 0 and is_remarkable(word, enough_score):
+                have += 1
+        if have >= required:
+            return e
+        else:
+            return None
     return apply
