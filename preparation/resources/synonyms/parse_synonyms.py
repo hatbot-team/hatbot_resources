@@ -12,7 +12,7 @@ synonyms_mods = [
     modifiers.re_replace('[^#]+? [^#]+?(#|$)', ''),  # remove multi-word synonyms (containing spaces)
     modifiers.re_fullmatch_ban(''),
 
-    modifiers.shadow_cognates(4, '#'),
+    modifiers.delete_cognates(4, '#'),
     modifiers.choose_normal_words_in_explanation('#'),
     modifiers.re_replace('#', ', '),
     modifiers.calculate_key()

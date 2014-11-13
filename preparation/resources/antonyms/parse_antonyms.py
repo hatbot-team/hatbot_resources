@@ -26,7 +26,7 @@ antonyms_mods = [
     modifiers.re_replace('[^#]+ [^#]+(#|$)', ''),  # remove multi-word antonyms (containing spaces)
     modifiers.re_fullmatch_ban(''),
 
-    modifiers.shadow_cognates(6, '#'),
+    modifiers.delete_cognates(6, '#'),
     modifiers.choose_normal_words_in_explanation('#'),
     modifiers.re_replace('#', ', ', target_field='text'),
     add_antonyms_common_text(),
