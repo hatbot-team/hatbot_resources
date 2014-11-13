@@ -13,7 +13,7 @@ synonyms_mods = [
     modifiers.re_fullmatch_ban(''),
 
     modifiers.shadow_cognates(4, '#'),
-    modifiers.normalize_words_in_explanation('#'),
+    modifiers.choose_normal_words_in_explanation('#'),
     modifiers.re_replace('#', ', '),
     modifiers.calculate_key()
 ]
