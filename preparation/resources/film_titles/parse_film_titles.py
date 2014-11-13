@@ -21,7 +21,8 @@ film_titles_mods = [
     modifiers.normalize_title(),
     modifiers.shadow_cognates(5, '\W+'),
     modifiers.check_contains_valid_parts(1, 0.1, '\W+'),
-    add_common_prefix()
+    add_common_prefix(),
+    modifiers.calculate_key()
 ]
 
 @gen_resource('FilmTitlesResource', film_titles_mods)
