@@ -234,7 +234,7 @@ def delete_cognates(length_threshold: int, separator: str):
     def apply(e: Explanation):
         ret = copy.copy(e)
         new_list = [w for w in e.text.split(separator)
-                    if are_cognates(w, e.title, length_threshold) is not None]
+                    if not are_cognates(w, e.title, length_threshold)]
         if len(new_list) == 0:
             return None
         ret.text = separator.join(new_list)
