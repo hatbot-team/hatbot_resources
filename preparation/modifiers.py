@@ -253,11 +253,11 @@ def gapanize_title():
 
 
 @modifier_factory
-def check_contains_valid_parts(required, enough_score, sep_re):
+def check_contains_valid_parts(required, enough_score, sep_re, gap='пропуск'):
     def apply(e: Explanation):
         have = 0
         for word in re.split(sep_re, e.text):
-            if len(word) > 0 and is_remarkable(word, enough_score):
+            if len(word) > 0 and word != gap and is_remarkable(word, enough_score):
                 have += 1
         if have >= required:
             return e
