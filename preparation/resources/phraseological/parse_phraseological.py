@@ -8,9 +8,10 @@ from preparation import modifiers
 import re
 
 phraseological_mods = [
-    modifiers.gapanize_title(),
+    modifiers.shadow_cognates(None, '\W+'),
     modifiers.normalize_title(),
     modifiers.shadow_cognates(5, '\W+'),
+    modifiers.delete_multiple_gaps(1),
     modifiers.check_contains_valid_parts(1, 0.1, '\W+'),
     modifiers.calculate_key()
 ]

@@ -244,15 +244,6 @@ def delete_cognates(length_threshold: int, separator: str):
 
 
 @modifier_factory
-def gapanize_title():
-    def apply(e: Explanation):
-        ret = copy.copy(e)
-        ret.text = re.sub(e.title, GAP_VALUE, ret.text, flags=re.IGNORECASE)
-        return ret
-    return apply
-
-
-@modifier_factory
 def check_contains_valid_parts(required, enough_score, sep_re, gap='пропуск'):
     def apply(e: Explanation):
         have = 0
@@ -263,4 +254,14 @@ def check_contains_valid_parts(required, enough_score, sep_re, gap='пропус
             return e
         else:
             return None
+    return apply
+
+@modifier_factory
+def delete_multiple_gaps(limit: int):
+    def apply(e: Explanation):
+        num = len(re.findall('\*пропуск\*', e.text))
+        if num > limit:
+            return None
+        else:
+            return e
     return apply

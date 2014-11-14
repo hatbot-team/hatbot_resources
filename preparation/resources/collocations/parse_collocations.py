@@ -13,27 +13,31 @@ def inflect_first_word():
     def apply(e: Explanation):
         ret = copy.copy(e)
         words = e.text.split(' ')
-        if words[1] == '*пропуск*':
-            second = morph.parse(e.title)[0]
-            first = morph.parse(words[0])[0]
-            if second.tag.case is None or second.tag.gender is None or second.tag.number is None:
-                return e
-            first = first.inflect({second.tag.case,
-                                   second.tag.gender,
-                                   second.tag.number})
-            if first is None:
-                return e
-            ret.text = first.word + ' *пропуск*'
-            return ret
-        else:
+        parses = [p for p in morph.parse(words[1]) if p.tag.POS == 'NOUN' and p.score > 0.01]
+        if len(parses) < 1:
             return e
+        second = parses[0].normalized
+        first = morph.parse(words[0])[0]
+        if sum(p.score for p in morph.parse(words[0]) if p.tag.POS in ['ADJF', 'ADJS', 'COMP', 'PRTF', 'PRTS']) < 0.4:
+            return e
+        if second.tag.case is None or second.tag.gender is None or second.tag.number is None:
+            return e
+        first = first.inflect({second.tag.case,
+                               second.tag.gender,
+                               second.tag.number})
+        if first is None:
+            return e
+        ret.text = ' '.join([first.word, second.word])
+        return ret
     return apply
 
 collocations_mods = [
-    modifiers.gapanize_title(),
-    modifiers.normalize_title(),
-    modifiers.shadow_cognates(5, '\W+'),
-    modifiers.check_contains_valid_parts(1, 0.1, '\W+'),
+    inflect_first_word(),
+    modifiers.shadow_cognates(None, ' '),
+    modifiers.normalize_title(0.1),
+    modifiers.shadow_cognates(5, ' '),
+    modifiers.delete_multiple_gaps(1),
+    modifiers.check_contains_valid_parts(1, 0.1, ' '),
     inflect_first_word(),
     modifiers.calculate_key()
 ]
