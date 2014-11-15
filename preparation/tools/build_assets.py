@@ -43,7 +43,9 @@ def main(args=None):
     if not isinstance(args, argparse.Namespace):
         parser = make_argparser()
         args = parser.parse_args(args)
-    assert all not in args.resources or len(args.resources) == 1
+    assert 'all' not in args.resources or len(args.resources) == 1
+    if 'all' in args.resources:
+        args.resources = [name.replace('Resource', '') for name in names_registered()]
     for name in args.resources:
         rebuild_trunk(name)
 
