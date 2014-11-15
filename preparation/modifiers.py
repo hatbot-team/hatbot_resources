@@ -33,6 +33,10 @@ from preparation.lang_utils.morphology import is_remarkable
 
 GAP_VALUE = '*пропуск*'
 
+ALPH_RE = '[А-Яа-я]'
+NOTALPH_RE = '[^А-Яа-я]'
+WORD_RE = ALPH_RE + '+'
+
 
 class Modifier:
     def __init__(self, *args, _name=None, **kwargs):
@@ -212,7 +216,9 @@ def shadow_cognates(length_threshold: int=None, sep_re='\\s+'):
         ret = copy.copy(e)
         for w in sep_re.split(ret.text):
             if are_cognates(w, e.title, length_threshold=length_threshold):
-                ret.text = re.sub(w, GAP_VALUE, ret.text, flags=re.IGNORECASE)
+                ret.text = re.sub('(^|(?<={notalph})){badword}($|(?={notalph}))'.format(badword=w, notalph=NOTALPH_RE),
+                                  GAP_VALUE,
+                                  ret.text)
         return ret
 
     return apply
