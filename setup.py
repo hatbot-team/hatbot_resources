@@ -52,12 +52,6 @@ setup(
     packages=find_packages(include=('hb_res', 'hb_res.*')),
 
     package_data={
-        'hb_res.storage': findall('hb_res/assets')
+        'hb_res': ['assets/*.asset']
     },
-
-    install_requires=['pymorphy2'],
-
-    extras_require={
-        'web': ['beautifulsoup4', 'requests'],
-    }
 )

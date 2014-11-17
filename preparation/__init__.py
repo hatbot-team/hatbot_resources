@@ -1,5 +1,5 @@
 __author__ = 'moskupols'
 
-__all__ = ['lang_utils', 'resources', 'tools']
+__all__ = ['lang_utils', 'resources', 'tools', 'modifiers']
 
-from . import lang_utils, resources, tools
+from . import lang_utils, resources, tools, modifiers

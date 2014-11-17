@@ -1,47 +1,27 @@
 __author__ = 'Алексей'
 
-import codecs
-from sys import stderr
+# noinspection PyProtectedMember
+from preparation.resources.synonyms import _raw_data
+from preparation import modifiers
+from preparation.resources.Resource import gen_resource
+from hb_res.explanations import Explanation
 
-from hb_res.lang_utils.cognates import are_cognates
-from preparation.lang_utils.morphology import get_valid_noun_initial_form
-from hb_res.resources.resource_registry import resource_by_name
-from hb_res.resources.synonyms import INPUT_NAME, RESULT_RESOURCE_NAME
+synonyms_mods = [
+    modifiers.normalize_title(),
 
+    modifiers.re_replace('[^#]+? [^#]+?(#|$)', ''),  # remove multi-word synonyms (containing spaces)
+    modifiers.re_fullmatch_ban(''),
 
-THRESHOLD = 4
-
-
-def init_dictionary(input_name, res_dict, threshold):
-    try:
-        file = codecs.open(input_name, 'r', encoding='utf-8')
-    except FileNotFoundError:
-        stderr.write('No raw dictionary\n')
-        return
-    for line in file:
-        [new_initial, explain_list] = line.split('@')
-        if new_initial == get_valid_noun_initial_form(new_initial):
-            new_list = [w for w in explain_list.split('#')
-                        if not are_cognates(new_initial, w, threshold)
-                        and get_valid_noun_initial_form(w) is not None
-                        and len(w.split(' ')) == 1]
-            if len(new_list) != 0:
-                if new_initial in res_dict.keys():
-                    res_dict[new_initial].extend(new_list)
-                else:
-                    res_dict[new_initial] = new_list
+    modifiers.delete_cognates(4, '#'),
+    modifiers.choose_normal_words_in_explanation('#'),
+    modifiers.re_replace('#', ', '),
+    modifiers.calculate_key()
+]
 
 
-def dump_dictionary(resource, res_dict):
-    resource.clear()
-
-    for word in res_dict.keys():
-        line = word + "  "
-        for syn in res_dict[word]:
-            line = line + syn + " "
-        resource.add_entry(line)
-
-
-synonyms_dict = dict()
-init_dictionary(INPUT_NAME, synonyms_dict, THRESHOLD)
-dump_dictionary(resource_by_name(RESULT_RESOURCE_NAME), synonyms_dict)
+@gen_resource('SynonymsResource', synonyms_mods)
+def read_data():
+    with open(_raw_data, 'r', encoding='utf-8') as source:
+        for line in source:
+            [title, text] = line.split('@')
+            yield Explanation(title, text)

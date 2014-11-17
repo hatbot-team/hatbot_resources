@@ -29,6 +29,7 @@ import copy
 from hb_res.explanations import Explanation, ExplanationKey
 from preparation.lang_utils.cognates import are_cognates
 from preparation.lang_utils.morphology import get_valid_noun_initial_form
+from preparation.lang_utils.morphology import is_remarkable
 
 GAP_VALUE = '*пропуск*'
 
@@ -194,7 +195,6 @@ def normalize_title(score_threshold: float=0.):
 
     return apply
 
-
 @modifier_factory
 def shadow_cognates(length_threshold: int=None, sep_re='\\s+'):
     """
@@ -218,4 +218,53 @@ def shadow_cognates(length_threshold: int=None, sep_re='\\s+'):
                 ret.text = re.sub(w, GAP_VALUE, ret.text, flags=re.IGNORECASE)
         return ret
 
+    return apply
+
+
+@modifier_factory
+def choose_normal_words_in_explanation(separator: str):
+    def apply(e: Explanation):
+        ret = copy.copy(e)
+        new_list = [w for w in e.text.split(separator)
+                    if get_valid_noun_initial_form(w) is not None]
+        if len(new_list) == 0:
+            return None
+        ret.text = separator.join(new_list)
+        return ret
+    return apply
+
+@modifier_factory
+def delete_cognates(length_threshold: int, separator: str):
+    def apply(e: Explanation):
+        ret = copy.copy(e)
+        new_list = [w for w in e.text.split(separator)
+                    if not are_cognates(w, e.title, length_threshold)]
+        if len(new_list) == 0:
+            return None
+        ret.text = separator.join(new_list)
+        return ret
+    return apply
+
+
+@modifier_factory
+def check_contains_valid_parts(required, enough_score, sep_re, gap='пропуск'):
+    def apply(e: Explanation):
+        have = 0
+        for word in re.split(sep_re, e.text):
+            if len(word) > 0 and word != gap and is_remarkable(word, enough_score):
+                have += 1
+        if have >= required:
+            return e
+        else:
+            return None
+    return apply
+
+@modifier_factory
+def delete_multiple_gaps(limit: int):
+    def apply(e: Explanation):
+        num = len(re.findall('\*пропуск\*', e.text))
+        if num > limit:
+            return None
+        else:
+            return e
     return apply
