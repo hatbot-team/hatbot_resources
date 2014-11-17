@@ -1,10 +1,10 @@
-import argparse
-
 __author__ = 'pershik'
 
 from preparation.resources.Resource import resource_by_name
 from hb_res.storage import get_storage
+
 import difflib
+import argparse
 
 
 def diff(resource_name=None, modifiers=None):
