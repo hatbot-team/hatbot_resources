@@ -147,9 +147,14 @@ def re_fullmatch_ban(pattern, flags: int=0):
     :param flags: re construction flags
     :return Modifier
     """
-    if isinstance(pattern, (str, bytes)):
-        pattern = re.compile(pattern, flags)
-    return lambda s: s if re.fullmatch(pattern, s, flags) is None else None
+    #we emulate re.fullmatch behaviour by adding '^' and '$' to the pattern
+    assert isinstance(pattern, (str, bytes))
+    if isinstance(pattern, bytes):
+        pattern = b'^' + pattern + b'$'
+    else:
+        pattern = '^' + pattern + '$'
+    pattern = re.compile(pattern, flags)
+    return lambda s: s if re.match(pattern, s, flags) is None else None
 
 
 @modifier_factory
