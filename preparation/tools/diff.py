@@ -1,55 +1,54 @@
+import argparse
+
 __author__ = 'pershik'
 
+from preparation.resources.Resource import resource_by_name
+from hb_res.storage import get_storage
+import difflib
 
-def diff(title=None, resource=None, explanations=None,
-         first_modifiers=None, second_modifiers=None):
 
-    from hb_res.explanations import Explanation
-    from preparation.resources.Resource import resource_by_name
+def diff(resource_name=None, modifiers=None):
 
-    def apply(explanation, modifiers):
-        for modifier in modifiers:
-            explanation = modifier(explanation)
-        return explanation
+    assert isinstance(resource_name, str)
+    resource = resource_by_name(resource_name + 'Resource')()
 
-    def get_diff(expl, first_modifiers, second_modifiers):
-        first_expl = apply(expl, first_modifiers)
-        second_expl = apply(expl, second_modifiers)
-        if first_expl.encode() == second_expl.encode():
-            return tuple((first_expl, second_expl))
-        else:
-            return None
+    if modifiers is None:
+        modifiers = resource.modifiers
 
-    if isinstance(resource, str):
-        resource = resource_by_name(resource)()
+    def apply(modifiers):
+        def func(expl):
+            for modifier in modifiers:
+                if expl is None:
+                    break
+                expl = modifier(expl)
+            return expl
+        return func
 
-    assert first_modifiers is not None or hasattr(resource, 'modifiers')
-    if first_modifiers is None:
-        first_modifiers = resource.modifiers
-    assert second_modifiers is not None
+    with get_storage(resource_name) as old_explanations:
+        new_explanations = list(filter(lambda x: x is not None, map(apply(modifiers), resource)))
+        return difflib.unified_diff(list(old_explanations.entries()), new_explanations)
 
-    assert (title is not None and resource is not None) ^ (explanations is not None)
-    if explanations is None:
-        explanations = (e for e in resource if e.title == title)
 
-    if isinstance(explanations, Explanation):
-        difference = get_diff(explanations, first_modifiers, second_modifiers)
-        if difference is not None:
-            return list(difference)
-        else:
-            return list()
-    else:
-        res = list()
-        for expl in explanations:
-            difference = get_diff(expl, first_modifiers, second_modifiers)
-            if difference is not None:
-                res.append(difference)
-        return res
+def make_argparser():
+    from preparation.resources.Resource import names_registered
+
+    parser = argparse.ArgumentParser(description='View how some resource changes')
+
+    trunks = [name.replace('Resource', '') for name in names_registered()]
+
+    parser.add_argument('resource',
+                        metavar='RESOURCE',
+                        choices=trunks,
+                        help='One of registered resources ({})'.format(', '.join(trunks)))
+    return parser
 
 
 def main(args=None):
-    return
-
+    if not isinstance(args, argparse.Namespace):
+        parser = make_argparser()
+        args = parser.parse_args(args)
+    for entry in diff(args.resource):
+        print(entry)
 
 if __name__ == '__main__':
     main()
