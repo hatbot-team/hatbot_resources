@@ -25,8 +25,8 @@ def diff(resource_name=None, modifiers=None):
         return func
 
     with get_storage(resource_name) as old_explanations:
-        new_explanations = list(filter(lambda x: x is not None, map(apply(modifiers), resource)))
-        return difflib.unified_diff(list(old_explanations.entries()), new_explanations)
+        new_explanations = list(map(str, filter(lambda x: x is not None, map(apply(modifiers), resource))))
+        return difflib.unified_diff(list(map(str, old_explanations.entries())), new_explanations)
 
 
 def make_argparser():
