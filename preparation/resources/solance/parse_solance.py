@@ -13,7 +13,7 @@ solance_mods = [
 
     modifiers.delete_cognates(4, '\n'),
     modifiers.delete_not_initial_form(),
-    #modifiers.choose_normal_words_in_explanation('#'),
+    modifiers.delete_low_rating(50),
     modifiers.calculate_key()
 ]
 
@@ -28,4 +28,4 @@ def read_data():
                 if not entry.strip():
                     continue
                 [text, rating] = entry.split('&')
-                yield Explanation(title, text, prior_rating=rating)
+                yield Explanation(title, text, prior_rating=float(rating))

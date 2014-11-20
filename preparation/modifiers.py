@@ -290,11 +290,20 @@ def delete_not_initial_form():
 
     :return: Modifier
     """
-
     def apply(e: Explanation):
         word = e.text
         initial_form = get_valid_noun_initial_form(word)
         if word != initial_form:
+            return None
+        else:
+            return e
+    return apply
+
+
+@modifier_factory
+def delete_low_rating(limit):
+    def apply(e: Explanation):
+        if e.prior_rating < limit:
             return None
         else:
             return e
