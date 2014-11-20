@@ -270,11 +270,31 @@ def check_contains_valid_parts(required, enough_score, sep_re, gap='пропус
             return None
     return apply
 
+
 @modifier_factory
 def delete_multiple_gaps(limit: int):
     def apply(e: Explanation):
         num = len(re.findall('\*пропуск\*', e.text))
         if num > limit:
+            return None
+        else:
+            return e
+    return apply
+
+
+@modifier_factory
+def delete_not_initial_form():
+    """
+    Constructs modifier which removes one-word explanations
+        which aren't in initial form
+
+    :return: Modifier
+    """
+
+    def apply(e: Explanation):
+        word = e.text
+        initial_form = get_valid_noun_initial_form(word)
+        if word != initial_form:
             return None
         else:
             return e
