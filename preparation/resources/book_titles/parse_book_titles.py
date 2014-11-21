@@ -29,13 +29,10 @@ book_titles_mods = [
 @gen_resource('BookTitlesResource', book_titles_mods)
 def read_data():
     with open(_raw_data, 'r', encoding='utf-8') as source:
-        cnt = 0
         while True:
             title = source.readline()
             author = source.readline()
-            cnt += 1
             if not title: break
-            if cnt > 100: break
             for word in re.split('\W+', title):
                 if len(word) > 0:
                     yield Explanation(word, title)
