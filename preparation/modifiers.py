@@ -153,6 +153,17 @@ def translate(*args):
 
 
 @title_text_modifier_factory
+def str_contains_ban(substr):
+    """
+    Constructs a modifier that bans explanations whose e.`target_field` contains substr as a substring.
+
+    :param substr: substring to seek
+    :return: Modifier
+    """
+    return lambda s: s if substr not in s else None
+
+
+@title_text_modifier_factory
 def re_replace(pattern, replacement: str, flags: int=0):
     """
     Constructs modifier that replaces e.`target_field`
