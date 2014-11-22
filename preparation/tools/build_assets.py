@@ -1,5 +1,6 @@
 from copy import copy
 import argparse
+import timeit
 
 from preparation.resources.Resource import names_registered, resource_by_name
 from hb_res.storage import get_storage, ExplanationStorage
@@ -20,13 +21,12 @@ def generate_asset(resource, out_storage: ExplanationStorage):
 def rebuild_trunk(trunk: str):
     resource = resource_by_name(trunk + 'Resource')()
     with get_storage(trunk) as out_storage:
-        print("Starting {} generation".format(trunk))
         generate_asset(resource, out_storage)
-        print("Finished {} generation".format(trunk))
 
 
 def get_names():
     return [name.replace('Resource', '') for name in names_registered()]
+
 
 def make_argparser():
     parser = argparse.ArgumentParser(description='Rebuild some asset')
@@ -43,16 +43,25 @@ def make_argparser():
 
 
 def main(args=None):
+    def timed_build(trunk):
+        print("< Starting {} generation".format(trunk))
+        time = timeit.timeit(
+            stmt='rebuild_trunk("' + trunk + '")',
+            setup='from preparation.tools.build_assets import rebuild_trunk',
+            number=1
+        )
+        print("> {} were generated in {} seconds".format(name, time))
+
     if not isinstance(args, argparse.Namespace):
         parser = make_argparser()
         args = parser.parse_args(args)
     assert not ('all' in args.resources and len(args.resources) != 1)
     if 'all' in args.resources:
         for name in get_names():
-            rebuild_trunk(name)
+            timed_build(name)
     else:
         for name in args.resources:
-            rebuild_trunk(name)
+            timed_build(name)
 
 
 if __name__ == '__main__':
