@@ -33,8 +33,8 @@ from preparation.lang_utils.morphology import is_remarkable
 
 GAP_VALUE = '*пропуск*'
 
-ALPH_RE = '[А-Яа-я]'
-NOTALPH_RE = '[^А-Яа-я]'
+ALPH_RE = '[ЁёА-Яа-я]'
+NOTALPH_RE = '[^ЁёА-Яа-я]'
 WORD_RE = ALPH_RE + '+'
 
 
@@ -122,6 +122,34 @@ def strip(chars: str=None):
 
 
 @title_text_modifier_factory
+def str_replace(pattern: str, replacement: str, count: int=-1):
+    """
+    Constructs modifier that replaces e.`target_field` with e.`target_field`.replace(pattern, replacement, count)
+    (for given Explanation e).
+
+    `target_field` is a kwarg that defaults to 'text'.
+
+    :param pattern: pattern to replace
+    :param replacement: replacement
+    :param count: number of times to perform replacement
+    :return Modifier
+    """
+    return lambda s: s.replace(pattern, replacement, count)
+
+
+@title_text_modifier_factory
+def translate(*args):
+    """
+    Constructs a modifier that applies str.translate(e.`target_field`, str.maketrans(*args))
+    on given explanation e.
+
+    :return: Modifier
+    """
+    trans = str.maketrans(*args)
+    return lambda s: s.translate(trans)
+
+
+@title_text_modifier_factory
 def re_replace(pattern, replacement: str, flags: int=0):
     """
     Constructs modifier that replaces e.`target_field`
@@ -159,6 +187,22 @@ def re_fullmatch_ban(pattern, flags: int=0):
         pattern = '^' + pattern + '$'
     pattern = re.compile(pattern, flags)
     return lambda s: s if re.match(pattern, s, flags) is None else None
+
+
+@title_text_modifier_factory
+def re_search_ban(pattern, flags: int=0):
+    """
+    Constructs modifier that bans explanations whose `target_field` contains a substring that
+    matches `pattern` regexp.
+
+    target_field is a kwarg that defaults to 'text'.
+
+    :param pattern: regexp
+    :param flags: re construction flags
+    :return Modifier
+    """
+    pattern = re.compile(pattern, flags)
+    return lambda s: s if pattern.search(s) is None else None
 
 
 @modifier_factory
