@@ -24,17 +24,19 @@ def shadow_abbreviations():
     return apply
 
 definitions_mods = [
-    modifiers.re_replace('\[.*', '', target_field='title'),
-    modifiers.strip(',:1234567890', target_field='title'),
-    modifiers.re_search_ban(r'\.$', target_field='title'),
-    modifiers.strip('1234567890-', target_field='title'),
-    modifiers.re_replace('Ё', 'Е', target_field='title'),
-    modifiers.re_search_ban(r'[^-А-Я]', target_field='title'),
+    modifiers.re_replace(r'[",\.\+]', '', target_field='title'),
+    modifiers.re_replace(r'[?і]', 'Ё', target_field='title'),
+
+    modifiers.strip(' -,:1234567890', target_field='title'),
+
+    modifiers.re_replace(r'3', 'З', target_field='title'),
+#    modifiers.re_search_ban(r'\.$', target_field='title'),
+
     modifiers.normalize_title(),
 
     modifiers.strip(),
-    modifiers.re_replace('\\?', 'ё'),  # Fixes misOCR'ed '?' instead of 'ё'
-    modifiers.shadow_cognates(4, '[\W,:;\(\)]+'),
+    modifiers.re_replace(r'\?', 'ё'),  # Fixes misOCR'ed '?' instead of 'ё'
+    modifiers.shadow_cognates(4, r'[\W,:;\(\)]+'),
     shadow_abbreviations(),
 
     modifiers.calculate_key()
@@ -47,13 +49,22 @@ def read_articles():
     Generator which yields raw Explanations based on definitions dict
     """
 
-    def get_title(article_lines):
+    prev_title_was_2nd = False  # iff False, get_title will replace the trailing digit 3 with russian З
+                                # (we have to do it in get_title, 'cos modifiers don't have this information)
+
+    def get_title(article_lines)->str:
         """
         Parse article text to get its title
         :param article_lines: list of article's lines
-        :return:
+        :return: title string:
         """
-        return article_lines[0].split()[0]
+        nonlocal prev_title_was_2nd
+        ret = article_lines[0].split()[0]
+        ret = re.sub(r'\[.*', '', ret)
+        if not prev_title_was_2nd and ret[-1] == '3':
+            ret = ret[:-1] + 'З'
+        prev_title_was_2nd = ret.endswith('2')
+        return ret
 
     def extract_meanings(article_lines):
         text = ' '.join(article_lines)
@@ -84,16 +95,19 @@ def read_articles():
     for part_path in _raw_data:
         print('Parsing ' + part_path + '...')
         with open(part_path, encoding='utf8') as source:
+            prev_title_was_2nd = False
+
             while True:
                 line = source.readline()
                 if len(line) == 0:
                     print('so good!')
                     break
-                line = line.strip(' \n')
+                line = line.strip()
+
                 if len(line) > 0:
                     article = [line]
                     while True:
-                        line = source.readline().strip(' \n')
+                        line = source.readline().strip()
                         if len(line) == 0:
                             break
                         article.append(line)
