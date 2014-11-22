@@ -24,19 +24,17 @@ def shadow_abbreviations():
     return apply
 
 definitions_mods = [
-    modifiers.re_replace(r'[",\.\+]', '', target_field='title'),
-    modifiers.re_replace(r'[?і]', 'Ё', target_field='title'),
-
+    modifiers.re_replace(r'[",.+]', '', target_field='title'),
+    modifiers.re_replace(r'[?і]', 'Ё', target_field='title'),  # the second symbol is not i but \xd1\x96 in utf8
+    modifiers.re_replace(r'\|\|', 'П', target_field='title'),
     modifiers.strip(' -,:1234567890', target_field='title'),
-
     modifiers.re_replace(r'3', 'З', target_field='title'),
-#    modifiers.re_search_ban(r'\.$', target_field='title'),
-
+    modifiers.re_search_ban(r'[^-ЁёА-Яа-я]', target_field='title'),
     modifiers.normalize_title(),
 
     modifiers.strip(),
     modifiers.re_replace(r'\?', 'ё'),  # Fixes misOCR'ed '?' instead of 'ё'
-    modifiers.shadow_cognates(4, r'[\W,:;\(\)]+'),
+    modifiers.shadow_cognates(4, r'\W+'),
     shadow_abbreviations(),
 
     modifiers.calculate_key()
