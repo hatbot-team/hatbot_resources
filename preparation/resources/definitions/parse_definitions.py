@@ -18,8 +18,8 @@ from preparation import modifiers
 def shadow_abbreviations():
     def apply(e: Explanation):
         ret = copy.copy(e)
-        abbreviation = ' ' + e.title[0] + '\.'
-        ret.text = re.sub(abbreviation, modifiers.GAP_VALUE, ret.text, flags=re.IGNORECASE)
+        abbreviation_re = r'(?<= ){init}\.'.format(init=e.title[0])
+        ret.text = re.sub(abbreviation_re, modifiers.GAP_VALUE, ret.text, flags=re.IGNORECASE)
         return ret
     return apply
 
@@ -35,17 +35,29 @@ definitions_mods = [
     modifiers.re_search_ban(r'[^-ЁёА-Яа-я]', target_field='title'),
     modifiers.normalize_title(),
 
+    # Text OCR problems
+
     modifiers.translate(
         '?~[]{}',
         'ё-()()',
         '|*o'  # the o is latin
     ),
+    modifiers.re_replace(r'знай\.', 'знач.'),
+    modifiers.str_replace('3а', 'За'),
+    modifiers.re_replace(r'(?<={alph})\d+(-\d+)?'.format(alph=modifiers.ALPH_RE), ''),
+    modifiers.re_replace(r'\s+(?=[,.!?])', ''),
+
+    # Text quality heuristics
 
     modifiers.strip(),
 
-    modifiers.re_replace(r'знай\.', 'знач.'),
+    modifiers.re_replace(r'\s*во?\s+(\d|I)+(\s*и\s*(\d|I)+)?\s*знач\.', ''),  # https://trello.com/c/HCffH2eI/6--
 
-    modifiers.shadow_cognates(4, r'\W+'),
+    modifiers.re_replace(r'\s+', ' '),
+
+    modifiers.re_replace(r'\s*\(\s*\)', ''),
+
+    modifiers.shadow_cognates(4, modifiers.NOTALPH_RE + '+'),
     shadow_abbreviations(),
 
     modifiers.calculate_key()
