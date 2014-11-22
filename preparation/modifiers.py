@@ -164,6 +164,22 @@ def re_fullmatch_ban(pattern, flags: int=0):
     return lambda s: s if re.match(pattern, s, flags) is None else None
 
 
+@title_text_modifier_factory
+def re_search_ban(pattern, flags: int=0):
+    """
+    Constructs modifier that bans explanations whose `target_field` contains a substring that
+    matches `pattern` regexp.
+
+    target_field is a kwarg that defaults to 'text'.
+
+    :param pattern: regexp
+    :param flags: re construction flags
+    :return Modifier
+    """
+    pattern = re.compile(pattern, flags)
+    return lambda s: s if pattern.search(s) is None else None
+
+
 @modifier_factory
 def calculate_key():
     """

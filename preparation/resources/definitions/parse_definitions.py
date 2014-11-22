@@ -24,10 +24,12 @@ def shadow_abbreviations():
     return apply
 
 definitions_mods = [
-    modifiers.re_fullmatch_ban('.*\\.', target_field='title'),
+    modifiers.re_replace('\[.*', '', target_field='title'),
+    modifiers.strip(',:1234567890', target_field='title'),
+    modifiers.re_search_ban(r'\.$', target_field='title'),
     modifiers.strip('1234567890-', target_field='title'),
-    modifiers.re_fullmatch_ban('(?!([А-Я]+))', target_field='title'),
     modifiers.re_replace('Ё', 'Е', target_field='title'),
+    modifiers.re_search_ban(r'[^-А-Я]', target_field='title'),
     modifiers.normalize_title(),
 
     modifiers.strip(),
@@ -51,10 +53,7 @@ def read_articles():
         :param article_lines: list of article's lines
         :return:
         """
-        name = article_lines[0].split()[0]
-        if '[' in name[0]:
-            name = name[:name.find('[')]
-        return name.strip(',:1234567890')
+        return article_lines[0].split()[0]
 
     def extract_meanings(article_lines):
         text = ' '.join(article_lines)
