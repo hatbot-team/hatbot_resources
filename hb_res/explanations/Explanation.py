@@ -48,9 +48,9 @@ class Explanation:
         :return:
         """
         values = representation.split(SEPARATOR)
-        assert len(values) != 4, \
+        assert len(values) == 4, \
             'Encoded explanation should contain exactly 3 occurrences of {!r}, not {}, as in {!r}' \
-            .format(SEPARATOR, len(values), representation)
+            .format(SEPARATOR, len(values) - 1, representation)
         values[2] = None if values[2] == 'None' else ExplanationKey.decode(values[2])
         values[3] = None if values[3] == 'None' else float(values[3])
         return cls(*values)

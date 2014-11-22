@@ -33,12 +33,16 @@ from preparation.lang_utils.morphology import is_remarkable
 
 GAP_VALUE = '*пропуск*'
 
+ALPH_RE = '[А-Яа-я]'
+NOTALPH_RE = '[^А-Яа-я]'
+WORD_RE = ALPH_RE + '+'
+
 
 class Modifier:
     def __init__(self, *args, _name=None, **kwargs):
         if _name is None:
             _name = self.__name__
-        self.__repr = '<modifier {}({})>'.format(
+        self.__str = '{}({})'.format(
             _name,
             ', '.join(itertools.chain(
                 map(repr, args),
@@ -46,8 +50,11 @@ class Modifier:
             ))
         )
 
+    def __str__(self):
+        return self.__str
+
     def __repr__(self):
-        return self.__repr
+        return '<Modifier ' + self.__str + '>'
 
     def __call__(self, e: Explanation):
         raise NotImplementedError
@@ -147,9 +154,14 @@ def re_fullmatch_ban(pattern, flags: int=0):
     :param flags: re construction flags
     :return Modifier
     """
-    if isinstance(pattern, (str, bytes)):
-        pattern = re.compile(pattern, flags)
-    return lambda s: s if re.fullmatch(pattern, s, flags) is None else None
+    #we emulate re.fullmatch behaviour by adding '^' and '$' to the pattern
+    assert isinstance(pattern, (str, bytes))
+    if isinstance(pattern, bytes):
+        pattern = b'^' + pattern + b'$'
+    else:
+        pattern = '^' + pattern + '$'
+    pattern = re.compile(pattern, flags)
+    return lambda s: s if re.match(pattern, s, flags) is None else None
 
 
 @modifier_factory
@@ -212,7 +224,9 @@ def shadow_cognates(length_threshold: int=None, sep_re='\\s+'):
         ret = copy.copy(e)
         for w in sep_re.split(ret.text):
             if are_cognates(w, e.title, length_threshold=length_threshold):
-                ret.text = re.sub(w, GAP_VALUE, ret.text, flags=re.IGNORECASE)
+                ret.text = re.sub('(^|(?<={notalph})){badword}($|(?={notalph}))'.format(badword=w, notalph=NOTALPH_RE),
+                                  GAP_VALUE,
+                                  ret.text)
         return ret
 
     return apply
