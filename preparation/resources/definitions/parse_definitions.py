@@ -35,8 +35,16 @@ definitions_mods = [
     modifiers.re_search_ban(r'[^-ЁёА-Яа-я]', target_field='title'),
     modifiers.normalize_title(),
 
+    modifiers.translate(
+        '?~[]{}',
+        'ё-()()',
+        '|*o'  # the o is latin
+    ),
+
     modifiers.strip(),
-    modifiers.str_replace('?', 'ё'),  # Fixes misOCR'ed '?' instead of 'ё'
+
+    modifiers.re_replace(r'знай\.', 'знач.'),
+
     modifiers.shadow_cognates(4, r'\W+'),
     shadow_abbreviations(),
 
