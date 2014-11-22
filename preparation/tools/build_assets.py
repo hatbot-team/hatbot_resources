@@ -25,10 +25,14 @@ def rebuild_trunk(trunk: str):
         print("Finished {} generation".format(trunk))
 
 
+def get_names():
+    return [name.replace('Resource', '') for name in names_registered()]
+
+
 def make_argparser():
     parser = argparse.ArgumentParser(description='Rebuild some asset')
 
-    names = [name.replace('Resource', '') for name in names_registered()]
+    names = get_names()
 
     parser.add_argument('resources',
                         metavar='RESOURCE',
@@ -43,12 +47,10 @@ def main(args=None):
     if not isinstance(args, argparse.Namespace):
         parser = make_argparser()
         args = parser.parse_args(args)
-    assert 'all' not in args.resources or len(args.resources) == 1
+    assert not ('all' in args.resources and len(args.resources) != 1)
     if 'all' in args.resources:
-        args.resources = [name.replace('Resource', '') for name in names_registered()]
-    for name in args.resources:
-        rebuild_trunk(name)
-
-
-if __name__ == '__main__':
-    main()
+        for name in get_names():
+            rebuild_trunk(name)
+    else:
+        for name in args.resources:
+            rebuild_trunk(name)
