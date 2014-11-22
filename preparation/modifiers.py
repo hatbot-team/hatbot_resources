@@ -33,8 +33,8 @@ from preparation.lang_utils.morphology import is_remarkable
 
 GAP_VALUE = '*пропуск*'
 
-ALPH_RE = '[А-Яа-я]'
-NOTALPH_RE = '[^А-Яа-я]'
+ALPH_RE = '[ЁёА-Яа-я]'
+NOTALPH_RE = '[^ЁёА-Яа-я]'
 WORD_RE = ALPH_RE + '+'
 
 
@@ -122,6 +122,34 @@ def strip(chars: str=None):
     :return Modifier
     """
     return lambda s: s.strip(chars)
+
+
+@title_text_modifier_factory
+def str_replace(pattern: str, replacement: str, count: int=-1):
+    """
+    Constructs modifier that replaces e.`target_field` with e.`target_field`.replace(pattern, replacement, count)
+    (for given Explanation e).
+
+    `target_field` is a kwarg that defaults to 'text'.
+
+    :param pattern: pattern to replace
+    :param replacement: replacement
+    :param count: number of times to perform replacement
+    :return Modifier
+    """
+    return lambda s: s.replace(pattern, replacement, count)
+
+
+@title_text_modifier_factory
+def translate(*args):
+    """
+    Constructs a modifier that applies str.translate(e.`target_field`, str.maketrans(*args))
+    on given explanation e.
+
+    :return: Modifier
+    """
+    trans = str.maketrans(*args)
+    return lambda s: s.translate(trans)
 
 
 @title_text_modifier_factory

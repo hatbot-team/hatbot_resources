@@ -24,16 +24,19 @@ def shadow_abbreviations():
     return apply
 
 definitions_mods = [
-    modifiers.re_replace(r'[",.+]', '', target_field='title'),
-    modifiers.re_replace(r'[?і]', 'Ё', target_field='title'),  # the second symbol is not i but \xd1\x96 in utf8
-    modifiers.re_replace(r'\|\|', 'П', target_field='title'),
-    modifiers.strip(' -,:1234567890', target_field='title'),
-    modifiers.re_replace(r'3', 'З', target_field='title'),
+    modifiers.strip(' -3', target_field='title'),
+    modifiers.translate(
+        '?і3',  # the second symbol is not i but \xd1\x96 in utf8
+        'ЁЁЗ',
+        '",.+:124567890',
+        target_field='title'
+    ),
+    modifiers.str_replace('||', 'П', target_field='title'),
     modifiers.re_search_ban(r'[^-ЁёА-Яа-я]', target_field='title'),
     modifiers.normalize_title(),
 
     modifiers.strip(),
-    modifiers.re_replace(r'\?', 'ё'),  # Fixes misOCR'ed '?' instead of 'ё'
+    modifiers.str_replace('?', 'ё'),  # Fixes misOCR'ed '?' instead of 'ё'
     modifiers.shadow_cognates(4, r'\W+'),
     shadow_abbreviations(),
 
@@ -58,7 +61,12 @@ def read_articles():
         """
         nonlocal prev_title_was_2nd
         ret = article_lines[0].split()[0]
-        ret = re.sub(r'\[.*', '', ret)
+
+        bracket = ret.find('[')
+        if bracket != -1:
+            ret = ret[:bracket]
+
+        ret = ret.strip(',:.')
         if not prev_title_was_2nd and ret[-1] == '3':
             ret = ret[:-1] + 'З'
         prev_title_was_2nd = ret.endswith('2')
