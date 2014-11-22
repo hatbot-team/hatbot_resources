@@ -1,4 +1,4 @@
 __author__ = 'moskupols'
 
-__all__ = ['build_assets', 'show_evolution']
+__all__ = ['build_assets', 'show_evolution', 'diff']
 
