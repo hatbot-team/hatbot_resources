@@ -22,4 +22,4 @@ def read_data():
         for line in source:
             for word in re.split('\W+', line):
                 if len(word) > 0:
-                    yield Explanation(word, line)
+                    yield Explanation(word, line.strip('\n'))
