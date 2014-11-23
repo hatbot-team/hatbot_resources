@@ -49,14 +49,21 @@ definitions_mods = [  # there is even a board on trello for almost all of these 
 
     # Text quality heuristics
 
-    modifiers.re_replace(r'\s*во*\s*(\d|I)+(\s*и\s*(\d|I)+)?\s*знач\.', ''),  # https://trello.com/c/HCffH2eI
-    modifiers.re_replace(r'\s*см\.\s*\S+((,\s*|\s+и\s+)\S+)*', ''),
-
-    modifiers.re_replace(r'\s*\(\s*\)', ''),
-
     modifiers.re_replace(r'\s+', ' '),
 
+    modifiers.re_replace(r' *во? *(\d|I)+(, \s+)?( *и *(\d|I)+)? *знач\.', ''),  # https://trello.com/c/HCffH2eI
+    modifiers.re_replace(r' *см\. *\S+((, ?| и )\S+)*', ''),
+
     modifiers.str_contains_ban('Первая часть сложных слов со знач'),
+    modifiers.re_replace('[Сс]окращение:( ([Ёёа-яА-Я;]-?|\(.*\))+)+(\.|, а также| -) *', ''),
+    modifiers.re_replace('^\([-Ёёа-яА-Я]+\)', ''),
+
+    modifiers.re_replace(r' -(?={alph}{6,}\b)'.replace('{alph}', modifiers.ALPH_RE), '-'),
+    modifiers.re_replace(r'[^*Ёёа-яА-Я]-{alph}+\)?\b'.replace('{alph}', modifiers.ALPH_RE), ''),
+
+    modifiers.re_replace(r'[,:] *(?=[,.:!?)])', ''),
+    modifiers.re_replace(r'[.!?] *(?=[.!?])', ''),
+    modifiers.re_replace(r' *?\( *?\)', ''),
 
     # https://trello.com/c/bPUl4kqT
     modifiers.re_replace(r'(\bк-р|(?<=не)к-р)', 'котор'),
@@ -67,7 +74,15 @@ definitions_mods = [  # there is even a board on trello for almost all of these 
     modifiers.shadow_cognates(4, modifiers.NOTALPH_RE + '+'),
     shadow_abbreviations(),
 
+    # some spaces again, just to make sure
+
+    modifiers.re_replace(r'\s+', ' '),
+    modifiers.re_replace(r'\s+(?=[,.!?])', ''),
+
     modifiers.strip(),
+    modifiers.re_replace('^[^*ЁёА-Яа-я]+', ''),
+
+    modifiers.re_fullmatch_ban(''),
 
     modifiers.calculate_key()
 ]
@@ -127,6 +142,7 @@ def read_articles():
             yield text
 
     # read file and call title and meanings getters
+    counter = 0
     for part_path in _raw_data:
         print('Parsing ' + part_path + '...')
         with open(part_path, encoding='utf8') as source:
@@ -149,6 +165,8 @@ def read_articles():
                     title = get_title(article)
                     for meaning in extract_meanings(article):
                         yield Explanation(title, meaning)
+                        counter += 1
+                        print(counter, end='\r')
     print('You had hard time putting it down, and you have finally finished.')
 
 
