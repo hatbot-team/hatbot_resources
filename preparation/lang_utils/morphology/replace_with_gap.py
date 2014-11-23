@@ -45,6 +45,6 @@ def replace_noun_with_pronoun(word: str, default: str=None):
         return IT_PARSE.inflect({case}).word
     if gender == 'femn':
         return SHE_PARSE.inflect({case}).word
-    if gender == 'macs':
+    if gender == 'masc':
         return HE_PARSE.inflect({case}).word
     return default
