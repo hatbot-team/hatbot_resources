@@ -5,6 +5,7 @@ _registered_resources = dict()
 _built_resources = set()
 
 from hb_res.storage import get_storage
+from copy import copy
 
 def build_deps(res_obj):
     assert hasattr(res_obj, 'dependencies')
@@ -15,7 +16,7 @@ def build_deps(res_obj):
 def applied_modifiers(res_obj):
     for explanation in res_obj:
         r = copy(explanation)
-        for functor in resource.modifiers:
+        for functor in res_obj.modifiers:
             if r is None:
                 break
             r = functor(r)
@@ -55,7 +56,14 @@ class ResourceMeta(type):
         global _registered_resources
         if name in _registered_resources.keys():
             raise KeyError('Resource with name {} is already registered'.format(name))
-        dct['build'] = resource_rebuild
+        
+        old_iter = dct['__iter__']
+        def iter_wrapped(self):
+            build_deps(self)
+            return old_iter(self)
+        dct['build'] = resource_build
+        dct['__iter__'] = iter_wrapped
+
         res = super(ResourceMeta, mcs).__new__(mcs, name, bases, dct)
         if name not in _resource_blacklist:
             _registered_resources[name] = res
