@@ -8,7 +8,7 @@ def evolution(title=None, resource=None, *, modifiers: tuple=None, explanations=
     Generates evolution stories of given explanations or explanations with known title
     being affected by modifiers of given resource or just given modifiers.
 
-    Each story is a tuple of pairs (modifier, result). The first element of this tuple is always
+    Each story is a generator of pairs (modifier, result). The first element of this sequence is always
      (None, initial explanation).
 
     For call you should specify modifiers and explanations, but you can do it implicitly
@@ -27,7 +27,7 @@ def evolution(title=None, resource=None, *, modifiers: tuple=None, explanations=
     from hb_res.explanations import Explanation
     from preparation.resources.Resource import resource_by_name
 
-    def evolute(start, mods):
+    def generate_story(start, mods):
         cur = copy(start)
         yield (None, cur)
         for m in mods:
@@ -48,10 +48,10 @@ def evolution(title=None, resource=None, *, modifiers: tuple=None, explanations=
         explanations = (e for e in resource if e.title == title)
 
     if isinstance(explanations, Explanation):
-        return tuple(evolute(explanations, modifiers))
+        return generate_story(explanations, modifiers)
     else:
         for start_expl in explanations:
-            yield (start_expl, tuple(evolute(start_expl, modifiers)))
+            yield (start_expl, generate_story(start_expl, modifiers))
 
 
 def make_argparser():
