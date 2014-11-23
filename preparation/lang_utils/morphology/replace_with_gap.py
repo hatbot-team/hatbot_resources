@@ -18,13 +18,6 @@ IT_PARSE = get_best_parse('оно', "NPRO")
 THEY_PARSE = get_best_parse('они', "NPRO")
 
 
-def add_question_symbol(func):
-    def addition(word, default=None):
-        return func(word, default) + "?"
-    return addition
-
-
-@add_question_symbol
 def replace_noun_with_question(word: str, default: str=None):
     noun_parse = get_best_parse(word, "NOUN")
     if noun_parse is None:
@@ -32,9 +25,9 @@ def replace_noun_with_question(word: str, default: str=None):
     if noun_parse.tag.case is None:
         return default
     if noun_parse.tag.animacy == "anim":
-        return WHO_PARSE.inflect({noun_parse.tag.case}).word
+        return WHO_PARSE.inflect({noun_parse.tag.case}).word + '?'
     else:
-        return WHAT_PARSE.inflect({noun_parse.tag.case}).word
+        return WHAT_PARSE.inflect({noun_parse.tag.case}).word + '?'
 
 
 def replace_noun_with_pronoun(word: str, default: str=None):
