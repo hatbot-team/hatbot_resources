@@ -33,13 +33,16 @@ def get_resource_explanations(resource_name):
 
 def get_all_explanations():
     for resource_name in names_registered():
-        print(resource_name + " is reading")
-        print(len(explanations))
+        print("Reading " + resource_name)
         if resource_name != 'SolanceResource':
             get_resource_explanations(resource_name)
 
 
-@gen_resource('SolanceResource', solance_mods)
+deps = ['Synonyms', 'Antonyms', 'Definitions', 'Crosswords', 'FilmTitles', 'BookTitles',
+        'Phraseological', 'Collocations']
+
+
+@gen_resource('SolanceResource', solance_mods, deps)
 def read_data():
     get_all_explanations()
     with open(_raw_data, 'r', encoding='utf-8') as source:
