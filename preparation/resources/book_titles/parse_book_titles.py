@@ -35,4 +35,4 @@ def read_data():
             if not title: break
             for word in re.split('\W+', title):
                 if len(word) > 0:
-                    yield Explanation(word, title)
+                    yield Explanation(word, title.strip('\n'))
