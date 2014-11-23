@@ -1,8 +1,4 @@
 from setuptools import setup, find_packages, findall  # Always prefer setuptools over distutils
-from preparation.tools.build_assets import main
-
-# build all assets
-main(['all'])
 
 setup(
     name='hatbot_resources',
