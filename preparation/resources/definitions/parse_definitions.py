@@ -23,7 +23,7 @@ def shadow_abbreviations():
         return ret
     return apply
 
-definitions_mods = [
+definitions_mods = [  # there is even a board on trello for almost all of these modifiers: trello.com/b/IEP8jusD
     modifiers.strip(' -3', target_field='title'),
     modifiers.translate(
         '?і3',  # the second symbol is not i but \xd1\x96 in utf8
@@ -49,16 +49,25 @@ definitions_mods = [
 
     # Text quality heuristics
 
-    modifiers.strip(),
-
-    modifiers.re_replace(r'\s*во?\s+(\d|I)+(\s*и\s*(\d|I)+)?\s*знач\.', ''),  # https://trello.com/c/HCffH2eI/6--
-
-    modifiers.re_replace(r'\s+', ' '),
+    modifiers.re_replace(r'\s*во*\s*(\d|I)+(\s*и\s*(\d|I)+)?\s*знач\.', ''),  # https://trello.com/c/HCffH2eI
+    modifiers.re_replace(r'\s*см\.\s*\S+((,\s*|\s+и\s+)\S+)*', ''),
 
     modifiers.re_replace(r'\s*\(\s*\)', ''),
 
+    modifiers.re_replace(r'\s+', ' '),
+
+    modifiers.str_contains_ban('Первая часть сложных слов со знач'),
+
+    # https://trello.com/c/bPUl4kqT
+    modifiers.re_replace(r'(\bк-р|(?<=не)к-р)', 'котор'),
+    # https://trello.com/c/LpoSvAHt
+    modifiers.str_replace(r'-н.', '-нибудь'),
+    modifiers.str_replace(r'-н,', '-нибудь'),
+
     modifiers.shadow_cognates(4, modifiers.NOTALPH_RE + '+'),
     shadow_abbreviations(),
+
+    modifiers.strip(),
 
     modifiers.calculate_key()
 ]
