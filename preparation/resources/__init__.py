@@ -2,7 +2,7 @@ from preparation.resources import Resource
 
 resource_packages = [
     'synonyms', 'antonyms', 'definitions', 'phraseological',
-    'film_titles', 'collocations', 'crosswords', 'book_titles'
+    'film_titles', 'collocations', 'crosswords', 'book_titles', 'solance'
 ]
 __all__ = [
     'Resource'
