@@ -30,6 +30,7 @@ from hb_res.explanations import Explanation, ExplanationKey
 from preparation.lang_utils.cognates import are_cognates
 from preparation.lang_utils.morphology import get_valid_noun_initial_form
 from preparation.lang_utils.morphology import is_remarkable
+from preparation.lang_utils.morphology import replace_noun_with_pronoun, replace_noun_with_question
 
 GAP_VALUE = '*пропуск*'
 
@@ -258,11 +259,11 @@ def delete_cognates(length_threshold: int, separator: str):
 
 
 @modifier_factory
-def check_contains_valid_parts(required, enough_score, sep_re, gap='пропуск'):
+def check_contains_valid_parts(required, enough_score, sep_re):
     def apply(e: Explanation):
         have = 0
         for word in re.split(sep_re, e.text):
-            if len(word) > 0 and word != gap and is_remarkable(word, enough_score):
+            if len(word) > 0 and is_remarkable(word, enough_score):
                 have += 1
         if have >= required:
             return e
@@ -278,4 +279,22 @@ def delete_multiple_gaps(limit: int):
             return None
         else:
             return e
+    return apply
+
+@modifier_factory
+def shadow_title_with_pronoun():
+    def apply(e: Explanation):
+        ret = copy.copy(e)
+        ret.text = re.sub('(^|(?<={notalph})){badword}($|(?={notalph}))'.format(badword=ret.title, notalph=NOTALPH_RE),
+                           '*' + replace_noun_with_pronoun(ret.title, GAP_VALUE) + '*', ret.text)
+        return ret
+    return apply
+
+@modifier_factory
+def shadow_title_with_question():
+    def apply(e: Explanation):
+        ret = copy.copy(e)
+        ret.text = re.sub('(^|(?<={notalph})){badword}($|(?={notalph}))'.format(badword=ret.title, notalph=NOTALPH_RE),
+                           '*' + replace_noun_with_question(ret.title, GAP_VALUE) + '*', ret.text)
+        return ret
     return apply
