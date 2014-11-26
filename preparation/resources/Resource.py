@@ -1,3 +1,5 @@
+import time
+
 __author__ = "mike"
 
 _resource_blacklist = {'Resource'}
@@ -28,8 +30,12 @@ def applied_modifiers(res_obj):
 
 def generate_asset(res_obj, out_storage):
     out_storage.clear()
+    count = 0
     for explanation in applied_modifiers(res_obj):
+        count += 1
+        print(count, end='\r')
         out_storage.add_entry(explanation)
+    return count
 
 
 def resource_build(res_obj):
@@ -38,15 +44,19 @@ def resource_build(res_obj):
     res_name = res_name[:-len('Resource')]
 
     if res_name in _built_resources:
+        print("= Skipping {} generation as the resource is already built".format(res_name))
         return
 
     build_deps(res_obj)
     _built_resources.add(res_name)
 
+    print("<=> Starting {} generation <=>".format(res_name))
+    start = time.monotonic()
     with get_storage(res_name) as out_storage:
-        print("Starting {} generation".format(res_name))
-        generate_asset(res_obj, out_storage)
-        print("Finished {} generation".format(res_name))
+        count = generate_asset(res_obj, out_storage)
+    end = time.monotonic()
+    print("> {} generated in {} seconds".format(res_name, end - start))
+    print("> {} explanations have passed the filters".format(count))
 
 
 class ResourceMeta(type):
