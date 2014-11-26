@@ -5,6 +5,7 @@ __author__ = "mike"
 _resource_blacklist = {'Resource'}
 _registered_resources = dict()
 _built_resources = set()
+_building_resources = set()
 
 from hb_res.storage import get_storage
 from copy import copy
@@ -14,6 +15,9 @@ def build_deps(res_obj):
     assert hasattr(res_obj, 'dependencies')
     for dep in res_obj.dependencies:
         assert dep + 'Resource' in _registered_resources
+        assert dep not in _building_resources, \
+            'Dependency loop encountered: {} depends on {} to be built, and vice versa'.format(
+                dep + 'Resource', res_obj.__class__.__name__)
         _registered_resources[dep + 'Resource']().build()
 
 
@@ -47,8 +51,8 @@ def resource_build(res_obj):
         print("= Skipping {} generation as the resource is already built".format(res_name))
         return
 
+    _building_resources.add(res_name)
     build_deps(res_obj)
-    _built_resources.add(res_name)
 
     print("<=> Starting {} generation <=>".format(res_name))
     start = time.monotonic()
@@ -57,6 +61,9 @@ def resource_build(res_obj):
     end = time.monotonic()
     print("> {} generated in {} seconds".format(res_name, end - start))
     print("> {} explanations have passed the filters".format(count))
+
+    _building_resources.remove(res_name)
+    _built_resources.add(res_name)
 
 
 class ResourceMeta(type):
