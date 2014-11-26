@@ -54,7 +54,7 @@ definitions_mods = [  # there is even a board on trello for almost all of these 
     modifiers.re_replace(r' *во? *(\d|I)+(, \s+)?( *и *(\d|I)+)? *знач\.', ''),  # https://trello.com/c/HCffH2eI
     modifiers.re_replace(r' *см\. *\S+((, ?| и )\S+)*', ''),
 
-    modifiers.str_contains_ban('Первая часть сложных слов со знач'),
+    modifiers.str_contains_ban('Первая часть сложных слов со'),
     modifiers.re_replace('[Сс]окращение:( ([Ёёа-яА-Я;]-?|\(.*\))+)+(\.|, а также| -) *', ''),
     modifiers.re_replace('^\([-Ёёа-яА-Я]+\)', ''),
 
@@ -118,13 +118,13 @@ def read_articles():
 
     def extract_meanings(article_lines):
         text = ' '.join(article_lines)
-        if '1.' in text:
+        if re.search('1[.)]', text):
             # parse numbered definitions
             borders = []
             for i in range(1, 10):
-                current = chr(i + 48) + '.'
-                if current in text:
-                    borders.append(text.find(current))
+                match = re.search(str(i) + '[.)]', text)
+                if match:
+                    borders.append(match.start(0))
             for i in range(len(borders)):
                 next_occ = borders[i + 1] if i + 1 < len(borders) else len(text)
                 definition = text[borders[i] + 2:next_occ]
