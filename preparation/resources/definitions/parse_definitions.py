@@ -51,10 +51,12 @@ definitions_mods = [  # there is even a board on trello for almost all of these 
 
     modifiers.re_replace(r'\s+', ' '),
 
-    modifiers.re_replace(r' *во? *(\d|I)+(, \s+)?( *и *(\d|I)+)? *знач\.', ''),  # https://trello.com/c/HCffH2eI
+    modifiers.re_replace(r' *[вк]о? *(\d|I)+( *, *(\d|I)+)*( *и *(\d|I)+)? *знач[,.]?', '', re.IGNORECASE),
+
     modifiers.re_replace(r' *см\. *\S+((, ?| и )\S+)*', ''),
 
-    modifiers.str_contains_ban('Первая часть сложных слов со'),
+    modifiers.str_contains_ban('Первая часть сложных'),
+    modifiers.str_contains_ban('Образует'),
     modifiers.re_replace('[Сс]окращение:( ([Ёёа-яА-Я;]-?|\(.*\))+)+(\.|, а также| -) *', ''),
     modifiers.re_replace('^\([-Ёёа-яА-Я]+\)', ''),
 
@@ -63,7 +65,9 @@ definitions_mods = [  # there is even a board on trello for almost all of these 
 
     modifiers.re_replace(r'[,:] *(?=[,.:!?)])', ''),
     modifiers.re_replace(r'[.!?] *(?=[.!?])', ''),
-    modifiers.re_replace(r' *?\( *?\)', ''),
+    modifiers.re_replace(r' *\( *\)', ''),
+
+    modifiers.re_fullmatch_ban(r'^{notalph}*относящийся\s+к.*'.format(notalph=modifiers.NOTALPH_RE), re.IGNORECASE),
 
     # https://trello.com/c/bPUl4kqT
     modifiers.re_replace(r'(\bк-р|(?<=не)к-р)', 'котор'),
