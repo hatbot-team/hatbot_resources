@@ -17,11 +17,11 @@ def add_common_prefix():
     return apply
 
 film_titles_mods = [
-    modifiers.shadow_cognates(None, '\W+'),
+    modifiers.check_contains_valid_parts(2, 0.1, '\W+'),
+    modifiers.shadow_title_with_question(),
     modifiers.normalize_title(),
     modifiers.shadow_cognates(5, '\W+'),
-    modifiers.delete_multiple_gaps(1),
-    modifiers.check_contains_valid_parts(1, 0.1, '\W+'),
+    modifiers.delete_multiple_gaps(0),
     add_common_prefix(),
     modifiers.calculate_key()
 ]
