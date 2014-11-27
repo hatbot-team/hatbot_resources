@@ -200,7 +200,7 @@ def re_fullmatch_ban(pattern, flags: int=0):
     else:
         pattern = '^' + pattern + '$'
     pattern = re.compile(pattern, flags)
-    return lambda s: s if re.match(pattern, s, flags) is None else None
+    return lambda s: s if pattern.match(s) is None else None
 
 
 @title_text_modifier_factory
