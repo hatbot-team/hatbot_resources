@@ -19,6 +19,22 @@ THEY_PARSE = get_best_parse('они', "NPRO")
 
 
 def replace_noun_with_question(word: str, default: str=None):
+    """
+    Gets noun and returns a string with this case question for this noun.
+    If word is not noun or don't have some morphological characteristics to get it,
+    default value will be returned.
+    >>> replace_noun_with_question('говорить', '*пропуск*')
+    '*пропуск*'
+    >>> replace_noun_with_question('проводами')
+    'чем?'
+    >>> replace_noun_with_question('проводницами')
+    'кем?'
+    >>> replace_noun_with_question('железы')
+    'чего?'
+    :param word: word for case question
+    :param default: value, which returned if it's unable to get case question
+    :return: case question with '?' symbol at the end.
+    """
     noun_parse = get_best_parse(word, "NOUN")
     if noun_parse is None:
         return default
@@ -31,6 +47,22 @@ def replace_noun_with_question(word: str, default: str=None):
 
 
 def replace_noun_with_pronoun(word: str, default: str=None):
+    """
+    Replaces noun with noun-pronoun.
+    If word is not noun or don't have some morphological characteristics to get it,
+    default value will be returned.
+    >>> replace_noun_with_pronoun('проводнику')
+    'ему'
+    >>> replace_noun_with_pronoun('проводнице')
+    'ей'
+    >>> replace_noun_with_pronoun('проводникам')
+    'им'
+    >>> replace_noun_with_pronoun('красивый', '*пропуск*')
+    '*пропуск*'
+    :param word: word for noun to replace
+    :param default: value, which returned if it's unable to get pronoun
+    :return: noun-pronoun
+    """
     noun_parse = get_best_parse(word, "NOUN")
     if noun_parse is None:
         return default
