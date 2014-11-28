@@ -29,7 +29,12 @@ film_titles_mods = [
 @gen_resource('FilmTitlesResource', film_titles_mods)
 def read_data():
     with open(_raw_data, 'r', encoding='utf-8') as source:
-        for line in source:
-            for word in re.split('\W+', line):
+        max_count = 0
+        while True:
+            title = source.readline().strip('\n')
+            if not title: break
+            count = int(source.readline().strip('\n'))
+            max_count = max(max_count, count)
+            for word in re.split('\W+', title):
                 if len(word) > 0:
-                    yield Explanation(word, line.strip('\n'))
+                    yield Explanation(title = word, text = title, prior_rating = float(count)/max_count)
