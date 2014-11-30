@@ -18,6 +18,9 @@ def get_storage(trunk: str):
 
 
 def list_storages():
-    if not os.path.exists(ASSETS_DIR):
-        os.makedirs(ASSETS_DIR)
-    return os.listdir(ASSETS_DIR)
+    assets = os.listdir(ASSETS_DIR)
+    storages = list()
+    for storage_name in assets:
+        storage_name = storage_name[:-6]
+        storages.append(storage_name)
+    return storages
