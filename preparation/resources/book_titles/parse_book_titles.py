@@ -40,13 +40,20 @@ book_titles_mods = [
 def read_data():
     with open(_raw_data, 'r', encoding='utf-8') as source:
         count = 0
+        titles = dict()
         while True:
             count += 1
             title = source.readline().strip('\n')
             author = source.readline().strip('\n')
             if not title: break
-            for word in re.split('\W+', title):
+            if titles.get((title, author)) is None:
+                titles[(title, author)] = 1.0/count
+            else:
+                titles[(title, author)] += 1.0/count
+        for (title, author), count in titles.items():
+            for word in set(re.split('\W+', title)):
                 if len(word) > 0:
-                    explanation = Explanation(title = word, text = title, prior_rating = 1.0/count)
+                    explanation = Explanation(title=word, text=title, prior_rating=count)
                     explanation.author = author
                     yield explanation
+
