@@ -20,13 +20,3 @@ def choose_best_synonyms(max_number: int, separator: str):
         ret.text = separator.join(best)
         return ret
     return apply
-
-
-@modifiers.modifier_factory
-def calculate_prior_rating(separator: str):
-    def apply(e: Explanation):
-        frequents = list(map(get_average_frequency, e.text.split(separator)))
-        title_frequent = get_average_frequency(e.title)
-        e.prior_rating = sum(frequents) / len(frequents) + title_frequent
-        return e
-    return apply
