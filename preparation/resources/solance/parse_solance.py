@@ -12,8 +12,9 @@ solance_mods = [
 
     modifiers.re_fullmatch_ban(''),
 
-    modifiers.delete_cognates(4, '\n'),
+    modifiers.delete_not_initial_form(),
     modifiers.delete_low_rating(50),
+    modifiers.delete_cognates(4, '\n'),
     modifiers.calculate_key()
 ]
 
@@ -26,7 +27,7 @@ def get_resource_explanations(resource_name):
     for explanation in storage.entries():
         if explanation is None:
             continue
-        if not explanations.__contains__(explanation.title):
+        if explanation.title not in explanations:
             explanations[explanation.title] = list()
         explanations[explanation.title].append(explanation.text)
 
@@ -55,8 +56,6 @@ def read_data():
                 [text, rating] = entry.split('&')
                 if title == text:
                     continue
-                if not explanations.__contains__(text):
+                if text not in explanations:
                     continue
-                for explanation in explanations[text]:
-                    full_text = explanation + ". Созвучие к этому слову"
-                    yield Explanation(title, full_text, prior_rating=float(rating))
+                yield Explanation(title, text, prior_rating=float(rating))
