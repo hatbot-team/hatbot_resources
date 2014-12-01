@@ -30,6 +30,7 @@ from hb_res.explanations import Explanation, ExplanationKey
 from preparation.lang_utils.cognates import are_cognates
 from preparation.lang_utils.morphology import get_valid_noun_initial_form
 from preparation.lang_utils.morphology import is_remarkable
+from preparation.lang_utils.frequency import get_average_frequency
 
 GAP_VALUE = '*пропуск*'
 
@@ -183,20 +184,23 @@ def calculate_key():
 
 
 @modifier_factory
-def normalize_title(score_threshold: float=0.):
+def normalize_title(score_threshold: float=0., delete_if_not_normal: bool=False):
     """
     Constructs modifier that replaces explanation's title with normalized noun if possible.
     Otherwise bans the explanation (returns None).
 
     score_threshold is used as minimum confidence enough to consider a parse variant.
 
-    :param score_threshold:
+    :param delete_if_not_normal: specify true if you want to delete explanations if title is not in normal form
+    :param score_threshold: enough probability that word is noun
     :return: Modifier
     """
 
     def apply(e: Explanation):
         new_title = get_valid_noun_initial_form(e.title, score_threshold)
         if new_title is None:
+            return None
+        if delete_if_not_normal and new_title != e.title:
             return None
         ret = copy.copy(e)
         ret.title = new_title
@@ -278,4 +282,13 @@ def delete_multiple_gaps(limit: int):
             return None
         else:
             return e
+    return apply
+
+@modifier_factory
+def calculate_prior_frequency_rate(sep_re):
+    def apply(e: Explanation):
+        frequents = list(map(get_average_frequency, re.split(sep_re, e.text)))
+        frequents.append(get_average_frequency(e.title))
+        e.prior_rating = sum(frequents) / len(frequents)
+        return e
     return apply

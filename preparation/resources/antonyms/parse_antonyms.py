@@ -21,22 +21,30 @@ def add_antonyms_common_text():
     return apply
 
 antonyms_mods = [
-    modifiers.normalize_title(),
+    modifiers.normalize_title(0.01, True),
 
     modifiers.re_replace('[^#]+ [^#]+(#|$)', ''),  # remove multi-word antonyms (containing spaces)
     modifiers.re_fullmatch_ban(''),
 
     modifiers.delete_cognates(6, '#'),
     modifiers.choose_normal_words_in_explanation('#'),
+
+    modifiers.calculate_prior_frequency_rate('#'),
+
     modifiers.re_replace('#', ', ', target_field='text'),
+
     add_antonyms_common_text(),
+
     modifiers.calculate_key()
 ]
 
 
 @gen_resource('AntonymsResource', antonyms_mods)
 def read_data():
+    explanations = set()
     with open(_raw_data, 'r', encoding='utf-8') as source:
         for line in source:
             [title, text] = line.split('@')
-            yield Explanation(title, text)
+            explanations.add((title, text))
+    for explanation in explanations:
+        yield Explanation(explanation[0], explanation[1])
