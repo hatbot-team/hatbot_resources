@@ -8,7 +8,7 @@ import copy
 
 def choose_best_synonyms_from_list(synonyms_list: list, max_number: int):
     new_synonyms_list = synonyms_list.copy()
-    new_synonyms_list.sort(key=get_frequent_number)
+    new_synonyms_list.sort(key=get_frequent_number, reverse=True)
     return new_synonyms_list[0:max_number]
 
 
