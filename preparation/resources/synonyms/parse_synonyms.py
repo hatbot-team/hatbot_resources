@@ -19,7 +19,7 @@ synonyms_mods = [
     choose_best_synonyms(5, '#'),
     modifiers.calculate_prior_frequency_rate('#'),
 
-    modifiers.re_replace('#', ', '),
+    modifiers.str_replace('#', ', '),
     modifiers.calculate_key()
 ]
 
