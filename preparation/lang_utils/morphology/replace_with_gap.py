@@ -8,7 +8,7 @@ def get_best_parse(word: str, part: str):
     if len(possibilities) == 0:
         return None
     else:
-        return max(possibilities, key=lambda x: x.score)
+        return max(possibilities, key=lambda x: (x.score, x.word))
 
 WHO_PARSE = get_best_parse('кто', "NPRO")
 WHAT_PARSE = get_best_parse('что', "NPRO")
