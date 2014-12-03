@@ -1,16 +1,16 @@
 __author__ = 'pershik'
 
-from preparation.resources.Resource import resource_by_name
+from preparation.resources.Resource import resource_by_trunk
 from hb_res.storage import get_storage
 
 import difflib
 import argparse
 
 
-def diff(resource_name=None, modifiers=None):
+def diff(trunk=None, modifiers=None):
 
-    assert isinstance(resource_name, str)
-    resource = resource_by_name(resource_name + 'Resource')()
+    assert isinstance(trunk, str)
+    resource = resource_by_trunk(trunk)()
 
     if modifiers is None:
         modifiers = resource.modifiers
@@ -24,17 +24,17 @@ def diff(resource_name=None, modifiers=None):
             return expl
         return func
 
-    with get_storage(resource_name) as old_explanations:
+    with get_storage(trunk) as old_explanations:
         new_explanations = list(map(str, filter(lambda x: x is not None, map(apply(modifiers), resource))))
         return difflib.unified_diff(list(map(str, old_explanations.entries())), new_explanations)
 
 
 def make_argparser():
-    from preparation.resources.Resource import names_registered
+    from preparation.resources.Resource import trunks_registered
 
     parser = argparse.ArgumentParser(description='View how some resource changes')
 
-    trunks = [name.replace('Resource', '') for name in names_registered()]
+    trunks = trunks_registered()
 
     parser.add_argument('resource',
                         metavar='RESOURCE',
