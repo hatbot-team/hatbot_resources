@@ -78,7 +78,7 @@ def make_argparser():
                               const=fmt,
                               help='Format as ' + repr(fmt))
 
-    parser.add_argument('resource',
+    parser.add_argument('trunk',
                         choices=trunks_registered(),
                         help='resource to use')
     parser.add_argument('title',
@@ -117,7 +117,7 @@ def main(args=None):
         args = parser.parse_args(args)
     first_story = True
     for title in args.title:
-        stories = evolution(title=title, resource=args.resource)
+        stories = evolution(title=title, resource=args.trunk)
         for start_expl, story in stories:
             if first_story:
                 first_story = False

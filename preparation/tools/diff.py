@@ -36,10 +36,10 @@ def make_argparser():
 
     trunks = trunks_registered()
 
-    parser.add_argument('resource',
-                        metavar='RESOURCE',
+    parser.add_argument('trunk',
+                        metavar='TRUNK',
                         choices=trunks,
-                        help='One of registered resources ({})'.format(', '.join(trunks)))
+                        help='One of registered trunks ({})'.format(', '.join(trunks)))
     return parser
 
 
@@ -47,7 +47,7 @@ def main(args=None):
     if not isinstance(args, argparse.Namespace):
         parser = make_argparser()
         args = parser.parse_args(args)
-    for entry in diff(args.resource):
+    for entry in diff(args.trunk):
         print(entry)
 
 if __name__ == '__main__':
