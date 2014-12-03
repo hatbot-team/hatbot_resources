@@ -62,8 +62,6 @@ def get_initial_forms(form: str, part_filter=None)->list:
 
 
 def _is_valid_noun(parsed: Parse)->bool:
-    # TODO: add surname and all, see http://opencorpora.org/dict.php?act=gram
-    # even Init!
     banned_tags = {'Abbr', 'Name', 'Surn', 'Patr', 'Geox',
                    'Orgn', 'Trad', 'Vpre', 'Erro', 'Init'}
     tag = parsed.tag
