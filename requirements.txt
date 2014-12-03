@@ -1,4 +1,4 @@
-pymorphy2
+pymorphy2>=0.8
 DAWG
 beautifulsoup4
 requests
