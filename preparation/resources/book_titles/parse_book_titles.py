@@ -50,8 +50,8 @@ def read_data():
                 titles[(title, author)] = 1.0/count
             else:
                 titles[(title, author)] += 1.0/count
-        for (title, author), count in titles.items():
-            for word in set(re.split('\W+', title)):
+        for (title, author), count in sorted(titles.items()):
+            for word in sorted(set(re.split('\W+', title))):
                 if len(word) > 0:
                     explanation = Explanation(title=word, text=title, prior_rating=count)
                     explanation.author = author

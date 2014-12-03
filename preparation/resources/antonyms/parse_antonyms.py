@@ -46,5 +46,5 @@ def read_data():
         for line in source:
             [title, text] = line.split('@')
             explanations.add((title, text))
-    for explanation in explanations:
+    for explanation in sorted(explanations):
         yield Explanation(explanation[0], explanation[1])

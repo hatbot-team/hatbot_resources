@@ -39,7 +39,7 @@ def read_data():
             else:
                 titles[title] += count
     max_count = max(titles.values())
-    for title, count in titles.items():
-        for word in set(re.split('\W+', title)):
+    for title, count in sorted(titles.items()):
+        for word in sorted(set(re.split('\W+', title))):
             if len(word) > 0:
                 yield Explanation(title=word, text=title, prior_rating=count/max_count)

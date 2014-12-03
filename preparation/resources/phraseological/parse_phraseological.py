@@ -22,7 +22,7 @@ def read_data():
     with open(_raw_data, 'r', encoding='utf-8') as source:
         for line in source:
             phrases.add(line)
-    for line in phrases:
-        for word in set(re.split('\W+', line)):
+    for line in sorted(phrases):
+        for word in sorted(set(re.split('\W+', line))):
             if len(word) > 0:
                 yield Explanation(word, line.strip('\n'))
