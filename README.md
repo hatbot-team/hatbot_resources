@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/hatbot-team/hatbot_resources.svg?branch=master)](https://travis-ci.org/hatbot-team/hatbot_resources)
 hatbot_resources
 ================
 
