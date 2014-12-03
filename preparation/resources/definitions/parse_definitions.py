@@ -83,12 +83,12 @@ def read_articles():
 
     # read file and call title and meanings getters
     for part_path in _raw_data:
-        print('Parsing ' + part_path + '...')
+        # print('Parsing ' + part_path + '...')
         with open(part_path, encoding='utf8') as source:
             while True:
                 line = source.readline()
                 if len(line) == 0:
-                    print('so good!')
+                    # print('so good!')
                     break
                 line = line.strip(' \n')
                 if len(line) > 0:
@@ -101,7 +101,7 @@ def read_articles():
                     title = get_title(article)
                     for meaning in extract_meanings(article):
                         yield Explanation(title, meaning)
-    print('You had hard time putting it down, and you have finally finished.')
+    # print('You had hard time putting it down, and you have finally finished.')
 
 
 # def sanity_check():
