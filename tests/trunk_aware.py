@@ -4,7 +4,7 @@ from preparation.resources.Resource import trunks_registered
 
 __author__ = 'moskupols'
 
-_trunk_filter = set()
+_trunk_filter = set(trunks_registered())
 
 
 class TrunkAwareTestCaseMeta(type):
@@ -21,7 +21,7 @@ class TrunkAwareTestCaseMeta(type):
                     slf.trunk = trunk
                     tester(slf)
                 else:
-                    print(' (skipped) ', end='')
+                    print('(skipped) ', end='')
                     sys.stdout.flush()
             return binded
 
@@ -44,6 +44,9 @@ class TrunkAwareTestCase(unittest.TestCase, metaclass=TrunkAwareTestCaseMeta):
 def trunk_aware_run(tests, trunks=None):
     global _trunk_filter
     import sys
+
+    if isinstance(tests, TrunkAwareTestCaseMeta):
+        tests = unittest.defaultTestLoader.loadTestsFromTestCase(tests)
 
     if trunks is None:
         trunks = sys.argv[1:] if len(sys.argv) != 1 else trunks_registered()

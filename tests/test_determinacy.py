@@ -1,6 +1,5 @@
 __author__ = 'moskupols'
 
-import unittest
 from preparation.resources import Resource
 from tests.trunk_aware import TrunkAwareTestCase, trunk_aware_run
 
@@ -15,4 +14,4 @@ class DeterminacyTestCase(TrunkAwareTestCase):
 
 
 if __name__ == '__main__':
-    trunk_aware_run(unittest.defaultTestLoader.loadTestsFromTestCase(DeterminacyTestCase))
+    trunk_aware_run(DeterminacyTestCase)
