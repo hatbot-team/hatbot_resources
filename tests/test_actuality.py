@@ -1,4 +1,4 @@
-from tests.trunk_aware import TrunkAwareTestCase, trunk_aware_run
+from tests.trunk_aware import TrunkAwareTestCase, trunk_aware_main
 from hb_res.storage import get_storage
 from preparation.resources.Resource import resource_by_trunk, applied_modifiers
 
@@ -14,4 +14,4 @@ class ActualityTestCase(TrunkAwareTestCase):
 
 
 if __name__ == '__main__':
-    trunk_aware_run(ActualityTestCase)
+    trunk_aware_main(ActualityTestCase)

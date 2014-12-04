@@ -41,7 +41,7 @@ class TrunkAwareTestCase(unittest.TestCase, metaclass=TrunkAwareTestCaseMeta):
         self.trunk = ''
 
 
-def trunk_aware_run(tests, trunks=None):
+def trunk_aware_main(tests, trunks=None):
     global _trunk_filter
     import sys
 
@@ -52,4 +52,4 @@ def trunk_aware_run(tests, trunks=None):
         trunks = sys.argv[1:] if len(sys.argv) != 1 else trunks_registered()
     _trunk_filter = set(trunks)
 
-    unittest.TextTestRunner(verbosity=2).run(tests)
+    sys.exit(0 if unittest.TextTestRunner(verbosity=2).run(tests).wasSuccessful() else 1)
