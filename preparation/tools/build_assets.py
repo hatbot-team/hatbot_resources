@@ -1,25 +1,17 @@
-from copy import copy
 import argparse
+from preparation.resources.Resource import trunks_registered, resource_by_trunk, resource_build
 
-from preparation.resources.Resource import names_registered, resource_by_name
-from hb_res.storage import get_storage, ExplanationStorage
-
-def rebuild_trunk(trunk: str):
-    resource_by_name(trunk + 'Resource')().build()
-
-def get_names():
-    return [name.replace('Resource', '') for name in names_registered()]
 
 def make_argparser():
     parser = argparse.ArgumentParser(description='Rebuild some asset')
 
-    names = get_names()
+    names = tuple(trunks_registered())
 
-    parser.add_argument('resources',
-                        metavar='RESOURCE',
+    parser.add_argument('trunks',
+                        metavar='TRUNK',
                         nargs='+',
-                        choices=names + ['all'],
-                        help='One of registered resources ({}) or just \'all\'.'.format(', '.join(names)))
+                        choices=names + ('all',),
+                        help='One of registered trunks ({}) or just \'all\'.'.format(', '.join(names)))
 
     return parser
 
@@ -28,13 +20,11 @@ def main(args=None):
     if not isinstance(args, argparse.Namespace):
         parser = make_argparser()
         args = parser.parse_args(args)
-    assert not ('all' in args.resources and len(args.resources) != 1)
-    if 'all' in args.resources:
-        for name in get_names():
-            rebuild_trunk(name)
-    else:
-        for name in args.resources:
-            rebuild_trunk(name)
+    assert not ('all' in args.trunks and len(args.trunks) != 1)
+    if 'all' in args.trunks:
+        args.trunks = trunks_registered()
+    for name in args.trunks:
+        resource_by_trunk(name)().build()
 
 
 if __name__ == '__main__':

@@ -107,7 +107,7 @@ def read_articles():
 # def sanity_check():
 #     random.seed = 314
 #     try:
-#         dump = resource_by_name(DUMP_RESOURCE_NAME).entries()
+#         dump = resource_by_trunk(DUMP_RESOURCE_NAME).entries()
 #     except FileNotFoundError:
 #         print('Dump doesn\'t exist. It will be created')
 #         return True
@@ -119,7 +119,7 @@ def read_articles():
 #
 #     sanity_result = True
 #
-#     result = resource_by_name(RESULT_RESOURCE_NAME).entries()
+#     result = resource_by_trunk(RESULT_RESOURCE_NAME).entries()
 #     for explanation in result:
 #         key, text = explanation.key, explanation.text
 #         if key in dumped_definitions.keys() and dumped_definitions[key] != text:
@@ -132,10 +132,10 @@ def read_articles():
 
 
 # def dump_dict():
-#     dump = resource_by_name(DUMP_RESOURCE_NAME)
+#     dump = resource_by_trunk(DUMP_RESOURCE_NAME)
 #     dump.clear()
 #
-#     for explanation in resource_by_name(RESULT_RESOURCE_NAME).entries():
+#     for explanation in resource_by_trunk(RESULT_RESOURCE_NAME).entries():
 #         dump.add_entry(explanation)
 #
 #
