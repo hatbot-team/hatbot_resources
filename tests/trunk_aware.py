@@ -33,9 +33,13 @@ def main(args=None):
     if args is None:
         args = sys.argv
 
-    _trunk_filter = _all_trunks & set(args)
-    if len(_trunk_filter) == 0:
-        _trunk_filter = _all_trunks
+    include = _all_trunks & set(args)
+    exclude_percented = set('%' + t for t in _all_trunks) & set(args)
+    exclude = set(e[1:] for e in exclude_percented)
 
-    args = [arg for arg in args if arg not in _trunk_filter]
+    if len(include) == 0:
+        include = _all_trunks
+    _trunk_filter = include - exclude
+
+    args = [arg for arg in args if arg not in include | exclude_percented]
     nose.main(argv=args)
