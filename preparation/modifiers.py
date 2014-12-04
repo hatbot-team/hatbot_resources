@@ -178,7 +178,7 @@ def calculate_key():
         if e.key is not None:
             return e
         ret = copy.copy(e)
-        ret.key = ExplanationKey.for_text(ret.text)
+        ret.key = ExplanationKey.for_explanation(e)
         return ret
 
     return apply

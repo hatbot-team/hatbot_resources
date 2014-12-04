@@ -1,24 +1,23 @@
+from hb_res.storage import get_storage
+from copy import copy
 import time
 
 __author__ = "mike"
 
 _resource_blacklist = {'Resource'}
-_registered_resources = dict()
-_built_resources = set()
-_building_resources = set()
-
-from hb_res.storage import get_storage
-from copy import copy
+_resources_by_trunk = dict()
+_built_trunks = set()
+_building_trunks = set()
 
 
 def build_deps(res_obj):
     assert hasattr(res_obj, 'dependencies')
     for dep in res_obj.dependencies:
-        assert dep + 'Resource' in _registered_resources
-        assert dep not in _building_resources, \
+        assert dep in _resources_by_trunk
+        assert dep not in _building_trunks, \
             'Dependency loop encountered: {} depends on {} to be built, and vice versa'.format(
-                dep + 'Resource', res_obj.__class__.__name__)
-        _registered_resources[dep + 'Resource']().build()
+                dep, res_obj.__class__.__name__)
+        _resources_by_trunk[dep]().build()
 
 
 def applied_modifiers(res_obj):
@@ -43,27 +42,25 @@ def generate_asset(res_obj, out_storage):
 
 
 def resource_build(res_obj):
-    res_name = res_obj.__class__.__name__
-    assert res_name.endswith('Resource')
-    res_name = res_name[:-len('Resource')]
+    trunk = res_obj.trunk
 
-    if res_name in _built_resources:
-        print("= Skipping {} generation as the resource is already built".format(res_name))
+    if trunk in _built_trunks:
+        print("= Skipping {} generation as the resource is already built".format(trunk))
         return
 
-    _building_resources.add(res_name)
+    _building_trunks.add(trunk)
     build_deps(res_obj)
 
-    print("<=> Starting {} generation <=>".format(res_name))
+    print("<=> Starting {} generation <=>".format(trunk))
     start = time.monotonic()
-    with get_storage(res_name) as out_storage:
+    with get_storage(trunk) as out_storage:
         count = generate_asset(res_obj, out_storage)
     end = time.monotonic()
-    print("> {} generated in {} seconds".format(res_name, end - start))
+    print("> {} generated in {} seconds".format(trunk, end - start))
     print("> {} explanations have passed the filters".format(count))
 
-    _building_resources.remove(res_name)
-    _built_resources.add(res_name)
+    _building_trunks.remove(trunk)
+    _built_trunks.add(trunk)
 
 
 class ResourceMeta(type):
@@ -75,8 +72,11 @@ class ResourceMeta(type):
         """
         we have to register resource in _registered_resources
         """
-        global _registered_resources
-        if name in _registered_resources.keys():
+        assert name.endswith('Resource')
+        trunk = name[:-len('Resource')]
+
+        global _resources_by_trunk
+        if trunk in _resources_by_trunk.keys():
             raise KeyError('Resource with name {} is already registered'.format(name))
 
         old_iter = dct['__iter__']
@@ -85,12 +85,17 @@ class ResourceMeta(type):
             build_deps(self)
             return old_iter(self)
 
+        @property
+        def trunk_prop(_):
+            return trunk
+
+        dct['trunk'] = trunk_prop
         dct['build'] = resource_build
         dct['__iter__'] = iter_wrapped
 
         res = super(ResourceMeta, mcs).__new__(mcs, name, bases, dct)
         if name not in _resource_blacklist:
-            _registered_resources[name] = res
+            _resources_by_trunk[trunk] = res
         return res
 
 
@@ -113,24 +118,24 @@ def gen_resource(res_name, modifiers, dependencies=()):
     return decorator
 
 
-def names_registered():
-    global _registered_resources
-    return _registered_resources.keys()
+def trunks_registered():
+    global _resources_by_trunk
+    return _resources_by_trunk.keys()
 
 
 def resources_registered():
-    global _registered_resources
-    return _registered_resources.values()
+    global _resources_by_trunk
+    return _resources_by_trunk.values()
 
 
-def resource_by_name(name) -> Resource:
+def resource_by_trunk(name) -> Resource:
     """
     Returns resource described by its name
     :param name: name of desired resource
     :return: iterable resource as list of strings
     """
-    global _registered_resources
-    resource = _registered_resources.get(name, None)
+    global _resources_by_trunk
+    resource = _resources_by_trunk.get(name, None)
     if resource is None:
         raise KeyError('Unknown resource {}'.format(name))
     return resource

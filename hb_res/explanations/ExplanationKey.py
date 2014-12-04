@@ -10,25 +10,25 @@ class ExplanationKey:
     """
     This class, as goes from its name, encapsulates the mysterious concept of 'explanation key'.
 
-    It can be used as hash to distinguish explanations primarily by its text.
-    >>> from hb_res.explanations import ExplanationKey
-    >>> e = ExplanationKey.for_text('*пропуск* и омега')
-    >>> e
-    <ExplanationKey "agdzuwAyO3Ura-Les_RVwG4gQ5-m-N_FlM6t6Q==">
-    >>> e2 = ExplanationKey.for_text('синоним к слову еда')
-    >>> e == e2
+    It can be used as hash to distinguish explanations primarily by its title and text.
+    >>> from hb_res.explanations import ExplanationKey, Explanation
+    >>> k = ExplanationKey.for_explanation(Explanation('альфа', '*пропуск* и омега'))
+    >>> k
+    <ExplanationKey "KFK1i7dgScOfKp8YvtlfSr7TrjXlEqJIuROobQ==">
+    >>> k2 = ExplanationKey.for_explanation(Explanation('обед', 'синоним к слову еда'))
+    >>> k == k2
     False
-    >>> e3 = ExplanationKey.for_text('синоним к слову еда')
-    >>> e2 == e3
+    >>> k3 = ExplanationKey.for_explanation(Explanation('обед', 'синоним к слову еда'))
+    >>> k2 == k3
     True
 
     ExplanationKey provides two methods for safe saving and restoring key in str: .encode() and .decode().
     str is also available for convenience.
-    >>> e.encode()
-    'agdzuwAyO3Ura-Les_RVwG4gQ5-m-N_FlM6t6Q=='
-    >>> str(e)
-    'agdzuwAyO3Ura-Les_RVwG4gQ5-m-N_FlM6t6Q=='
-    >>> e == ExplanationKey.decode(e.encode())
+    >>> k.encode()
+    'KFK1i7dgScOfKp8YvtlfSr7TrjXlEqJIuROobQ=='
+    >>> str(k)
+    'KFK1i7dgScOfKp8YvtlfSr7TrjXlEqJIuROobQ=='
+    >>> k == ExplanationKey.decode(k.encode())
     True
 
     It is hashable and equality comparable, thus dict/set-storable.
@@ -58,15 +58,17 @@ class ExplanationKey:
         self._digest = h
 
     @classmethod
-    def for_text(cls, s: str):
+    def for_explanation(cls, e):
         """
-        Constructs an ExplanationKey for explanation with given text.
+        Constructs an ExplanationKey for explanation e.
+        It will not look at its key, even if it is not Null.
 
-        :param s: The explanation text.
+        :param e: The explanation.
         :return: A properly initialized ExplanationKey.
         """
         h = _hasher()
-        h.update(s.encode())
+        for part in (e.title, '#', e.text):
+            h.update(part.encode('utf-8'))
         return ExplanationKey(h.digest())
 
     @classmethod
