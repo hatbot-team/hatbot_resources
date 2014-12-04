@@ -2,23 +2,17 @@ __author__ = 'moskupols'
 
 import unittest
 from preparation.resources import Resource
+from tests.trunk_aware import TrunkAwareTestCase, trunk_aware_run
 
 
-class DeterminacyTestCase(unittest.TestCase):
-    @classmethod
-    def add_test_for(cls, res_name: str):
-        def test_some_determinacy(self: unittest.TestCase):
-            resource_class = Resource.resource_by_name(res_name)
-            r1, r2 = resource_class(), resource_class()
-            for i, (e1, e2) in enumerate(zip(*map(Resource.applied_modifiers, (r1, r2)))):
-                self.assertEqual(e1, e2, '#{i}: {e1} and {e2} differ'.format(i=i, e1=e1, e2=e2))
+class DeterminacyTestCase(TrunkAwareTestCase):
+    def _test_trunk(self):
+        resource_class = Resource.resource_by_trunk(self.trunk)
 
-        setattr(cls, 'test_{}_determinacy'.format(res_name.lower()), test_some_determinacy)
-
-
-for name in Resource.names_registered():
-    DeterminacyTestCase.add_test_for(name)
+        r1, r2 = resource_class(), resource_class()
+        for i, (e1, e2) in enumerate(zip(*map(Resource.applied_modifiers, (r1, r2)))):
+            self.assertEqual(e1, e2)
 
 
 if __name__ == '__main__':
-    unittest.main()
+    trunk_aware_run(unittest.defaultTestLoader.loadTestsFromTestCase(DeterminacyTestCase))
