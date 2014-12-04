@@ -1,3 +1,4 @@
+pymorphy2-dicts
 pymorphy2>=0.8
 DAWG
 beautifulsoup4
