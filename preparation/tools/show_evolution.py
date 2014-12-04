@@ -25,7 +25,7 @@ def evolution(title=None, resource=None, *, modifiers: tuple=None, explanations=
     """
     from copy import copy
     from hb_res.explanations import Explanation
-    from preparation.resources.Resource import resource_by_name
+    from preparation.resources.Resource import resource_by_trunk
 
     def evolute(start, mods):
         cur = copy(start)
@@ -37,7 +37,7 @@ def evolution(title=None, resource=None, *, modifiers: tuple=None, explanations=
                 break
 
     if isinstance(resource, str):
-        resource = resource_by_name(resource)()
+        resource = resource_by_trunk(resource)()
 
     assert modifiers is not None or hasattr(resource, 'modifiers')
     if modifiers is None:
@@ -55,7 +55,7 @@ def evolution(title=None, resource=None, *, modifiers: tuple=None, explanations=
 
 
 def make_argparser():
-    from preparation.resources.Resource import names_registered
+    from preparation.resources.Resource import trunks_registered
 
     parser = argparse.ArgumentParser(description='View how some explanation(s) evolute ')
 
@@ -64,7 +64,6 @@ def make_argparser():
         'wide': '{mod!s:>60} -> {result!r}',
         'twoline': 'after {mod}:\n --> {result!r}'
     }
-    trunks = [name.replace('Resource', '') for name in names_registered()]
 
     fmt_args = parser.add_mutually_exclusive_group()
     fmt_args.add_argument('--format',
@@ -79,8 +78,8 @@ def make_argparser():
                               const=fmt,
                               help='Format as ' + repr(fmt))
 
-    parser.add_argument('resource',
-                        choices=trunks,
+    parser.add_argument('trunk',
+                        choices=trunks_registered(),
                         help='resource to use')
     parser.add_argument('title',
                         nargs='+',
@@ -118,7 +117,7 @@ def main(args=None):
         args = parser.parse_args(args)
     first_story = True
     for title in args.title:
-        stories = evolution(title=title, resource=args.resource + 'Resource')
+        stories = evolution(title=title, resource=args.trunk)
         for start_expl, story in stories:
             if first_story:
                 first_story = False
