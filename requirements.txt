@@ -3,4 +3,4 @@ pymorphy2>=0.8
 DAWG
 beautifulsoup4
 requests
-
+nose

@@ -1,55 +1,45 @@
+import functools
 import sys
-import unittest
-from preparation.resources.Resource import trunks_registered
+import nose
+from preparation.resources.Resource import trunks_registered, applied_modifiers, resource_by_trunk
 
 __author__ = 'moskupols'
 
-_trunk_filter = set(trunks_registered())
+_multiprocess_shared_ = True
+
+_all_trunks = set(trunks_registered())
+_trunk_filter = _all_trunks
 
 
-class TrunkAwareTestCaseMeta(type):
+def trunk_parametrized(trunks=set(trunks_registered())):
+    def decorate(tester):
+        @functools.wraps(tester)
+        def generate_tests(*args):
+            for t in _trunk_filter & trunks:
+                yield (tester, t) + args
+        return generate_tests
 
-    def __new__(mcs, name, bases, dct: dict):
-
-        trunks_supported = dct.setdefault('_trunks_supported', trunks_registered())
-
-        dct_items = list(dct.items())
-
-        def bind_tester(tester, trunk):
-            def binded(slf):
-                if trunk in _trunk_filter:
-                    slf.trunk = trunk
-                    tester(slf)
-                else:
-                    print('(skipped) ', end='')
-                    sys.stdout.flush()
-            return binded
-
-        for trunk in trunks_supported:
-            for mth_name, mth in dct_items:
-                if mth_name.startswith('_test_trunk'):
-
-                    tester = bind_tester(mth, trunk)
-                    dct.setdefault('test_' + trunk + mth_name[len('_test_trunk'):], tester)
-
-        return super(TrunkAwareTestCaseMeta, mcs).__new__(mcs, name, bases, dct)
+    return decorate
 
 
-class TrunkAwareTestCase(unittest.TestCase, metaclass=TrunkAwareTestCaseMeta):
-    def __init__(self, methodName='runTest'):
-        super().__init__(methodName)
-        self.trunk = ''
+@functools.lru_cache()
+def asset_cache(trunk):
+    return tuple(applied_modifiers(resource_by_trunk(trunk)()))
 
 
-def trunk_aware_main(tests, trunks=None):
+def main(args=None):
     global _trunk_filter
-    import sys
 
-    if isinstance(tests, TrunkAwareTestCaseMeta):
-        tests = unittest.defaultTestLoader.loadTestsFromTestCase(tests)
+    if args is None:
+        args = sys.argv
 
-    if trunks is None:
-        trunks = sys.argv[1:] if len(sys.argv) != 1 else trunks_registered()
-    _trunk_filter = set(trunks)
+    include = _all_trunks & set(args)
+    exclude_percented = set('%' + t for t in _all_trunks) & set(args)
+    exclude = set(e[1:] for e in exclude_percented)
 
-    sys.exit(0 if unittest.TextTestRunner(verbosity=2).run(tests).wasSuccessful() else 1)
+    if len(include) == 0:
+        include = _all_trunks
+    _trunk_filter = include - exclude
+
+    args = [arg for arg in args if arg not in include | exclude_percented]
+    nose.main(argv=args)
