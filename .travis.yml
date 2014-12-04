@@ -5,8 +5,10 @@ python:
 install: "pip3 install -r requirements.txt"
 
 env:
-    - TESTS=tests.test_determinacy
-    - TESTS=tests.test_actuality
+    - TRUNKS=Synonyms TESTS=tests/test_determinacy.py
+    - TRUNKS=Synonyms TESTS='-e test_determinacy'
+    - TRUNKS=Definitions TESTS=''
+    - TRUNKS='%Synonyms %Definitions' TESTS=''
 
-script: "python3 -OOm unittest $TESTS -v"
+script: "./run_nose.py $TRUNKS -v $TESTS"
 
