@@ -83,12 +83,12 @@ def read_articles():
 
     # read file and call title and meanings getters
     for part_path in _raw_data:
-        print('Parsing ' + part_path + '...')
+        # print('Parsing ' + part_path + '...')
         with open(part_path, encoding='utf8') as source:
             while True:
                 line = source.readline()
                 if len(line) == 0:
-                    print('so good!')
+                    # print('so good!')
                     break
                 line = line.strip(' \n')
                 if len(line) > 0:
@@ -101,13 +101,13 @@ def read_articles():
                     title = get_title(article)
                     for meaning in extract_meanings(article):
                         yield Explanation(title, meaning)
-    print('You had hard time putting it down, and you have finally finished.')
+    # print('You had hard time putting it down, and you have finally finished.')
 
 
 # def sanity_check():
 #     random.seed = 314
 #     try:
-#         dump = resource_by_name(DUMP_RESOURCE_NAME).entries()
+#         dump = resource_by_trunk(DUMP_RESOURCE_NAME).entries()
 #     except FileNotFoundError:
 #         print('Dump doesn\'t exist. It will be created')
 #         return True
@@ -119,7 +119,7 @@ def read_articles():
 #
 #     sanity_result = True
 #
-#     result = resource_by_name(RESULT_RESOURCE_NAME).entries()
+#     result = resource_by_trunk(RESULT_RESOURCE_NAME).entries()
 #     for explanation in result:
 #         key, text = explanation.key, explanation.text
 #         if key in dumped_definitions.keys() and dumped_definitions[key] != text:
@@ -132,10 +132,10 @@ def read_articles():
 
 
 # def dump_dict():
-#     dump = resource_by_name(DUMP_RESOURCE_NAME)
+#     dump = resource_by_trunk(DUMP_RESOURCE_NAME)
 #     dump.clear()
 #
-#     for explanation in resource_by_name(RESULT_RESOURCE_NAME).entries():
+#     for explanation in resource_by_trunk(RESULT_RESOURCE_NAME).entries():
 #         dump.add_entry(explanation)
 #
 #
