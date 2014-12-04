@@ -2,5 +2,5 @@ language: python
 python:
     - "3.3"
 install: "pip3 install -r requirements.txt"
-script: "python3 -OO build-assets.py all && git diff --exit-code"
+script: "python3 -OOm unittest"
 
