@@ -9,8 +9,7 @@ class DeterminacyTestCase(TrunkAwareTestCase):
         resource_class = Resource.resource_by_trunk(self.trunk)
 
         r1, r2 = resource_class(), resource_class()
-        for i, (e1, e2) in enumerate(zip(*map(Resource.applied_modifiers, (r1, r2)))):
-            self.assertEqual(e1, e2)
+        self.assertSequenceEqual(*(tuple(Resource.applied_modifiers(r) for r in (r1, r2))))
 
 
 if __name__ == '__main__':
