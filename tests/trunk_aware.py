@@ -1,12 +1,14 @@
 import functools
 import sys
 import nose
-from preparation.resources.Resource import trunks_registered
+from preparation.resources.Resource import trunks_registered, applied_modifiers, resource_by_trunk
 
 __author__ = 'moskupols'
 
+_multiprocess_shared_ = True
+
 _all_trunks = set(trunks_registered())
-_trunk_filter =_all_trunks
+_trunk_filter = _all_trunks
 
 
 def trunk_parametrized(trunks=set(trunks_registered())):
@@ -18,6 +20,11 @@ def trunk_parametrized(trunks=set(trunks_registered())):
         return generate_tests
 
     return decorate
+
+
+@functools.lru_cache()
+def asset_cache(trunk):
+    return tuple(applied_modifiers(resource_by_trunk(trunk)()))
 
 
 def main(args=None):
