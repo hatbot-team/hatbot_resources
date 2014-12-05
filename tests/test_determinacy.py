@@ -12,7 +12,7 @@ def test_determinacy(trunk):
     resource_class = Resource.resource_by_trunk(trunk)
 
     r1, r2 = asset_cache(trunk), tuple(Resource.applied_modifiers(resource_class()))
-    unittest.TestCase().assertSequenceEqual(r1, r2)
+    unittest.TestCase().assertTupleEqual(r1, r2)
 
 
 if __name__ == '__main__':
