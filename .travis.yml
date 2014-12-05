@@ -5,10 +5,18 @@ python:
 install: "pip3 install -r requirements.txt"
 
 env:
-    - TRUNKS=Synonyms TESTS=tests/test_determinacy.py
-    - TRUNKS=Synonyms TESTS='-e test_determinacy'
-    - TRUNKS=Definitions TESTS=''
-    - TRUNKS='%Synonyms %Definitions' TESTS=''
+    - TRUNKS=Synonyms TESTS=tests/test_actuality.py  # we must check it to have right of using --use-generated flag
+    - TRUNKS=Synonyms TESTS= tests/test_determinacy.py  # we must check it to see if actuality is not the cause
+    - TRUNKS=Synonyms TESTS='--use-generated -e test_(actuality|determinacy)'  # other synonyms
+
+    - TRUNKS=Definitions TESTS='tests/test_uniqueness.py'  # should fail
+    - TRUNKS=Definitions TESTS='-e test_uniqueness'
+
+    - TRUNKS='%Synonyms %Definitions' # all other, usually relatively fast
+
+matrix:
+    allow_failures:
+        - env: TRUNKS=Definitions TESTS='tests/test_uniqueness.py'
 
 script: "python3 run_nose.py $TRUNKS -v $TESTS"
 
