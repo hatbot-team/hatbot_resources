@@ -58,10 +58,16 @@ definitions_mods = [
 
     modifiers.re_replace(r' *см\. *\S+((, ?| и )\S+)*', ''),
 
-    modifiers.re_replace(r'N(\d+)/(\d+)', ''),
-    modifiers.re_replace(r'N\d+', ''),
+    modifiers.re_replace(r'N((\d+)/)*(\d)+', ''),
 
     modifiers.re_replace('<=', ''),
+    modifiers.re_replace('==', ''),
+    modifiers.re_replace('\|', ''),
+    modifiers.re_replace('Anti', 'противоположность'),
+    modifiers.re_replace(r'[A-Z][a-z]+', ''),
+
+    modifiers.re_replace(r'\s+', ' '),
+
 
     modifiers.str_contains_ban('Первая часть сложных'),
     modifiers.str_contains_ban('Образует'),
