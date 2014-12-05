@@ -62,8 +62,6 @@ def get_initial_forms(form: str, part_filter=None)->list:
 
 
 def _is_valid_noun(parsed: Parse)->bool:
-    # TODO: add surname and all, see http://opencorpora.org/dict.php?act=gram
-    # even Init!
     banned_tags = {'Abbr', 'Name', 'Surn', 'Patr', 'Geox',
                    'Orgn', 'Trad', 'Vpre', 'Erro', 'Init'}
     tag = parsed.tag
@@ -77,9 +75,11 @@ def _is_valid_noun(parsed: Parse)->bool:
 
 def get_valid_noun_initial_form(word: str, score_threshold=0.)->str:
     possible_forms = [p for p in morph.parse(word) if _is_valid_noun(p) and p.score >= score_threshold]
+    if ' ' in word:
+        return None
     if len(word) < 2:
         return None
     if len(possible_forms) == 0:
         return None
     else:
-        return possible_forms[0].normal_form
+        return max(possible_forms, key=lambda x: (x.score, x.word)).normal_form

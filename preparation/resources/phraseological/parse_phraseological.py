@@ -18,8 +18,11 @@ phraseological_mods = [
 
 @gen_resource('PhraseologicalResource', phraseological_mods)
 def read_data():
+    phrases = set()
     with open(_raw_data, 'r', encoding='utf-8') as source:
         for line in source:
-            for word in re.split('\W+', line):
-                if len(word) > 0:
-                    yield Explanation(word, line.strip('\n'))
+            phrases.add(line)
+    for line in sorted(phrases):
+        for word in sorted(set(re.split('\W+', line))):
+            if len(word) > 0:
+                yield Explanation(word, line.strip('\n'))

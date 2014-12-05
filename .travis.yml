@@ -1,0 +1,14 @@
+language: python
+python:
+    - "3.4"
+
+install: "pip3 install -r requirements.txt"
+
+env:
+    - TRUNKS=Synonyms TESTS=tests/test_determinacy.py
+    - TRUNKS=Synonyms TESTS='-e test_determinacy'
+    - TRUNKS=Definitions TESTS=''
+    - TRUNKS='%Synonyms %Definitions' TESTS=''
+
+script: "python3 run_nose.py $TRUNKS -v $TESTS"
+

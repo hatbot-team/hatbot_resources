@@ -31,11 +31,12 @@ from preparation.lang_utils.cognates import are_cognates
 from preparation.lang_utils.morphology import get_valid_noun_initial_form
 from preparation.lang_utils.morphology import is_remarkable
 from preparation.lang_utils.morphology import replace_noun_with_pronoun, replace_noun_with_question
+from preparation.lang_utils.frequency import get_average_frequency
 
 GAP_VALUE = '*пропуск*'
 
-ALPH_RE = '[А-Яа-я]'
-NOTALPH_RE = '[^А-Яа-я]'
+ALPH_RE = '[ЁёА-Яа-я]'
+NOTALPH_RE = '[^ЁёА-Яа-я]'
 WORD_RE = ALPH_RE + '+'
 
 
@@ -126,6 +127,45 @@ def strip(chars: str=None):
 
 
 @title_text_modifier_factory
+def str_replace(pattern: str, replacement: str, count: int=-1):
+    """
+    Constructs modifier that replaces e.`target_field` with e.`target_field`.replace(pattern, replacement, count)
+    (for given Explanation e).
+
+    `target_field` is a kwarg that defaults to 'text'.
+
+    :param pattern: pattern to replace
+    :param replacement: replacement
+    :param count: number of times to perform replacement
+    :return Modifier
+    """
+    return lambda s: s.replace(pattern, replacement, count)
+
+
+@title_text_modifier_factory
+def translate(*args):
+    """
+    Constructs a modifier that applies str.translate(e.`target_field`, str.maketrans(*args))
+    on given explanation e.
+
+    :return: Modifier
+    """
+    trans = str.maketrans(*args)
+    return lambda s: s.translate(trans)
+
+
+@title_text_modifier_factory
+def str_contains_ban(substr):
+    """
+    Constructs a modifier that bans explanations whose e.`target_field` contains substr as a substring.
+
+    :param substr: substring to seek
+    :return: Modifier
+    """
+    return lambda s: s if substr not in s else None
+
+
+@title_text_modifier_factory
 def re_replace(pattern, replacement: str, flags: int=0):
     """
     Constructs modifier that replaces e.`target_field`
@@ -162,7 +202,23 @@ def re_fullmatch_ban(pattern, flags: int=0):
     else:
         pattern = '^' + pattern + '$'
     pattern = re.compile(pattern, flags)
-    return lambda s: s if re.match(pattern, s, flags) is None else None
+    return lambda s: s if pattern.match(s) is None else None
+
+
+@title_text_modifier_factory
+def re_search_ban(pattern, flags: int=0):
+    """
+    Constructs modifier that bans explanations whose `target_field` contains a substring that
+    matches `pattern` regexp.
+
+    target_field is a kwarg that defaults to 'text'.
+
+    :param pattern: regexp
+    :param flags: re construction flags
+    :return Modifier
+    """
+    pattern = re.compile(pattern, flags)
+    return lambda s: s if pattern.search(s) is None else None
 
 
 @modifier_factory
@@ -177,27 +233,28 @@ def calculate_key():
         if e.key is not None:
             return e
         ret = copy.copy(e)
-        ret.key = ExplanationKey.for_text(ret.text)
+        ret.key = ExplanationKey.for_explanation(e)
         return ret
 
     return apply
 
 
 @modifier_factory
-def normalize_title(score_threshold: float=0.):
+def normalize_title(score_threshold: float=0., delete_if_not_normal: bool=False):
     """
     Constructs modifier that replaces explanation's title with normalized noun if possible.
     Otherwise bans the explanation (returns None).
-
     score_threshold is used as minimum confidence enough to consider a parse variant.
-
-    :param score_threshold:
+    :param delete_if_not_normal: specify true if you want to delete explanations if title is not in normal form
+    :param score_threshold: enough probability that word is noun
     :return: Modifier
     """
 
     def apply(e: Explanation):
         new_title = get_valid_noun_initial_form(e.title, score_threshold)
         if new_title is None:
+            return None
+        if delete_if_not_normal and new_title != e.title:
             return None
         ret = copy.copy(e)
         ret.title = new_title
@@ -206,7 +263,7 @@ def normalize_title(score_threshold: float=0.):
     return apply
 
 @modifier_factory
-def shadow_cognates(length_threshold: int=None, sep_re='\\s+'):
+def shadow_cognates(length_threshold: int=None, sep_re='\\s+', with_question=False):
     """
     Constructs modifier that splits explanation's text by sep_re regexp and replaces title's cognates with
     GAP_VALUE.
@@ -224,9 +281,13 @@ def shadow_cognates(length_threshold: int=None, sep_re='\\s+'):
     def apply(e: Explanation):
         ret = copy.copy(e)
         for w in sep_re.split(ret.text):
+            if with_question:
+                gap = '*' + replace_noun_with_question(w, default=GAP_VALUE.strip('*')) + '*'
+            else:
+                gap = GAP_VALUE
             if are_cognates(w, e.title, length_threshold=length_threshold):
                 ret.text = re.sub('(^|(?<={notalph})){badword}($|(?={notalph}))'.format(badword=w, notalph=NOTALPH_RE),
-                                  GAP_VALUE,
+                                  gap,
                                   ret.text)
         return ret
 
@@ -297,4 +358,13 @@ def shadow_title_with_question():
         ret.text = re.sub('(^|(?<={notalph})){badword}($|(?={notalph}))'.format(badword=ret.title, notalph=NOTALPH_RE),
                            '*' + replace_noun_with_question(ret.title, GAP_VALUE) + '*', ret.text)
         return ret
+    return apply
+
+@modifier_factory
+def calculate_prior_frequency_rate(sep_re):
+    def apply(e: Explanation):
+        frequents = list(map(get_average_frequency, re.split(sep_re, e.text)))
+        frequents.append(get_average_frequency(e.title))
+        e.prior_rating = sum(frequents) / len(frequents)
+        return e
     return apply
