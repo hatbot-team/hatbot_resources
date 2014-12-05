@@ -31,7 +31,7 @@ definitions_mods = [
     modifiers.normalize_title(),
 
     modifiers.strip(),
-    modifiers.re_replace('\\?', 'ё'),  # Fixes misOCR'ed '?' instead of 'ё'
+#    modifiers.re_replace('\\?', 'ё'),  # Fixes misOCR'ed '?' instead of 'ё'
     modifiers.shadow_cognates(4, '[\W,:;\(\)]+'),
     shadow_abbreviations(),
 
@@ -44,66 +44,12 @@ def read_articles():
     """
     Generator which yields raw Explanations based on definitions dict
     """
-
-    def get_title(article_lines):
-        """
-        Parse article text to get its title
-        :param article_lines: list of article's lines
-        :return:
-        """
-        name = article_lines[0].split()[0]
-        if '[' in name[0]:
-            name = name[:name.find('[')]
-        return name.strip(',:1234567890')
-
-    def extract_meanings(article_lines):
-        text = ' '.join(article_lines)
-        if '1.' in text:
-            # parse numbered definitions
-            borders = []
-            for i in range(1, 10):
-                current = chr(i + 48) + '.'
-                if current in text:
-                    borders.append(text.find(current))
-            for i in range(len(borders)):
-                next_occ = borders[i + 1] if i + 1 < len(borders) else len(text)
-                definition = text[borders[i] + 2:next_occ]
-                if '||' in definition:
-                    definition = definition[:definition.find('||')]
-                yield definition
-        else:
-            # cut first capital after first dot
-            for i in range(text.find('.'), len(text)):
-                if text[i].isupper():
-                    text = text[i:]
-                    break
-            if '||' in text:
-                text = text[:text.find('||')]
-            yield text
-
-    # read file and call title and meanings getters
-    for part_path in _raw_data:
-        print('Parsing ' + part_path + '...')
-        with open(part_path, encoding='utf8') as source:
-            while True:
-                line = source.readline()
-                if len(line) == 0:
-                    print('so good!')
-                    break
-                line = line.strip(' \n')
-                if len(line) > 0:
-                    article = [line]
-                    while True:
-                        line = source.readline().strip(' \n')
-                        if len(line) == 0:
-                            break
-                        article.append(line)
-                    title = get_title(article)
-                    for meaning in extract_meanings(article):
-                        yield Explanation(title, meaning)
-    print('You had hard time putting it down, and you have finally finished.')
-
-
+    with open(_raw_data, 'r', encoding='utf-8') as source:
+        while True:
+            title = source.readline().strip('\n')
+            if not title: break
+            desc = source.readline().strip('\n')
+            yield Explanation(title, desc)
 # def sanity_check():
 #     random.seed = 314
 #     try:
