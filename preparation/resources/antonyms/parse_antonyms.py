@@ -31,7 +31,7 @@ antonyms_mods = [
 
     modifiers.calculate_prior_frequency_rate('#'),
 
-    modifiers.re_replace('#', ', ', target_field='text'),
+    modifiers.str_replace('#', ', ', target_field='text'),
 
     add_antonyms_common_text(),
 

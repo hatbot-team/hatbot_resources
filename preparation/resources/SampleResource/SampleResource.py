@@ -6,7 +6,7 @@ from hb_res.explanations.Explanation import Explanation
 
 
 sample_modifiers = (
-    modifiers.re_replace('\\?', 'ё'),
+    modifiers.str_replace('?', 'ё'),
     modifiers.shadow_cognates(length_threshold=3, sep_re='(\\s|!|\\.)+'),
     modifiers.re_replace('\\.', ' '),
     modifiers.normalize_title(),
