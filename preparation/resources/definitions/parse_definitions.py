@@ -10,6 +10,7 @@ from hb_res.explanations import Explanation
 # noinspection PyProtectedMember
 from preparation.resources.definitions import _raw_data
 from preparation import modifiers
+from preparation.lang_utils.morphology import replace_noun_with_question
 
 
 # CHANGE_SAMPLE_PERCENTAGE = 5
@@ -18,22 +19,93 @@ from preparation import modifiers
 def shadow_abbreviations():
     def apply(e: Explanation):
         ret = copy.copy(e)
-        abbreviation = ' ' + e.title[0] + '\.'
-        ret.text = re.sub(abbreviation, modifiers.GAP_VALUE, ret.text, flags=re.IGNORECASE)
+        abbreviation_re = r'(?<= ){init}\.'.format(init=e.title[0])
+        gap = '*' + replace_noun_with_question(e.title, modifiers.GAP_VALUE.strip('*')) + '*'
+        ret.text = re.sub(abbreviation_re, gap, ret.text, flags=re.IGNORECASE)
         return ret
     return apply
 
 definitions_mods = [
-    modifiers.re_fullmatch_ban('.*\\.', target_field='title'),
-    modifiers.strip('1234567890-', target_field='title'),
-    modifiers.re_fullmatch_ban('(?!([А-Я]+))', target_field='title'),
-    modifiers.re_replace('Ё', 'Е', target_field='title'),
+
+    # there is even a board on trello for almost all of these modifiers: trello.com/b/IEP8jusD
+    modifiers.strip(' -3', target_field='title'),
+    modifiers.translate(
+        '?і3',  # the second symbol is not i but \xd1\x96 in utf8
+        'ЁЁЗ',
+        '",.+:124567890',
+        target_field='title'
+    ),
+    modifiers.str_replace('||', 'П', target_field='title'),
+    modifiers.re_search_ban(r'[^-ЁёА-Яа-я]', target_field='title'),
     modifiers.normalize_title(),
+    # Text OCR problems
+
+    # modifiers.translate(
+    #     '?~[]{}',
+    #     'ё-()()',
+    #     '|*o'  # the o is latin
+    # ),
+    # modifiers.re_replace(r'знай\.', 'знач.'),
+    # modifiers.str_replace('3а', 'За'),
+    # modifiers.re_replace(r'(?<={alph})\d+(-\d+)?'.format(alph=modifiers.ALPH_RE), ''),
+    # modifiers.re_replace(r'\s+(?=[,.!?])', ''),
+
+    # Text quality heuristics
+
+    modifiers.re_replace(r'\s+', ' '),
+
+    modifiers.re_replace(r' *[вк]о? *(\d|I)+( *, *(\d|I)+)*( *и *(\d|I)+)? *знач[,.]?', '', re.IGNORECASE),
+
+    modifiers.re_replace(r' *см\. *\S+((, ?| и )\S+)*', ''),
+
+    modifiers.re_replace(r'N((\d+)/)*(\d)+', ''),
+
+    modifiers.re_replace('<=', ''),
+    modifiers.re_replace('==', ''),
+    modifiers.re_replace('\|', ''),
+    modifiers.re_replace('Anti', 'противоположность'),
+    modifiers.re_replace(r'[A-Z][a-z]+', ''),
+
+    modifiers.re_replace(r'\s+', ' '),
+
+
+    modifiers.str_contains_ban('Первая часть сложных'),
+    modifiers.str_contains_ban('Образует'),
+    modifiers.re_replace('[Сс]окращение:( ([Ёёа-яА-Я;]-?|\(.*\))+)+(\.|, а также| -) *', ''),
+    modifiers.re_replace('^\([-Ёёа-яА-Я]+\)', ''),
+
+    modifiers.re_replace(r' -(?={alph}{6,}\b)'.replace('{alph}', modifiers.ALPH_RE), '-'),
+    modifiers.re_replace(r'[^*Ёёа-яА-Я]-{alph}+\)?\b'.replace('{alph}', modifiers.ALPH_RE), ''),
+
+    modifiers.re_replace(r'[,:] *(?=[,.:!?)])', ''),
+    modifiers.re_replace(r'[.!?] *(?=[.!?])', ''),
+    modifiers.re_replace(r' *\( *\)', ''),
+
+    modifiers.re_fullmatch_ban(r'^{notalph}*относящийся\s+к.*'.format(notalph=modifiers.NOTALPH_RE), re.IGNORECASE),
+
+    # https://trello.com/c/bPUl4kqT
+    modifiers.re_replace(r'(\bк-р|(?<=не)к-р)', 'котор'),
+    # https://trello.com/c/LpoSvAHt
+    modifiers.str_replace(r'-н.', '-нибудь'),
+    modifiers.str_replace(r'-н,', '-нибудь'),
+
+    modifiers.shadow_cognates(4, modifiers.NOTALPH_RE + '+', with_pronoun=True),
+
+    shadow_abbreviations(),
+
+
+
+    # some spaces again, just to make sure
+
+    modifiers.re_replace(r'\s+', ' '),
+    modifiers.re_replace(r'\s+(?=[,.!?])', ''),
 
     modifiers.strip(),
-    modifiers.re_replace('\\?', 'ё'),  # Fixes misOCR'ed '?' instead of 'ё'
-    modifiers.shadow_cognates(4, '[\W,:;\(\)]+'),
-    shadow_abbreviations(),
+    modifiers.re_replace('^[^*ЁёА-Яа-я]+', ''),
+
+    modifiers.re_fullmatch_ban(''),
+
+    modifiers.remove_to_much_gap_percentage(r'\W+', r'\*(\w+)[?]?\*', 0.5),
 
     modifiers.calculate_key()
 ]
@@ -44,103 +116,9 @@ def read_articles():
     """
     Generator which yields raw Explanations based on definitions dict
     """
-
-    def get_title(article_lines):
-        """
-        Parse article text to get its title
-        :param article_lines: list of article's lines
-        :return:
-        """
-        name = article_lines[0].split()[0]
-        if '[' in name[0]:
-            name = name[:name.find('[')]
-        return name.strip(',:1234567890')
-
-    def extract_meanings(article_lines):
-        text = ' '.join(article_lines)
-        if '1.' in text:
-            # parse numbered definitions
-            borders = []
-            for i in range(1, 10):
-                current = chr(i + 48) + '.'
-                if current in text:
-                    borders.append(text.find(current))
-            for i in range(len(borders)):
-                next_occ = borders[i + 1] if i + 1 < len(borders) else len(text)
-                definition = text[borders[i] + 2:next_occ]
-                if '||' in definition:
-                    definition = definition[:definition.find('||')]
-                yield definition
-        else:
-            # cut first capital after first dot
-            for i in range(text.find('.'), len(text)):
-                if text[i].isupper():
-                    text = text[i:]
-                    break
-            if '||' in text:
-                text = text[:text.find('||')]
-            yield text
-
-    # read file and call title and meanings getters
-    for part_path in _raw_data:
-        # print('Parsing ' + part_path + '...')
-        with open(part_path, encoding='utf8') as source:
-            while True:
-                line = source.readline()
-                if len(line) == 0:
-                    # print('so good!')
-                    break
-                line = line.strip(' \n')
-                if len(line) > 0:
-                    article = [line]
-                    while True:
-                        line = source.readline().strip(' \n')
-                        if len(line) == 0:
-                            break
-                        article.append(line)
-                    title = get_title(article)
-                    for meaning in extract_meanings(article):
-                        yield Explanation(title, meaning)
-    # print('You had hard time putting it down, and you have finally finished.')
-
-
-# def sanity_check():
-#     random.seed = 314
-#     try:
-#         dump = resource_by_trunk(DUMP_RESOURCE_NAME).entries()
-#     except FileNotFoundError:
-#         print('Dump doesn\'t exist. It will be created')
-#         return True
-#
-#     dumped_definitions = dict()
-#     for explanation in dump:
-#         if random.randint(0, 100) < CHANGE_SAMPLE_PERCENTAGE:
-#             dumped_definitions[explanation.key] = explanation.text
-#
-#     sanity_result = True
-#
-#     result = resource_by_trunk(RESULT_RESOURCE_NAME).entries()
-#     for explanation in result:
-#         key, text = explanation.key, explanation.text
-#         if key in dumped_definitions.keys() and dumped_definitions[key] != text:
-#             print('Id ' + key + ' changed: ')
-#             print('\tDump: ' + dumped_definitions[key])
-#             print('\tCurr: ' + text)
-#             sanity_result = False
-#
-#     return sanity_result
-
-
-# def dump_dict():
-#     dump = resource_by_trunk(DUMP_RESOURCE_NAME)
-#     dump.clear()
-#
-#     for explanation in resource_by_trunk(RESULT_RESOURCE_NAME).entries():
-#         dump.add_entry(explanation)
-#
-#
-# assemble_dict()
-# if sanity_check():
-#     dump_dict()
-# else:
-#     print('Something changed. Merge manually if needed')
+    with open(_raw_data, 'r', encoding='utf-8') as source:
+        while True:
+            title = source.readline().strip('\n')
+            if not title: break
+            desc = source.readline().strip('\n')
+            yield Explanation(title, desc)
