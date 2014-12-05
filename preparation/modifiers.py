@@ -263,7 +263,7 @@ def normalize_title(score_threshold: float=0., delete_if_not_normal: bool=False)
     return apply
 
 @modifier_factory
-def shadow_cognates(length_threshold: int=None, sep_re='\\s+'):
+def shadow_cognates(length_threshold: int=None, sep_re='\\s+', with_question=False):
     """
     Constructs modifier that splits explanation's text by sep_re regexp and replaces title's cognates with
     GAP_VALUE.
@@ -281,9 +281,13 @@ def shadow_cognates(length_threshold: int=None, sep_re='\\s+'):
     def apply(e: Explanation):
         ret = copy.copy(e)
         for w in sep_re.split(ret.text):
+            if with_question:
+                gap = '*' + replace_noun_with_question(w, default=GAP_VALUE.strip('*')) + '*'
+            else:
+                gap = GAP_VALUE
             if are_cognates(w, e.title, length_threshold=length_threshold):
                 ret.text = re.sub('(^|(?<={notalph})){badword}($|(?={notalph}))'.format(badword=w, notalph=NOTALPH_RE),
-                                  GAP_VALUE,
+                                  gap,
                                   ret.text)
         return ret
 
