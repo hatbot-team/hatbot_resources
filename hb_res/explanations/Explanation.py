@@ -65,3 +65,8 @@ class Explanation:
         :return: representation string
         """
         return self.encode()
+
+    def __eq__(self, other):
+        return isinstance(other, Explanation) and \
+            (self.title, self.text, self.key, self.prior_rating) == \
+            (other.title, other.text, other.key, other.prior_rating)
