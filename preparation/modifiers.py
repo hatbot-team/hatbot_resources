@@ -263,7 +263,7 @@ def normalize_title(score_threshold: float=0., delete_if_not_normal: bool=False)
     return apply
 
 @modifier_factory
-def shadow_cognates(length_threshold: int=None, sep_re='\\s+', with_question=False):
+def shadow_cognates(length_threshold: int=None, sep_re='\\s+', with_question=False, with_pronoun=False):
     """
     Constructs modifier that splits explanation's text by sep_re regexp and replaces title's cognates with
     GAP_VALUE.
@@ -271,8 +271,15 @@ def shadow_cognates(length_threshold: int=None, sep_re='\\s+', with_question=Fal
     If length_threshold is specified, the modifier treats any word having with title a common substring of
     at least length_threshold len as cognate.
 
-    :param length_threshold:
-    :param sep_re:
+    Gap can be replaced with default gap value, case quesion or pronoun.
+    Use with_question and with_pronoun flags to manipulate it
+
+    :param with_question: specify true if you want to replace gap with question.
+            If true is here, value of with_pronoun is ignored
+    :param with_pronoun: specify true if you want to replace gap with pronoun
+            If with_question is true, this param is ignored
+    :param length_threshold: length of the common substring to decide words are cognates
+    :param sep_re: separators reg expression
     :return: Modifier
     """
     if isinstance(sep_re, (str, bytes)):
@@ -283,6 +290,8 @@ def shadow_cognates(length_threshold: int=None, sep_re='\\s+', with_question=Fal
         for w in sep_re.split(ret.text):
             if with_question:
                 gap = '*' + replace_noun_with_question(w, default=GAP_VALUE.strip('*')) + '*'
+            elif with_pronoun:
+                gap = '*' + replace_noun_with_pronoun(w, default=GAP_VALUE.strip('*')) + '*'
             else:
                 gap = GAP_VALUE
             if are_cognates(w, e.title, length_threshold=length_threshold):
@@ -367,4 +376,15 @@ def calculate_prior_frequency_rate(sep_re):
         frequents.append(get_average_frequency(e.title))
         e.prior_rating = sum(frequents) / len(frequents)
         return e
+    return apply
+
+@modifier_factory
+def remove_to_much_gap_percentage(sep_re, re_gap, limit):
+    def apply(e: Explanation):
+        gaps_count = len(re.findall(re_gap, e.text))
+        words_count = len([w for w in re.split(sep_re, e.text) if len(w) > 0])
+        if gaps_count / words_count < limit:
+            return e
+        else:
+            return None
     return apply
