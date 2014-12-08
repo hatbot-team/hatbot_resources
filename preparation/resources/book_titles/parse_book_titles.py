@@ -26,6 +26,7 @@ def add_author():
 
 
 book_titles_mods = [
+    modifiers.str_contains_ban('сборник', target_field='title'),
     modifiers.check_contains_valid_parts(2, 0.1, '\W+'),
     modifiers.shadow_title_with_question(),
     modifiers.normalize_title(),
