@@ -7,6 +7,7 @@ from hb_res.explanations import Explanation
 from preparation import modifiers
 
 ngram_mods = [
+    modifiers.ensure_russian_title(),
     modifiers.re_replace('p', 'р'),
     modifiers.check_contains_valid_parts(2, 0.1, '\W+'),
     modifiers.shadow_cognates(5, '\W+', with_question=True),

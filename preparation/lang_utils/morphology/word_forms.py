@@ -1,29 +1,19 @@
+import re
 from pymorphy2.analyzer import Parse
+import functools
 
 from preparation.lang_utils.morphology import morph
+from preparation.blacklists import TITLE_BLACKLIST, TITLE_WHITELIST
 
 
 __author__ = 'moskupols'
 
-
-# def get_forms(initial):
-#     """
-#     Get all possible forms of a given word in initial form.
-#
-#     >>> get_forms('мама')
-#     ['мам', 'мама', 'мамам', 'мамами', 'мамах', 'маме', 'мамой', 'мамою', 'маму', 'мамы']
-#     >>> get_forms('мыла')
-#
-#     :param initial: a russian word in its initial form, in lower case
-#     :return: a list of forms if the word is found in the dictionary, None otherwise
-#     """
-#     parsed = morph.parse(initial)
-#     ans = []
-#     for p in parsed:
-#         ans.extend(p.inflect(...))
+_BANNED_TAGS = ('Abbr', 'Name', 'Surn', 'Patr', 'Geox',
+                'Orgn', 'Trad', 'Vpre', 'Erro', 'Init')
+TYPICAL_RUSSIAN_RE = re.compile(r'^([ёа-я]{2,}|[ёа-я]{2,}-[ёа-я]{2,})$')
 
 
-def get_initial_forms(form: str, part_filter=None)->list:
+def get_initial_forms(form: str, part_filter=None) -> list:
     """
     Gets all possible initial forms (there are several of them sometimes) of a given word.
     Optional argument part_filter allows to prune unnecessary ambiguity with part of speech.
@@ -61,24 +51,27 @@ def get_initial_forms(form: str, part_filter=None)->list:
     return ret
 
 
-def _is_valid_noun(parsed: Parse)->bool:
-    banned_tags = {'Abbr', 'Name', 'Surn', 'Patr', 'Geox',
-                   'Orgn', 'Trad', 'Vpre', 'Erro', 'Init'}
+def looks_like_valid_russian(word: str):
+    return word in TITLE_WHITELIST \
+           or (word not in TITLE_BLACKLIST and TYPICAL_RUSSIAN_RE.match(word))
+
+
+def _is_valid_noun_parse(parsed: Parse):
     tag = parsed.tag
     if tag.POS != 'NOUN':
         return False
-    for ban in banned_tags:
+    for ban in _BANNED_TAGS:
         if ban in str(tag):
             return False
     return True
 
 
-def get_valid_noun_initial_form(word: str, score_threshold=0.)->str:
-    possible_forms = [p for p in morph.parse(word) if _is_valid_noun(p) and p.score >= score_threshold]
-    if ' ' in word:
+@functools.lru_cache(None)
+def get_valid_noun_initial_form(word: str, score_threshold=0.) -> str:
+    if not looks_like_valid_russian(word.lower()):
         return None
-    if len(word) < 2:
-        return None
+    possible_forms = [p for p in morph.parse(word) if looks_like_valid_russian(p.normal_form)]
+    possible_forms = [p for p in possible_forms if _is_valid_noun_parse(p) and p.score >= score_threshold]
     if len(possible_forms) == 0:
         return None
     else:

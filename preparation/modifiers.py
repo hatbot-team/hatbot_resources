@@ -32,6 +32,7 @@ from preparation.lang_utils.morphology import get_valid_noun_initial_form
 from preparation.lang_utils.morphology import is_remarkable
 from preparation.lang_utils.morphology import replace_noun_with_pronoun, replace_noun_with_question
 from preparation.lang_utils.frequency import get_average_frequency
+from preparation.lang_utils.morphology.word_forms import looks_like_valid_russian
 
 GAP_VALUE = '*пропуск*'
 
@@ -261,6 +262,12 @@ def normalize_title(score_threshold: float=0., delete_if_not_normal: bool=False)
         return ret
 
     return apply
+
+
+@modifier_factory
+def ensure_russian_title():
+    return lambda e: e if looks_like_valid_russian(e.title) else None
+
 
 @modifier_factory
 def shadow_cognates(length_threshold: int=None, sep_re='\\s+', with_question=False, with_pronoun=False):
