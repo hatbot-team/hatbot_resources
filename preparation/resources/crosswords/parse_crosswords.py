@@ -7,7 +7,7 @@ from hb_res.explanations import Explanation
 from preparation import modifiers
 
 crosswords_mods = [
-    modifiers.strip('.'),
+    modifiers.strip('.', target_field='title'),
     modifiers.normalize_title(),
     modifiers.calculate_key()
 ]

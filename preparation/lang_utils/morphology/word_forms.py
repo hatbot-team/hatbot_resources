@@ -51,6 +51,7 @@ def get_initial_forms(form: str, part_filter=None) -> list:
     return ret
 
 
+@functools.lru_cache(None)
 def looks_like_valid_russian(word: str):
     return word in TITLE_WHITELIST \
            or (word not in TITLE_BLACKLIST and TYPICAL_RUSSIAN_RE.match(word))
@@ -66,13 +67,15 @@ def _is_valid_noun_parse(parsed: Parse):
     return True
 
 
-@functools.lru_cache(None)
 def get_valid_noun_initial_form(word: str, score_threshold=0.) -> str:
-    if not looks_like_valid_russian(word.lower()):
+    word = word.lower()
+    if not looks_like_valid_russian(word):
         return None
     possible_forms = [p for p in morph.parse(word) if looks_like_valid_russian(p.normal_form)]
     possible_forms = [p for p in possible_forms if _is_valid_noun_parse(p) and p.score >= score_threshold]
     if len(possible_forms) == 0:
         return None
+    elif word in (x.normal_form for x in possible_forms):
+        return word
     else:
         return max(possible_forms, key=lambda x: (x.score, x.word)).normal_form

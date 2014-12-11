@@ -11,7 +11,11 @@ __all__ = [
 ]
 
 import pymorphy2
+import functools
+
 morph = pymorphy2.MorphAnalyzer()
+morph.parse = functools.lru_cache(None)(morph.parse)
+
 
 from .word_forms import get_valid_noun_initial_form, get_initial_forms, TYPICAL_RUSSIAN_RE, looks_like_valid_russian
 from .parts_of_speech import get_parts_of_speech
