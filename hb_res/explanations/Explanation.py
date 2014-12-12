@@ -73,3 +73,7 @@ class Explanation:
 
     def __hash__(self):
         return hash((self.title, self.text, self.key, self.prior_rating))
+
+    def __lt__(self, other):
+        return (self.title, self.text, self.key, self.prior_rating) < \
+               (other.title, other.text, other.key, other.prior_rating)
