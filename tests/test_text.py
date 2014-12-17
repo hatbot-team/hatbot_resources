@@ -26,8 +26,8 @@ def test_text_ends_with_non_ws(trunk):
 def test_spaces_after_punct(trunk):
     case = unittest.TestCase()
     for e in asset_cache(trunk):
-        case.assertNotRegex(e.text, r'[!?:;]\w')
-        case.assertNotRegex(e.text, r',(?! )')
+        case.assertNotRegex(e.text, r'[!?]\w')
+        case.assertNotRegex(e.text, r'[,:;]([^ ]|$)')
 
         # had to circumvent 'Лента.ру' exception
         case.assertNotRegex(e.text, r'(?<![Лл]ен)[ёа-я]{2}[.][ЁА-Яёа-я]')
