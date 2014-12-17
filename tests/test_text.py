@@ -38,6 +38,11 @@ def test_spaces_near_punct(trunk):
         # had to circumvent 'Лента.ру' exception
         case.assertNotRegex(e.text, r'(?<![Лл]ен)[ёа-я]{2}[.][ЁА-Яёа-я]', repr(e))
 
+        # quotations are somewhat special
+        case.assertNotRegex(e.text, '[^ЁёА-Яа-я.!?*0-9I][”"][^ЁёА-Яа-я*.!?:;0-9I]', repr(e))
+        case.assertNotRegex(e.text, '[^ \t]«', repr(e))
+        case.assertNotRegex(e.text, '»[^ \t.,):]', repr(e))
+
 
 @trunk_parametrized()
 def test_single_spacing(trunk):
