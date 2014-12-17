@@ -23,28 +23,34 @@ def test_text_ends_with_non_ws(trunk):
 
 
 @trunk_parametrized()
-def test_spaces_after_punct(trunk):
+def test_spaces_near_punct(trunk):
     case = unittest.TestCase()
     for e in asset_cache(trunk):
-        case.assertNotRegex(e.text, r'[!?]\w')
-        case.assertNotRegex(e.text, r'[,:;]([^ ]|$)')
+        # there should be no space before punctuation
+        case.assertNotRegex(e.text, r' [.!?,:;)]', e)
 
+        # should not be after some
+        case.assertFalse('( ' in e.text, e)
+
+        # and should after some
+        case.assertNotRegex(e.text, r'[!?]\w', e)
+        case.assertNotRegex(e.text, r'[,:;]([^ ]|$)', e)
         # had to circumvent 'Лента.ру' exception
-        case.assertNotRegex(e.text, r'(?<![Лл]ен)[ёа-я]{2}[.][ЁА-Яёа-я]')
+        case.assertNotRegex(e.text, r'(?<![Лл]ен)[ёа-я]{2}[.][ЁА-Яёа-я]', e)
 
 
 @trunk_parametrized()
 def test_single_spacing(trunk):
     case = unittest.TestCase()
     for e in asset_cache(trunk):
-        case.assertFalse('  ' in e.text)
+        case.assertFalse('  ' in e.text, e)
 
 
 @trunk_parametrized()
 def test_no_ws_but_space(trunk):
     case = unittest.TestCase()
     for e in asset_cache(trunk):
-        case.assertNotRegex(e.text, r'(?! )\s')
+        case.assertNotRegex(e.text, r'(?! )\s', e)
 
 
 if __name__ == '__main__':
