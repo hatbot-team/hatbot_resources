@@ -27,7 +27,8 @@ def test_spaces_near_punct(trunk):
     case = unittest.TestCase()
     for e in asset_cache(trunk):
         # there should be no space before punctuation
-        case.assertNotRegex(e.text, r' [.!?,:;)]', repr(e))
+        case.assertNotRegex(e.text, r' [!?,:;)]', repr(e))
+        case.assertNotRegex(e.text, r' [.](?![.]{2})', repr(e))
 
         # should not be after some
         case.assertFalse('( ' in e.text, repr(e))
