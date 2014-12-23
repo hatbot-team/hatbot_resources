@@ -60,4 +60,4 @@ for word in open(path.join(DIR_PATH, GOOD_WORDS_FILE)):
     if answer.lower() == 'n':
         break
 
-print('{} words filtered so for. Bye'.format(selected_in_session))
+print('{} words filtered so far. Bye'.format(selected_in_session))
