@@ -2,7 +2,9 @@ __author__ = 'skird'
 
 from os import path
 import readline
-from hb_res.explanation_source import sources_registry, ExplanationSource
+
+from hb_res.explanation_source import sources_registry
+
 
 SEPARATOR = '\t'
 DIR_PATH = path.dirname(path.abspath(__file__))
@@ -37,8 +39,8 @@ for word in open(path.join(DIR_PATH, GOOD_WORDS_FILE)):
         cnt += 1
 
         answer = ''
-        while answer.lower() != 'y' and answer.lower() != 'n' and answer.lower() != 'c':
-            answer = input('Берем? Исправляем? [Y/N/C] ')
+        while answer != 'y' and answer != 'n' and answer != 'c':
+            answer = input('Берем? Исправляем? [Y/N/C] ').lower()
 
         if answer == 'y':
             print(e.encode(), file=asset_desc)
@@ -55,9 +57,9 @@ for word in open(path.join(DIR_PATH, GOOD_WORDS_FILE)):
 
     selected_in_session += 1
     answer = ''
-    while answer.lower() != 'y' and answer.lower() != 'n':
-        answer = input('Еще? [Y/N] ')
-    if answer.lower() == 'n':
+    while answer != 'y' and answer != 'n':
+        answer = input('Еще? [Y/N] ').lower()
+    if answer == 'n':
         break
 
 print('{} words filtered so far. Bye'.format(selected_in_session))
