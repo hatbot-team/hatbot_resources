@@ -35,7 +35,8 @@ def test_spaces_near_punct(trunk):
 
         # and should after some
         case.assertNotRegex(e.text, r'[!?]\w', repr(e))
-        case.assertNotRegex(e.text, r'[,:;]([^ ]|$)', repr(e))
+        case.assertNotRegex(e.text, r';[^ ]', repr(e))
+        case.assertNotRegex(e.text, r'[,:][^ 0-9]', repr(e))
         # had to circumvent 'Лента.ру' exception
         case.assertNotRegex(e.text, r'(?<![Лл]ен)[ёа-я]{2}[.][ЁА-Яёа-я]', repr(e))
 
