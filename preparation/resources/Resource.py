@@ -34,11 +34,14 @@ def applied_modifiers(res_obj):
 def generate_asset(res_obj, out_storage):
     out_storage.clear()
     count = 0
+    generated = set()
     for explanation in applied_modifiers(res_obj):
         if count % 100 == 0:
             print(count, end='\r')
         count += 1
-        out_storage.add_entry(explanation)
+        if explanation not in generated:
+            generated.add(explanation)
+            out_storage.add_entry(explanation)
     return count
 
 

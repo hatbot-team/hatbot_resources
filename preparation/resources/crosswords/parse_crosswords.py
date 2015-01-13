@@ -12,6 +12,9 @@ crosswords_mods = [
     modifiers.strip(),
     modifiers.normalize_title(),
     modifiers.re_replace(r'\s+', ' '),
+    modifiers.re_replace(r'([,:])(?=[^ ])', '\1 '),
+    modifiers.str_replace(r' :', ':'),
+    modifiers.str_replace(r' ,', ','),
     modifiers.shadow_cognates(8, '\W+', with_pronoun=True),
     modifiers.remove_to_much_gap_percentage(r'\W+', r'\*(\w+)[?]?\*', 0.5),
     modifiers.calculate_key()
