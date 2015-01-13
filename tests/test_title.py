@@ -7,6 +7,7 @@ from preparation.blacklists import TITLE_BLACKLIST
 
 __author__ = 'moskupols'
 
+
 @trunk_parametrized()
 def test_title_well_formed(trunk):
     case = unittest.TestCase()
