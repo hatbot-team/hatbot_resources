@@ -21,27 +21,26 @@ def build_deps(res_obj):
 
 
 def applied_modifiers(res_obj):
+    generated = set()
     for explanation in res_obj:
         r = copy(explanation)
         for functor in res_obj.modifiers:
             if r is None:
                 break
             r = functor(r)
-        if r is not None:
+        if r is not None and r not in generated:
+            generated.add(r)
             yield r
 
 
 def generate_asset(res_obj, out_storage):
     out_storage.clear()
     count = 0
-    generated = set()
     for explanation in applied_modifiers(res_obj):
         if count % 100 == 0:
             print(count, end='\r')
         count += 1
-        if explanation not in generated:
-            generated.add(explanation)
-            out_storage.add_entry(explanation)
+        out_storage.add_entry(explanation)
     return count
 
 
