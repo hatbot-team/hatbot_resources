@@ -49,6 +49,7 @@ definitions_mods = [
     # modifiers.str_replace('3а', 'За'),
     # modifiers.re_replace(r'(?<={alph})\d+(-\d+)?'.format(alph=modifiers.ALPH_RE), ''),
     modifiers.str_replace(r' :', ':'),
+    modifiers.re_replace(r'([,:])(?=[^ 0-9])', r'\1 '),
 
     # Text quality heuristics
 
@@ -64,7 +65,7 @@ definitions_mods = [
     modifiers.re_replace('==', ''),
     modifiers.re_replace('\|', ''),
     modifiers.re_replace('Anti', 'противоположность'),
-    modifiers.re_replace(r'[A-Z][a-z]+', ''),
+    modifiers.re_replace(r'[A-Z]*[a-z]+-?', ''),
 
     modifiers.re_replace(r'\s+', ' '),
 
