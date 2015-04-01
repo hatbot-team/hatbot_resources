@@ -54,24 +54,25 @@ def evolution(title=None, resource=None, *, modifiers: tuple=None, explanations=
             yield (start_expl, generate_story(start_expl, modifiers))
 
 
+FORMATS = {
+    'oneline': '{mod!s:>50} -> ({result.title!r} := {result.text!r})',
+    'wide': '{mod!s:>60} -> {result!r}',
+    'twoline': 'after {mod}:\n --> {result!r}'
+}
+
+
 def make_argparser():
     from preparation.resources.Resource import trunks_registered
 
     parser = argparse.ArgumentParser(description='View how some explanation(s) evolute ')
 
-    formats = {
-        'oneline': '{mod!s:>50} -> ({result.title!r} := {result.text!r})',
-        'wide': '{mod!s:>60} -> {result!r}',
-        'twoline': 'after {mod}:\n --> {result!r}'
-    }
-
     fmt_args = parser.add_mutually_exclusive_group()
     fmt_args.add_argument('--format',
-                          default=formats['twoline'],
+                          default=FORMATS['twoline'],
                           help='''Self argument for str.format call while printing evolution.
                           If omitted, same as --twoline.
                           ''')
-    for name, fmt in formats.items():
+    for name, fmt in FORMATS.items():
         fmt_args.add_argument('--' + name,
                               dest='format',
                               action='store_const',
@@ -89,7 +90,7 @@ def make_argparser():
     return parser
 
 
-def main(args=None):
+def print_evolution(format=FORMATS['twoline'], **kwargs):
     class SafeFormatWrapper:
         def __init__(self, towrap):
             self.wrapped = towrap
@@ -112,20 +113,19 @@ def main(args=None):
         def __getattr__(self, item):
             return SafeFormatWrapper(getattr(self.wrapped, item, '({} n/a)'.format(item)))
 
+    stories = evolution(**kwargs)
+    for start_expl, story in stories:
+        for mod, result in story:
+            print(format.format(mod=SafeFormatWrapper(mod), result=SafeFormatWrapper(result)))
+        print()
+
+
+def main(args=None):
     if not isinstance(args, argparse.Namespace):
         parser = make_argparser()
         args = parser.parse_args(args)
-    first_story = True
     for title in args.title:
-        stories = evolution(title=title, resource=args.trunk)
-        for start_expl, story in stories:
-            if first_story:
-                first_story = False
-            else:
-                print()
-
-            for mod, result in story:
-                print(args.format.format(mod=SafeFormatWrapper(mod), result=SafeFormatWrapper(result)))
+        print_evolution(format=args.format, title=title, resource=args.trunk)
 
 
 if __name__ == '__main__':
