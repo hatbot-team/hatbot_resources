@@ -24,6 +24,3 @@ with FileExplanationStorage(INPUT_PATH) as inp:
         outp.clear()
         for e in applied_modifiers(PatchedResource()):
             outp.add_entry(e)
-
-    from preparation.tools.show_evolution import print_evolution
-    print_evolution(resource=PatchedResource(), title='анекдот')
