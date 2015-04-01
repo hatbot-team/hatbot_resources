@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages, findall  # Always prefer setuptools over distutils
+from version import VERSION
 
 setup(
     name='hatbot_resources',
@@ -6,7 +7,7 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # http://packaging.python.org/en/latest/tutorial.html#version
-    # version='1.2.0',
+    version=VERSION,
 
     description='A sample Python project',
     # long_description=long_description,
