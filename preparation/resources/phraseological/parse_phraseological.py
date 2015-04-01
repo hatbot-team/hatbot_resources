@@ -13,8 +13,11 @@ phraseological_mods = [
     modifiers.normalize_title(),
     modifiers.shadow_cognates(5, '\W+'),
     modifiers.delete_multiple_gaps(0),
+    modifiers.re_replace(' ([,!?])', r'\1'),
+    modifiers.strip(),
     modifiers.calculate_key()
 ]
+
 
 @gen_resource('PhraseologicalResource', phraseological_mods)
 def read_data():

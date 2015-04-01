@@ -21,13 +21,15 @@ def build_deps(res_obj):
 
 
 def applied_modifiers(res_obj):
+    generated = set()
     for explanation in res_obj:
         r = copy(explanation)
         for functor in res_obj.modifiers:
             if r is None:
                 break
             r = functor(r)
-        if r is not None:
+        if r is not None and r not in generated:
+            generated.add(r)
             yield r
 
 

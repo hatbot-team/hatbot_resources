@@ -8,13 +8,18 @@ env:
     - TRUNKS=Synonyms TESTS='-e test_determinacy'
     - TRUNKS=Synonyms TESTS=tests/test_determinacy.py
 
-    - TRUNKS=Definitions TESTS='-e test_determinacy'
+    - TRUNKS=Definitions TESTS='-e test_(determinacy|spaces_near_punct)'
+    - TRUNKS=Definitions TESTS=tests/test_text.py:test_spaces_near_punct
     - TRUNKS=Definitions TESTS=tests/test_determinacy.py
 
     - TRUNKS=Ngram TESTS='-e test_determinacy'
     - TRUNKS=Ngram TESTS=tests/test_determinacy.py
 
     - TRUNKS='%Synonyms %Definitions %Ngram' # all other, usually relatively fast
+
+matrix:
+    allow_failures:
+        - env: TRUNKS=Definitions TESTS=tests/test_text.py:test_spaces_near_punct
 
 script: "python3 run_nose.py $TRUNKS -v $TESTS"
 

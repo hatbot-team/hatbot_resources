@@ -19,6 +19,8 @@ def add_common_prefix():
 @modifiers.modifier_factory
 def add_author():
     def apply(e: Explanation):
+        if not e.author or e.author.isspace():
+            return e
         ret = copy.copy(e)
         ret.text = ret.text + " Автор: " + e.author
         return ret
