@@ -60,5 +60,12 @@ def test_no_ws_but_space(trunk):
         case.assertNotRegex(e.text, r'(?! )\s', repr(e))
 
 
+@trunk_parametrized()
+def test_printable(trunk):
+    case = unittest.TestCase()
+    for e in asset_cache(trunk):
+        case.assertTrue(e.text.isprintable(), repr(e))
+
+
 if __name__ == '__main__':
     nose.main()
