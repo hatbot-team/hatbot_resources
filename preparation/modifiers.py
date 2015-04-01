@@ -63,7 +63,7 @@ class Modifier:
         raise NotImplementedError
 
 
-def modifier_factory(factory, name=None)->Modifier:
+def modifier_factory(factory, name=None) -> Modifier:
     """
     Wraps modifier factory's products in Modifier subclass, remembering parameters the modifier was parametrized.
 
@@ -85,7 +85,7 @@ def modifier_factory(factory, name=None)->Modifier:
     return DecoratedModifier
 
 
-def title_text_modifier_factory(factory, name=None)->Modifier:
+def title_text_modifier_factory(factory, name=None) -> Modifier:
     """
     Adds target_field kwarg to modifier factory, allowing modification either 'title' or 'text' fields.
 
@@ -196,7 +196,7 @@ def re_fullmatch_ban(pattern, flags: int=0):
     :param flags: re construction flags
     :return Modifier
     """
-    #we emulate re.fullmatch behaviour by adding '^' and '$' to the pattern
+    # we emulate re.fullmatch behaviour by adding '^' and '$' to the pattern
     assert isinstance(pattern, (str, bytes))
     if isinstance(pattern, bytes):
         pattern = b'^' + pattern + b'$'
@@ -320,7 +320,9 @@ def choose_normal_words_in_explanation(separator: str):
             return None
         ret.text = separator.join(new_list)
         return ret
+
     return apply
+
 
 @modifier_factory
 def delete_cognates(length_threshold: int, separator: str):
@@ -332,6 +334,7 @@ def delete_cognates(length_threshold: int, separator: str):
             return None
         ret.text = separator.join(new_list)
         return ret
+
     return apply
 
 
@@ -346,7 +349,9 @@ def check_contains_valid_parts(required, enough_score, sep_re):
             return e
         else:
             return None
+
     return apply
+
 
 @modifier_factory
 def delete_multiple_gaps(limit: int):
@@ -356,25 +361,31 @@ def delete_multiple_gaps(limit: int):
             return None
         else:
             return e
+
     return apply
+
 
 @modifier_factory
 def shadow_title_with_pronoun():
     def apply(e: Explanation):
         ret = copy.copy(e)
         ret.text = re.sub('(^|(?<={notalph})){badword}($|(?={notalph}))'.format(badword=ret.title, notalph=NOTALPH_RE),
-                           '*' + replace_noun_with_pronoun(ret.title, GAP_VALUE) + '*', ret.text)
+                          '*' + replace_noun_with_pronoun(ret.title, GAP_VALUE) + '*', ret.text)
         return ret
+
     return apply
+
 
 @modifier_factory
 def shadow_title_with_question():
     def apply(e: Explanation):
         ret = copy.copy(e)
         ret.text = re.sub('(^|(?<={notalph})){badword}($|(?={notalph}))'.format(badword=ret.title, notalph=NOTALPH_RE),
-                           '*' + replace_noun_with_question(ret.title, GAP_VALUE) + '*', ret.text)
+                          '*' + replace_noun_with_question(ret.title, GAP_VALUE) + '*', ret.text)
         return ret
+
     return apply
+
 
 @modifier_factory
 def calculate_prior_frequency_rate(sep_re):
@@ -383,7 +394,9 @@ def calculate_prior_frequency_rate(sep_re):
         frequents.append(get_average_frequency(e.title))
         e.prior_rating = sum(frequents) / len(frequents)
         return e
+
     return apply
+
 
 @modifier_factory
 def remove_to_much_gap_percentage(sep_re, re_gap, limit):
@@ -394,4 +407,5 @@ def remove_to_much_gap_percentage(sep_re, re_gap, limit):
             return e
         else:
             return None
+
     return apply
