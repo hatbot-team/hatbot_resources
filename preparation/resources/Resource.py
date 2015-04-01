@@ -116,7 +116,7 @@ def gen_resource(res_name, modifiers, dependencies=()):
         def __iter__(self):
             return iter(func())
 
-        ResourceMeta(res_name, tuple(), {'__iter__': __iter__, '__init__': __init__})
+        return ResourceMeta(res_name, tuple(), {'__iter__': __iter__, '__init__': __init__})
 
     return decorator
 
