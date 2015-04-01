@@ -12,7 +12,7 @@ crosswords_mods = [
     modifiers.strip(),
     modifiers.normalize_title(),
     modifiers.re_replace(r'\s+', ' '),
-    modifiers.re_replace(r'([,:])(?=[^ ])', '\1 '),
+    modifiers.re_replace(r'([,:])(?=[^ ])', r'\1 '),
     modifiers.str_replace(r' :', ':'),
     modifiers.str_replace(r' ,', ','),
     modifiers.shadow_cognates(8, '\W+', with_pronoun=True),

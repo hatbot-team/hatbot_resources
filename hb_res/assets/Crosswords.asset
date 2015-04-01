@@ -17,7 +17,7 @@
 каторга	Невыносимо тяжелый труд, мучительная жизнь	Hs04u7DBjwjmzwOQYvyjOYs1IQFzQ91E05VbRQ==	None
 каторга	Самые тяжелые принудительные работы для заключенных в тюрьмах или других местах с особо суровым режимом	py3XsebUJ5Tanmrv9lcVJXdHUNqRZorGvWQXXA==	None
 невежда	Малообразованный человек	1M5iUrcxflyA_rdn3wNbhtAEgYOVCXCst-w2NA==	None
-лекарка	То же что знахарка	2ig4IUSHO6xiv0K0L7oLvoeFcwkhMPI0Mw_r5g==	None
+лекарка	То же, что знахарка	yg291tRWFndGWk7Ngdd0qcflGwkubMLNqiXgHQ==	None
 негатив	Видимое изображение на фотопленке, в котором распределение света и тени обратно действительному	qeZKmjn9Jchphgoe_9Kh3HNIv1GnNe0WInu-xA==	None
 негатив	Пленка с фотографическим изображением	MK3QR76n4e9JtYPaPKByP8673qS8ZuZEQuDmEA==	None
 негатив	Фотографическое изображение	9YRJ7PCqP5lr4iuOQ-baB5auqo8NUln9dGKxNw==	None
@@ -52,7 +52,7 @@
 пас	Передача мяча партнеру	myx1esUQ7vL_QhV6InSm2CgEjKrFMtPSFMMK4w==	None
 пас	Передача мяча, шайбы кому-либо из игроков своей команды в спортивной игре	977ZNFbQ0Sz84wp99TkkZJSH-CiOBEAjBh9oUQ==	None
 пас	Передача шайбы партнеру	MQOoUoG9WqYEPl_M1BJEhCf_RafL8OHJOT1FwQ==	None
-хала	То же что плетенка	i8kC03RqRZuRe9AYJUFUs7gjwPrA5zPt2GBPEg==	None
+хала	То же, что плетенка	Ullz_k5ttnsWLil96-1feRgd4tByYXIdMMWQyQ==	None
 хан	Титул монарха у некоторых монгольских народов	YMwYBgQowE6I1R4bIjtum3brGqf1cp0kRphLTQ==	None
 лот	Партия товара	hR34ua5a50HVK_VQduc5ZZ2rh-3YVRJ2I2DA1Q==	None
 лот	Прибор для измерения глубины воды с судна	nNxNG6aHSbQCMav6srQkfunW5XWYZSUWH6Di5Q==	None
@@ -179,7 +179,6 @@
 киоскёр	Продавец в палатке, павильоне	JKX1muv-ZJZzPLdj7Gj7cT206iuIDY_gRbRIOQ==	None
 киоскёр	Продавец, работающий в киоске	v5n7NXzBnThNgJ0-qhugFQ3FqNY_dPFVh4Lr5g==	None
 киоскёр	Продавец, работающий в палатке	16GWz1JbcFbLG1HGn_vth1CpwBK2PftSj5mUCA==	None
-киоскёр	Продавец работающий в киоске	yWLkCXRo51n7SAsh_QWkNjePH3MgVddeqfkoGQ==	None
 ажиотаж	Искусственно вызванное возбуждение, волнение	Us0s54OIllHUxA2XPyPVd2nXMPn9tHocfPYZEw==	None
 ажиотаж	Искусственное, спекулятивное повышение или понижение курса биржевых бумаг	tjiw_0PqFrV1U5g-yT4iBKJZVVHsqdlNAxj4cw==	None
 ажиотаж	Сильное возбуждение, волнение	hiYOgK1SsYdcPO_r17KriHIUW0gIgXHoslg1PQ==	None
@@ -189,10 +188,8 @@
 струна	Источник звуковых колебаний у ряда музыкальных инструментов	ivo1zotwnKudS1br9lCSCrvt4IuN3sieQDFWcQ==	None
 струна	Натягиваемая на что–нибудь тугая прочная нить	1ycJAEBpSRtUx1eEM1_Mr0t0bN2EhS__TrU9Hw==	None
 струна	Тонкая, упругая натянутая нить	40qESpyC6hlG0LtiOyrAVV5nqyjiRW0cF9wmWA==	None
-струна	Тонкая упругая натянутая нить	yQpbEvmj478kULyFqws6CEiGJUE5Phx3n6xLYA==	None
 струна	Черта, особенность характера	Jz7BaGf3DveNLd0yPQvFtQo0TEPRxbp3lHLf6Q==	None
 утиль	Вещи, негодные к употреблению, но пригодные для переработки	8AAkCczN8eCcCJXIYcRA9yV8b4Jh0m_i_PsSNw==	None
-утиль	Вещи негодные к употреблению, но пригодные для переработки	ulDSUc8Xd0XrDDqQhdFilRYPXjaS7OdL8zvM0w==	None
 утиль	Негодные для употребления вещи	56PA7Z61WkB4yqP0o6JCRcSMHh1d8BH_V8qDrQ==	None
 утиль	Негодные к употреблению, но пригодные для переработки вещи	CQ6WCXQ0tezKEY6OitzojydYxvG39uOkMZOp4w==	None
 утиль	Пункт приема в переработку негодных к использованию вещей	YNj4HUo4XF07U2O3-owLiBUIA1rBlkCk2t7M3A==	None
@@ -213,18 +210,15 @@
 кольцо	Металлический ободок, надеваемый на пальцы рук в качестве украшения	yjh1-odRU19YirKtTKzCBCB9WVABPvCFOGNKaQ==	None
 кольцо	Ювелирное изделие, украшение	AFgjJlU4PRINHTJoXywMZ4nDVSM7dkGeSjPlTg==	None
 кокетка	Женщина, стремящаяся заинтересовать собой, понравиться своим поведением, нарядом	PnpRIx71vnWZmTjx3Aoe9Df8Wd2aZcbpDrYs4w==	None
-кокетка	Женщина стремящаяся заинтересовать собой, понравиться своим поведением, нарядом	gpWqshiagOSp-cHh5aktDSHqfN2I3hvX_ppFVw==	None
 кокетка	Отрезная часть одежды, закрывающая верх груди и спины	xn4Yjt0i1k2A_Xzf9mwj55e8SsgV1wjgMfim1w==	None
 шаньга	Хлеб из пшеничной муки, обмазанный сметаной и маслом	GCQfGc1rS1HAU6BfpebOlaBk-aUHNYQL-LHCGg==	None
 приток	Нарастание, усиление физических и духовных сил	KL0AfdX4LFPMrLiO1HjrzGdtjcoL6XAUMrh5gQ==	None
 приток	Поступление чего-либо в большом количестве	20EYIXx6wUnYbGso3NtzdBY6PjzhmduFehfekQ==	None
 приток	Река, впадающая в другую реку	rujUXyeElXpcdmudJXDXHbzMtnbBRlmVueU6qg==	None
-приток	Река впадающая в другую реку	0plRM3XoPV2G6ahVYGyk29OwdeFxf0Mo0YX4Yg==	None
 рандеву	В ВМФ: назначенная встреча отдельных кораблей или соединений кораблей	JDKtp8PbqwjHXo2gxzBbjtxVktIiXo16tWb_UA==	None
 рандеву	Свидание	-8nP3LBAengxDcPNG40IC6a0qU_OAa5k3hZwlA==	None
 рандеву	Условленная встреча	h2OazyvWvMlmo9_nyRn_g1xlRJrKXhFgR-LrGQ==	None
 пряжа	Нити, полученные скручиванием	oH6d0Ox-bQc5VrNLow8Cd_oOKU3wX725yn4gdg==	None
-пряжа	Нити полученные скручиванием	t0pn4rlFO-8w0PdIDZVE-Y-2Tr3JY6Q1sowA5g==	None
 пряжа	Нитки, полученные скручиванием волокон	FsCYwiZmp_uKm53S7FsV9yMjHMXsaNn37kMs8Q==	None
 пряжа	Разновидность ниток	I5IYr6icGqSUXwHIA-DiV211iggApNrRvU8Big==	None
 плакат	Большой лист бумаги, содержащий призыв, поздравление	ew8qlIYLSc_2kAuSlpQcJWneSzlTxun-B0rcKg==	None
@@ -232,7 +226,6 @@
 плакат	Броское изображение на крупном листе	wsaDFj0yLIyiX1ehdPe5-NKasDYkVGKE603mjw==	None
 плакат	Броское изображение, рисунок	ia02KmAkrDrG-WFBNV8mQLCgLDwet0zlM0NYjA==	None
 плакат	Вид графики, броское изображение на крупном листе	amw31F-DjBVHSSTYOE-427C0-Psnrp5JB1uIsw==	None
-плакат	Вид графики броское изображение на крупном листе	jWnPZ3GWkR2FDslNRZ-yOLYvSLAFEvBux-Ov1Q==	None
 плакат	Крупный рисунок с пояснительным агитационным, рекламным или учебным текстом	aZOYPuvS2j2S4ce7NOpnom-Uds2aOBz4azFqeA==	None
 плакат	Средство наглядной агитации, рекламы, информации	384OaICdEYbqzPJg00ldq9BmKZMkpRsTHSu81w==	None
 ястреб	Агрессивно настроенный сторонник войны, гонки вооружений	fgCt9iOV3df6uJPQQo6kz1G3ECViGJxbUIR7dQ==	None
@@ -249,7 +242,6 @@
 рентген	Просвечивание тканей организма особыми лучами	QB2LXGDBBgauO6n1qcDjnypydjFSJY2wCeo5tQ==	None
 астат	Химический элемент, галоген	uJh_Nw1hponBuD4OnKNa6w2GaEeFniKFDrCR5g==	None
 неравенство	Отношение, связывающее два числа	-SDdxs1qs4XynaPRL9PKt7MhneH16li8SMRNuA==	None
-неравенство	Отношение связывающее два числа	hkfAwde1PfUhWVsITL2tIwot9SEMjabrHwchNw==	None
 неравенство	Отсутствие равноправия	puUBR0COJ1XstxJMAVHJcTy7rZSH7nHEAyOKnw==	None
 март	Месяц года	esZlqq-fJkG6LbB7oLN0mu2viUoiU_UXIcnwRQ==	None
 март	Третий месяц года	Knbi5Gc5WBjUeBlE2IDZH0BVT24ZuMtYsKt0Bg==	None
@@ -260,7 +252,7 @@
 ритон	Сосуд в виде рога животного	Q_FsjcsvtOzgSXNn6jInvzBqLQS3ykBhlgvAUA==	None
 ритон	Сосуд для питья в виде рога животного	LZ61ay-uYRj0rCyq7v5gouptYszE9PMEqhKFqw==	None
 агат	Минерал, разновидность кварца с параллельными цветными полосами	pZ5ZelZBoEm2M2O_QnJWENBc2xItWb_1i7Eqkw==	None
-агат	Минерал разновидность халцедона	-zlsWbmZw6ghhyndnE1Xf-kDqX5sNUeckqeNsg==	None
+агат	Минерал, разновидность халцедона	HY8ogg5wDieLvXi5OUKMj3lKKolj9jW4CLEreA==	None
 агат	Полудрагоценный камень	AnZf2TqueOXwFZBFU3EqlkB_NTWVaty97fkaPQ==	None
 агат	Твердый минерал, разновидность халцедона	R8qMusgaiI87HXlSvjLFkWXYe7p_0-sd701_ew==	None
 агат	Твердый минерал, состоящий из слоев различной окраски	ug4OQ5i1b2BraujytkwVIpGbi3zNtHfOF3lmvA==	None
@@ -282,7 +274,7 @@
 гонор	Преувеличенное понятие о своем достоинстве	EqUcI6VC-uOXAJAuhRVTbSZpluyOhoPmSFddQQ==	None
 гонор	Преувеличенное чувство собственного достоинства	_hUyuYt4pmxzS4kqSeGPg1wIZWuqOvpt54uFGQ==	None
 гонор	Самомнение, заносчивость, спесь	mBRbW8Rn-nSUiMbyfPG93YTTkL60Qkt3Sjl04w==	None
-гонор	Самомнение заносчивость	SN89MJnetdoysoTe7vu6JyVmBGrr9dXIsmpe1Q==	None
+гонор	Самомнение, заносчивость	N8kbozPyI_OLBiZRjMABIBpXj0kOoDCcD8rIlw==	None
 терем	Боярский дом в виде башни	b4d4w_6O4G79IMkGcXfUmzl8NDeEwew1ylT4BA==	None
 терем	В Древней Руси: высокий богатый дом с покатой крышей	bBHapST_xMntTiqpWaJx75--4AUogpnd-53M3w==	None
 терем	В древней Руси — жилое помещение в верхней части здания	wuOxidBbJo3YjOJARhHGdCvGMG65Epxj6023aA==	None
@@ -294,7 +286,6 @@
 мотор	Двигатель, использующий электрическую, тепловую или гидравлическую энергию	Ji787_VSBNPkF7SuYBY2evNPH5ICu8Jl-T59zQ==	None
 мотор	Машина, преобразующая любой вид энергии в механическую	rfo0pO3m-vSr5wVirNz1KyQwGn7IR4BQgc-DMQ==	None
 макет	Модель, предварительный образец	37ZegX8i8zH6joMFAMdcUYws-D8uSiWmr-te0w==	None
-макет	Модель предварительный образец	suTMTpw7xJl2swOzpcN-igyIs1MIS1j7Wn0DLA==	None
 макет	Образец чего-либо в уменьшенных размерах	xLVSJQ2HJ_PAyrl9t2dEsm00woJIXtorkQYEFA==	None
 нонет	Ансамбль из 9 музыкантов	2FyWX6fOG2RCs9JFBfppR7FHUkgsvP5gDk_4Ng==	None
 нонет	Ансамбль из девяти исполнителей	ZOeAJqJmKnPvEAPux5KLcxCcmwJp9aBhDIpnYg==	None
@@ -313,7 +304,7 @@
 гамак	Подвесное плетение в виде сети, ложе	-6MeUEroDZ2PhnnPFRqZBnXot_HkHWUE-pCIzA==	None
 гамак	Подвесное полотнище или сетка для лежания	PkqmpxdiCp2o1E6BdWE2wxqEspnaFBCCl86ymA==	None
 агент	Лицо, уполномоченное учреждением, предприятием для выполнения служебных, деловых поручений	aQ5l_wa7abuhmRFb0oHpW2O4NkT6EEtRZPBVPg==	None
-агент	Лицо уполномоченное учреждением, для выполнения определенных поручений	c8rmOeXLn01D-MUlacA06DwW-kpJbwT19qEAFQ==	None
+агент	Лицо, уполномоченное учреждением, для выполнения определенных поручений	f1pZAVG8tDTgnRdbk5peNdSQ25noXRu5-yL7DQ==	None
 агент	Представитель покупателя или продавца на относительно постоянной основе, действующий по их поручению и не принимающий на себя права собственности на товар	AfzNGIk1xSvN3sl-pfWMDfsSi5lHBCMx7vjofw==	None
 агент	Представитель покупателя или продавца, действующий по их поручению	I0LsKtPvl7dOQAoH1mpS9opJ17yJPvI7oLYxBw==	None
 агент	Человек, который действует в чьих–нибудь интересах	P6CJ_bxJry9fNwBpERoy_u69ArwaccfsCidu4g==	None
@@ -324,7 +315,7 @@
 гром	Сильный шум, звуки ударов	Ed4sfxjLHpeFcWJT7RVuSLvmk8316tqP8maEGA==	None
 грог	Алкогольный напиток	bYeo3DtBff67lTDJRudUit6whiDe-J-nT1XpfQ==	None
 грог	Горячий напиток из рома или коньяка, смешанных с водой и сахаром	WCOLrfa0Iqjho0gfApVUJ8lhZ9ceOgWYfZohuA==	None
-грог	Напиток из рома и кипятка с сахаром	lSs91qUQyl06vkloAr1GN6u3wKDbzajdyOd0FQ==	None
+грог	Напиток, из рома и кипятка с сахаром	4Knbg-byJOBzv0hXuJ2Yt5UmCoeif9avUDugGQ==	None
 арка	Архитектурное сооружение криволинейной формы	zC17GaL-oulWTLRn2_Ogerhf-bGMl_J3XtuQMQ==	None
 арка	Дугообразное перекрытие проема в стене или пролета между двумя опорами - столбами, устоями моста и пр	IgWxpGYXtuAkHWVckAFzPril4xIl0qo63khW-A==	None
 арка	Дугообразное перекрытие пролета между двумя опорами	drCpozu8wyZX8O-evKGtkOCDyPbJMTvekZHGbw==	None
@@ -395,7 +386,6 @@
 театр	Территория, где происходят военные действия	DL8SPnMLDX3uPAG-aDEoQjOe2oHC-P10KhaIiw==	None
 индий	Химический элемент, мягкий металл	VhdhrFz_7TvsmHbvhmtbU8wDkznUGFe7K9Jg8w==	None
 истец	Гражданин, юридическое лицо, обращающееся с иском в суд или арбитраж	74-2ZAkk6hhn-ZJXw4K-iEdQCmYaDtpgfSuygg==	None
-истец	Гражданин юридическое лицо, обращающееся с иском в суд или арбитраж	yHmDOkv5GYugPkhXYVRRXGkG7e9s_EeWjp07pg==	None
 истец	Участник гражданского судебного процесса	fDWNKQ55jz5uamA_VxON7IW3gUgplkHlr12g9Q==	None
 истец	Участник судебного заседания	zBOt7pXkrbixHvIpXXDvRkDM1GkqCVlFO6oyEw==	None
 истец	Человек или организация, предъявляющие иск	-ZkPClEY2e4saQ5Qn7RIUwsyaSPz1Gq9vw-ZFg==	None
@@ -486,13 +476,12 @@
 скрепер	Прицепная или самоходная землеройная машина	kAn150hnR5BHAPTR2AV739Rrc9PjkBeN6j_NVg==	None
 напиток	Жидкость для *его*	FGuescMk8CkEf0SNkrk9jNttcAxAL2HEnz9_2w==	None
 напиток	Продукт, приготовленный для *его*	UFGU4BAuQpcPTew-oTKMXl8uEGvDju1UXV3-Ag==	None
-напиток	Продукт приготовленный для *его*	Xu5S8osmJ_oKrRdgqESkRJhpHzKLPgjvLPu1Sw==	None
 напиток	Специально приготовленная для *его* жидкость	zaxGRnlaNOQ4h2bfmX-C7i1NvfcKFUtAULRPiw==	None
 импорт	Ввоз в страну товаров из-за границы	fYLAAxELrO_AKqUAhva3dpKyeflrqAY-rkmdLQ==	None
 импорт	Ввоз из-за границы	qkd1B0WH3t8FmFeyBX5nZ7ok39CCz4ou92xH1w==	None
 импорт	Ввоз товаров в страну из-за границы	ppRdlXBoXa8PHO3iUiXQYMBzNQpytwwufyCm0g==	None
 импорт	Ввоз товаров, капиталов из-за границы	TKhhik2WvuCsZtXaV5IHgUPTqx3sc41yiyMV5w==	None
-импорт	Ввозимые из-за границы товары изделия	Uu_gWTMT8OFXDVjvAxT6D8GQMRf5nHxkSXyTLA==	None
+импорт	Ввозимые из-за границы товары, изделия	qordHYZBCyw496wDoxggbaEQmYB109elvP8zmw==	None
 ментик	Часть гусарского обмундирования	neCmtf8_P1ItAVWQMZdVn3Y2IKiVguswH9Tywg==	None
 кернер	Инструмент в виде стального стержня с коническим острием для разметки деталей	WM61CN3b4bApDGQrgLb9GONGaTto22rB-35jlA==	None
 кернер	Инструмент для наметки точек при разметке заготовок	Qx8cExl7C9YSX8fjx-KxmJpJ_dmeUBy6oPzAWA==	None
@@ -561,7 +550,6 @@
 отрада	Радость, удовлетворение	5QKr8ikdwOEKiY_JTK_18hNPeVZod9qqiHcmPw==	None
 отрада	Тот, кто доставляет удовольствие, радость	Nm5vhUiuz8FsbHOTdRhMntiKkTWavjAwr-he3w==	None
 отрада	Удовольствие, радость	dXTz6hAiIGeODL4CLNA6frEX5al7F6vD1xryfA==	None
-отрада	Удовольствие радость	Y0_iB2W6xjwCVYp7fovkEoGLjnenYaoULMB4PQ==	None
 отрада	Чувство удовольствия, радости	-4w69fzze0PV0Je7LCuLBLWtlZyK01RW9QhMAw==	None
 кракля	Узор из тонких трещинок на глазурованной поверхности керамических изделий	Jm4y5ijYxT-20-wLkNm1TA65dhnQnd7-KDk6Qw==	None
 ранчо	В Латинской Америке: усадьба, земельное владение	Q9JTNABjjb8DWevRYvxCS2HVFl0RdGaayMK-Xw==	None
@@ -696,13 +684,12 @@
 склон	Поверхность волны от ее вершины до ее подошвы	xpiTEngTCuRtn85CYlu71eCq3dP2-bKnczpeXg==	None
 беседка	Крытая легкая постройка в саду	Cb0OmxhZ-3XRxYCajnhhIxYMP5bQ6aKePcEiRw==	None
 беседка	Легкая постройка для отдыха в парках, садах	mtVXuqH8DnrlBVRTD25aYKKXZOmh5Fn0lVDCRg==	None
-беседка	Легкая постройка для отдыха в парках садах	BsuOh_--RpSjir2_nYZgUrucatIGqFh74P3Thw==	None
 винт	Крепежное приспособление - стержень со спиральной нарезкой	KLpSpj4FZwkBe5EjYAZImSSHjo1M_8eklJAqMg==	None
 винт	Крепежное приспособление-стержень со спиральной нарезкой	plVJlS8-fXAfRcT4pSdt64GzXxtgw6SXc4A9ZQ==	None
 винт	Приспособление для приведения в движение судна, самолета, вертолета	9q0N9rkHwiLdDOB8VJID0nwLrQUGrUPlAdv94A==	None
 винт	Род карточной игры	vTkJHg3KY5H-O0b0SYrBQRk4JA-1v1TmdiLKMg==	None
 винт	Стержень со спиральной резьбой	UOIYPYUG0j-kyAxDMg3z_fQ3UfiXsde0pgbafA==	None
-гид	Проводник экскурсовод	MVFhEKbZenLk5SCUtSFkxaYCvQj1aDY4fpg6JQ==	None
+гид	Проводник, экскурсовод	_qcSc9htN1Tw1iyYlxqEVHt9zPwTIzpBlsnV0A==	None
 гид	Проводник-профессионал	FUO_bAA6GFkoS_BkmT3VPBpfZiTcfpnC745kMQ==	None
 гид	Справочник, путеводитель по музеям, выставкам	8wWd0L8sK1N64Th8dv2k-JphSXrct-Syt1h8aQ==	None
 гид	Человек, сопровождающий туристов и знакомящий их с местностью	RQ-3Cgy_OFCPJ9UVnm9PYQGRQJeeq6KTKxs3wA==	None
@@ -747,7 +734,6 @@
 пилот	Спортсмен, управляющий бобом	gchmi_Hu_TUAUIeJcWZtiKHshjqhWmniJGIzZQ==	None
 пилот	Спортсмен, управляющий гоночным автомобилем	L3sEfa21A7y-P06xOqZTdzhmVPDTu6XE54G2WQ==	None
 пилот	Спортсмен, управляющий малолитражным гоночным автомобилем	Wc0NZsVRx5rzrVMjxR5JtUJZZtATa1f1jPu72Q==	None
-пилот	Спортсмен управляющий гоночным автомобилем	Yt7f7bVpj5P_brSCWuVYiAFCaq1LZ4SMOjfr-A==	None
 пайка	Процесс получения неразъемного соединения материалов	cC1vzElDhNZXvC57jioDRkdLiNG5nb2moQysWA==	None
 седан	Тип кузова легкового автомобиля	apMzRVK6qTzHxKGZbJAV7uE_tTe1VLEKabxQLg==	None
 кагор	Красное десертное вино	EtwPHUS4r4RsFk7gFPvRQ6kUKw2oVFfWvjpzEw==	None
@@ -785,7 +771,7 @@
 шуба	Зимнее пальто из меха	LrPMvEaAHxGM4Ct8DUOC1geaWwz-21WPn9MNpg==	None
 шуба	Зимняя верхняя одежда	6DUAoAh5O3dbr3QVxOp8TF-r-kPFoUY9zJJ08w==	None
 гол	Мяч, забитый в ворота соперника	nAOpZA7OR4La6UTyhKJrO4SQBqYJpyyUwQUnKA==	None
-гол	Попадание мяча шайбы в ворота соперника	HVMXif90BG0V3a4-lzsS-ViWRY7tsnTqYR4RRQ==	None
+гол	Попадание мяча, шайбы в ворота соперника	6bn9TEPDMUGPchKhhtNp123wiBMgMHoQ9U-Nwg==	None
 гол	Шайба, забитая в ворота соперника	Hs22DlN-uzN6a7V3vcIyX7TStx35R2VhmmxqEg==	None
 журнал	Вид теле- или радиопрограммы	AB5rdDFDd2bPCeBoRJ2Yykz22hJeEdhnQwagOw==	None
 журнал	Книга или тетрадь для периодической записи наблюдений, событий	bh0Ng9wd8jBk6QAwTpuH1nB1PZWNYuCbauIdKg==	None
@@ -830,7 +816,7 @@
 конклав	Совет кардиналов, избирающий римского папу	PEavluhHPukb6W7Z3OVHzjpgC7EVbcIIqBv9EQ==	None
 попугай	Птица тропических стран с ярким оперением	xZkdYjf3Ujwd4-GikyyOpvdrOsLkwL2nAROtUw==	None
 попугай	Тот, кто повторяет чужие слова, не имея собственного мнения (разг)	jIJVLAgvGr9SZrcCeY0LY16-TdM0vqjtgXvmTA==	None
-попугай	Тот кто повторяет чужие слова, не имея собственного мнения (разг	ZcBDsi5_q6_jIW2BpRXidSwsIRvnY_bquazJwA==	None
+попугай	Тот, кто повторяет чужие слова, не имея собственного мнения (разг	zfKhqcxUYyM-XheCK00G-ZpumW_t-7AKulmm4Q==	None
 токамак	Замкнутая магнитная ловушка, имеющая форму тора и предназначенная для создания и удержания высокотемпературной плазмы	o5x9zENe6fMY5YcbjHnIsz7stldvbHitR_bwKQ==	None
 токамак	Тип тороидальной магнитной ловушки	-lGkVnF5dj_ZWKzYftAwxeVnF5YI9YP976k_nQ==	None
 карма	Одно из основных понятий индийской религии - влияние совершенных действий на характер настоящего и последующего существования	qkU0fH2KPKT7na4Kc1dJnC_OVpIG56tPAp28OQ==	None
@@ -905,7 +891,6 @@
 грузооборот	Экономический показатель работы транспорта по перевозке грузов	_GwjMmYZ0GFMUICRLU7NVBSCOHbtGrwns1dIoA==	None
 горизонталь	Перпендикуляр к вертикали	wDMqhJNniCrw04a5DvOcT68vKuaukGu8vcszMg==	None
 горизонталь	Прямая, параллельная плоскости *его*	Z4fOg1R-o28levLpqtVAqdwogJAUK0E09IG01g==	None
-горизонталь	Прямая параллельная плоскости *его*	p8dJuBr55rDl1gZ40ZhkSjbICBpgGSgi-0UZ5A==	None
 разум	Способность к логическому и творческому мышлению	GhQALXMq6F2GQ-GrjbAZWqEW4xMASCc70srWxA==	None
 железобетон	Монолитное соединение бетона и стальной арматуры, применяемое в строительстве	JzIxmdg1xPUzfZ61xFyohzWGikkbyZx2yHMn9Q==	None
 железобетон	Очень стойкий строительный материал	lTNSzam_jkO6xCp6zAKramc47S46E2uEKJJ1lQ==	None
@@ -926,7 +911,6 @@
 локон	Вьющаяся прядь волос	R150iXPSg41JazGskcTk3pIDqW6C0lKH9QB-Vw==	None
 локон	Спускающаяся с головы прядь волос	yirPz-bkEi62c_GqXZs7cFT2qpMATpxzfFkNAQ==	None
 лорнет	Очки, к оправе которых вместо дужек прикреплена ручка	XmLAM-AVViCOb23CCWwleXrvSZdksRTeN7xcCg==	None
-лорнет	Очки к оправе которых вместо дужек прикреплена ручка	N2xqhQpx76oKFGcVC0OTs6XqVSwwbRxnb1YCrA==	None
 лорнет	Род монокля	X8_q42YyaUxcVVYgktQL-xVamhzA3cAhlR3awg==	None
 лорнет	Складные очки без дужек	X0bqPas-W5TReBQe4a9DA3S4zYZIdCLDtQQQuw==	None
 лорнет	Складные очки в оправе с ручкой	9QIrl1sp4LvrMBTGayRK53sDnCcy4WfMkAGEXw==	None
@@ -980,7 +964,7 @@
 синдром	Сочетание симптомов, характерных для какого-нибудь заболевания	gEbMtil4EpuY_1EuW8KUkoUR5UQKsGJpmgDjtQ==	None
 наст	Ледяная корка на поверхности снежного покрова	uhhri3q3OJevzQsbOJsfay7X917WKPzpw0M_jA==	None
 раритет	Редкая ценная вещь	H18YuaEUfBL4ocmiKqeNrsKrstlX-kbIx6w9HA==	None
-раритет	Редкая ценная вещь, диковина	fWh24dnQUElCBAvCzzMEDMgDmhhCDGnNfa6mAw==	None
+раритет	Редкая, ценная вещь, диковина	pl653x6gLw3cWUx5Cdbd2weRI5pmR5MuPKpwQw==	None
 раритет	Редкое явление	lSIPj9DjWXCnckXvA5XDnbmq7r_lB9rrg_gASg==	None
 дом	Династия, род	cxgrKV2sN0SPyyftH3G9XjmxvZMFJelFYHvoiQ==	None
 дом	Для англичанина - его крепость	xpAd_YT-DIF9iKEm_il-boPwmpisL6VgSCRBwg==	None
@@ -993,7 +977,7 @@
 дирижёр	Лицо, управляющее оркестром, хором	AZ9g4HhocFHV_h-C8ONA8Gf6bHIln7E3NKaaCg==	None
 дирижёр	Музыкант управляющий оркестром, хором	3l28QJEYFPRYL0L8zo8UYLxlNWzs5sn9hwK25g==	None
 дирижёр	Музыкант, управляющий оркестром, хором	yCS-1_yXwlR-ITNZjni-Ens8T9KPnrx9P5ENBw==	None
-дирижёр	Музыкант управляющий оркестром или хором	jRbfW2D5LCjj61Bn0LrZDPyAY6Q1SzODoVkfig==	None
+дирижёр	Музыкант, управляющий оркестром или хором	Mst20geYxbvGGR-t941sIPncc9bryaXKe90Fwg==	None
 сардина	Промысловая рыба семейства сельдевых	LBrUHYXcwSLfSwZCuv2UirzII8JlyO3QxPXaFw==	None
 счётчик	Прибор для подсчета чего-нибудь	VsWvRlxLnTcTRW5SH26x3_yb9B9WiakT5bU89A==	None
 саранча	Насекомое - вредители сельскохозяйственных и дикорастущих растений	b01pGu6PfvHegUIdIEacCed8u6YQL1DPmbcOBA==	None
@@ -1074,7 +1058,7 @@
 краевед	Человек, занимающийся изучением отдельных местностей страны с точки зрения их географических, культурно-исторических, экономических, этнографических особенностей	qd9zgwtQmqO7urdT39U-D-5KxqmD4mVKDIAsyw==	None
 краевед	Человек, занимающийся изучением своего района, местности	NSGW5IaFqCX_PwMsfYolah2GJ4AsdaxBJ54MzQ==	None
 краевед	Человек, занимающийся подробным изучением отдельных местностей страны	vQ1mQDm55FmUVUjzKMfA9kKbrTFu0jmrgxI3vQ==	None
-краевед	Человек занимающийся изучением отдельных местностей	Y81Q56iW2cYnahT46UO3UI62lUWZ0uIYQRtcmQ==	None
+краевед	Человек, занимающийся изучением отдельных местностей	8pP4buYaXcGt28zwxh1KpEK8e02fQbowKGN6oA==	None
 рейсмус	Инструмент для проведения на заготовке разметочных линий	Dg7qpms9YooDRx_elF0-8TlIKkwRC_g3ZC2EVA==	None
 рейсмус	Инструмент для проведения параллельных линий на заготовках	3dQixNV4q8negAViyRMMbISE79koWYl29FkIvA==	None
 рейсмус	Инструмент, для прочерчивания параллельных рисок при разметке металлических заготовок	Z5PvZtKkiAF5gu3JG2B2RK-yhr-0fXD8iYkMSw==	None
@@ -1085,7 +1069,7 @@
 копия	Точное воспроизведение документа-подлинника	hbCW6tCuYxB8Nl5VpWxHAPU7ADNxv9WC6IJ88w==	None
 копия	Точное воспроизведение, повторение чего–нибудь	lbsqyQ6NI5lX7XgpSB2fZxsX2hwf0lZablFe0g==	None
 копия	Точный список чего-нибудь	rx6yxUNdgNtK-KbnJMbYUS6RIlTatDtfeQXlHA==	None
-толстолобик	Рыба разводимая в прудах	WvEqo9Tla3MOzXwEpzeJmpd0_6cESInD2cYbqQ==	None
+толстолобик	Рыба, разводимая в прудах	4nUukUs3v8deW8CNGxtdmpanUBOOiVPm7Uc2cQ==	None
 рубикон	Граница, предел чего-либо	tqgfEEebCVwPxuZ7iW1mBpazF9PLzsobqalq3A==	None
 рубикон	Труднопреодолимое препятствия	PX_KC2d590bTj5Q4DRJlZ8TEytXs4eAJR5kaxg==	None
 рядовой	Воинское звание, предшествующее ефрейтору	u8Ia7zIe1PpUWVRRt4dXjW07WgOEDDD903YpHQ==	None
@@ -1131,7 +1115,6 @@
 аксакал	Глава рода, почтенный человек в Средней Азии и на Кавказе	CFWDmFo9M__cHT-Qncy3xj8wBy_E1lA8hzYmVA==	None
 аксакал	Глава рода, старейшина на Кавказе	AjCTTVuRjdERwA2KzXVTa42e0Brn2m7CK3G6Cw==	None
 аксакал	Глава рода, старейшина, почтенный человек в Средней Азии и на Кавказе	tTwg6GOfW0TN9-LzA_7wvfSTEGtaDZ3jXdJKGQ==	None
-аксакал	Глава рода старейшина, почтенный человек в Средней Азии и на Кавказе	z1iAXoQx6FFklLfgHvK5acDT0xw_AKMGDtG_aw==	None
 аксакал	Почтенный человек в Средней Азии	53c02sQhIf6Uhg1Mo9MOJH_Dy6uFo1olSun2fw==	None
 нарды	Другое название игры бэкгеммон	GuWDVdibOkxKH8bI0BbWbeM9Rrj9EaNObKKRuQ==	None
 нарды	Настольная игра	QJJC1E-EzrCKTk_hDJ3prE3jEfscP6T4Jya_aQ==	None
@@ -1150,7 +1133,6 @@
 боров	Кастрированный хряк	bjaDV8iU-XSY6Df3ZdSI9_Mfnk3OLgvMd_rlpQ==	None
 боров	Часть дымохода, ведущая от печи к дымовой трубе	IOGQ-CmjBYLAdAcMEmqCUOi1OI-5__Me5yolmw==	None
 полог	Закрывающая, загораживающая кровать занавеска	FHFLsSaZ4kFChB8N_VxtsNMiGJFSScNPGlTbWg==	None
-полог	Закрывающая загораживающая кровать занавеска	LarP2y7f5BnHYN8MGQpOWEXHP0vtyLXzuLsD3A==	None
 кондуктор	Деталь токарного станка	WOOxVl-rMn6CodwAyBwLpkMJzlsJ0X4DYwp4OQ==	None
 кондуктор	Проводник поезда, вагона, проверяющий билеты у пассажиров	Df4VH84PkbxHtyxBtc7VfnBZy8rlaC0qtfMvCQ==	None
 кондуктор	Проводник поезда, наблюдающий за порядком	VcfHh-FQp61JYgmxCHon52ZyeVeheDmyQd8Ukg==	None
@@ -1263,7 +1245,6 @@
 оратор	Человек, владеющий мастерством произнесения речи перед широкой публикой	BX4qzAv4d2jOogunl_Ki0nLuiOL45XJmtPkbaw==	None
 оратор	Человек, обладающий даром красноречия	iS9cAZMmhMM15goe8alrQYpY8MlpttD12cuxKg==	None
 оратор	Человек, обладающий даром речи	0a8yKbvr-uQpDJLCv1szlbGSSM-g5bEQNP0-rQ==	None
-оратор	Человек обладающий даром красноречия	-JO8v7ypFyZoyevzZnmBLW_o6yU2kVxs3J56Jw==	None
 умолот	Количество обмолоченного зерна, семян	hKQ-fAQL-arjT9tTxBiGCJs-MczMvib_A0FJ9Q==	None
 абба	Популярный в прошлом шведский ансамбль	1CZmBPNUcdDoUoCQk-tMx7hI4QLGZHdpEoRGWw==	None
 араб	Житель Западной Азии или Северной Африки	wqzyN-WDn2hU7EknAmqA35yI26-NxaKOYxY9wA==	None
@@ -1944,7 +1925,7 @@
 румба	Бальный парный танец мексиканского происхождения	uQaS3OSGbZkg2C73NPPjjnaTNofhyQlXI3r8Jw==	None
 румба	Латиноамериканский танец	u89CV7nL7iPjroHr26mL0EHD0edDavc5Jk8OIg==	None
 румба	Парный бальный импровизационный танец	My-T7OFTirKoRUvCE46AdZr48o2c28R0a3t3BA==	None
-адрес	Местожительство определенного лица или местонахождение учреждения предприятия и т.п	r0gtPnWOMpm9wRxqHDtTHFlI2zF-Ff7u0TGC_A==	None
+адрес	Местожительство определенного лица или местонахождение учреждения, предприятия и т.п	XlZ1FjDMulUzBSyc2b9zsm9qNdzRXxzYOVr97w==	None
 адрес	Местонахождение учреждения, предприятия и т п	SDgbvbRJE20lYFkpATudBGdN01JvyWgmUZlitg==	None
 адрес	Местонахождение, местожительство	OBwm4VD_ARXbkrE81lzoA-3sOTkfQrYtI0M7gw==	None
 адрес	Надпись на письме, почтовом отправлении, указывающая место назначения и получателя	S1rBU2CQ-dwVxSXP8k-8kuTadPvo18vmgapd3Q==	None
@@ -1966,7 +1947,7 @@
 бит	Минимальная единица измерения количества информации	RKgkj0HLYpzTvHkWZhiE5Tr3_xL85CwTC3tOmQ==	None
 мерин	Кастрированный жеребец	MAzqPg_Cl4z_49xuRUMwwwFeYiZ57Iy4gc8N0w==	None
 мерин	Кастрированый жеребец	AjZdlm5e6ukd5tBXp_QTI6Cil7FnwuMSb1StbQ==	None
-иерей	В православной церкви священник	TuWP-Mcbj3y-TJ4QMRmHSlfzgzmCgZrOH7uqdQ==	None
+иерей	В православной церкви: священник	aZmdjh-5S2lNMxvPeHaUf1OOE3nIRUnSk9Xa5w==	None
 иерей	Официальное название православного священника	1QQQYarZvAQcU1zPtbjQmMyulw2H7Wdch6On4g==	None
 иерей	У православных христиан — священник	pUPMQtHqfS0Nc0XwRL9VobEQkRDNouWdwU_qjA==	None
 акт	В некоторых учебных заведениях: торжественное собрание	87c5O2dByZ-nWCOKkWIyaXMfZKsNgdlC83TL2g==	None
@@ -3191,7 +3172,7 @@
 пророк	Стихотворение Лермонтова	gU0UA3ey1mgfPOgo_R_kqKwDBjXCftlTFQGb-w==	None
 пророк	Тот, кто имеет непререкаемый авторитет в чем-либо	1jOk1t9YIF-S5HtUjfCFPufb61tDzpwKz5RV5A==	None
 земство	В России до революции: орган местного сельского самоуправления	1cBKGyFBEvQbhyGjz58CiLuvCN_-opZdgAo-Jw==	None
-земство	В центральных губерниях России до 1917 г. выборный орган местного самоуправления	yyOzvfAoZtbnqrVoUNsPHzdSdFNlzq7E6WQ_xQ==	None
+земство	В центральных губерниях России до 1917 г.: выборный орган местного самоуправления	Z66sK-h8RL24mLibj8DEMHb-AHDRMFJmrxYc_w==	None
 земство	Выборные органы местного самоуправления в Российской империи	TEdVhSKJr6p0XhWm1b2NxMD6XtkC6KQf2kJVbw==	None
 земство	Органы местного самоуправления, созданные в России по реформе 1864	PLUS4jhWswa2VW_H23k8XZDeMAoWYkSxRaPOjA==	None
 земство	Система учреждений местного самоуправления в России в 19 в	Fvai3k3GMOTq5NLEF3bsm_4O5zC2RX0vwJjRbQ==	None
@@ -3312,7 +3293,7 @@
 делегат	Выборный или назначенный представитель	-_v0xdgvRLekbyi9JqlpyGkcKBUJeLN-Hvrfpw==	None
 делегат	Выборный представитель коллектива	6vzWlSgxb6IKmTu4iE-gIJF7lqSPPTDhb6UQPA==	None
 делегат	Выборный представитель, уполномоченный каким-нибудь коллективом	HxKljfAiD7lPWGUxq_8vmGZbIXLdkcOfphsg9g==	None
-делегат	Выборный представитель уполномоченный государства организации коллектива	dvenHnBdTJbcynQGnH1rpET5OKRyfD3YSZeO5w==	None
+делегат	Выборный представитель, уполномоченный государства, организации, коллектива	q6gB1HbXBddzuI86m9fj_MaforaXnwQrIleqGg==	None
 делегат	Представитель, уполномоченный какой-нибудь организацией	nqIz1weNOU55-JTRugbA4I6Mp2P0oosMiy_u8w==	None
 войско	Вооруженные силы государства	8X_JGNIwUXOiU_scd2MUKx1TpHL9V_infupjdg==	None
 войско	Подразделение армии, воинство	3bXdhY2J8QcTAxb-ARMqATfzebJgOoqkUV13oA==	None
@@ -3715,7 +3696,6 @@
 ванилин	Пищевой ароматизатор	PLcaE3pP2QqjstvEncSKott5YtGZYglHjMDErQ==	None
 визави	Тот, кто находится напротив	R9_TggDjkytpSzraNjxQ62bjhCoMTCml3PbTSw==	None
 визави	Тот, кто стоит или сидит лицом к лицу к кому–нибудь	nVuhPyFezxe7Hf6v2XpzzejwpJUrYLxglJqVkQ==	None
-визави	Тот кто находится напротив	AxrCIKBwXxGZdT5R06iJ0weaqHC_6mNwLkh9AQ==	None
 резерв	Запас иностанной валюты	c0KX0gWfAHuzgajZNAMBQHyycAh9Wxbi8jNDMg==	None
 резерв	Запас иностранной валюты	LgZ1e2iKczDwHIN6pheli5OKT3YepE-T-WdZSQ==	None
 резерв	Запас чего-нибудь, то, что можно использовать в случае надобности	LKDsu-tCPYu7YUYZqUVqJ176lTdqBVNi81HETQ==	None
@@ -4035,7 +4015,7 @@
 строчка	Сплошной шов по поверхности ткани	RgEzvLTv59T3bFfQKaXWBuSwh2R9x4GlqtNuvw==	None
 скотник	Работник в одной из отраслей сельского хозяйства	Raz19Xht6z3AYZpGEwN9nUV1IMyUI-9cP7W2Bg==	None
 скотник	Работник, занимающийся уходом за сельскохозяйственными животными	Wkfc5KNkJ5coKH7IYbYwQQzYM7WFT1KpcGUK7w==	None
-апофеоз	В Древней Греции и Риме обряд обожествления какого-либо. героя	NdT07jtKOWSYFF_0uKLYULmpr8rW7oA3wcomog==	None
+апофеоз	В Древней Греции и Риме: обряд обожествления какого-либо. героя	pExrHB-mN6mfOoOK1AvSJaVqzMdCQaajVgYw1w==	None
 апофеоз	Причисление героев и римских императоров к сонму богов	sZY8okME-mON0fflrv-AO81uC7_b1oxi2IWMgQ==	None
 апофеоз	Пышное завершение чего-либо	h9NbMzXFlQM66h40MuzstN7ktde25v-v2z-1Jw==	None
 апофеоз	Торжественная заключительная картина в некоторых театральных представлениях	7GalgDsm1zdnXgj-CGVOU8f8zIQkQhsYMtRV4A==	None
@@ -4502,11 +4482,11 @@
 майор	Воинское звание	GegiBz-LOwslmyfgmp1XOcKvZy-OTWRmem8gIg==	None
 майор	Воинское офицерское звание в вооруженных силах многих государств	TYu4hx8D2zuXYEuXZe70ACb0Gcdk57hRv5TY3w==	None
 майор	Офицерское звание	rjU1tmhbKSKs9EiFZ4j6F0r3pXG-vfmEJ5Zo-w==	None
-демон	В античной мифологии дух, оказывающий влияние на жизнь, судьбы людей	O6FYFHqsAHtDGl7z96AYUIyJJs7RXAwUKF8a7A==	None
+демон	В античной мифологии: дух, оказывающий влияние на жизнь, судьбы людей	6Nkgd3QESMIhzsIHbicFEKocpXSw8EDZoW0vlA==	None
 демон	В религии: сатана, злой дух	WOAgSGpIoa29GLlla_3Q1QYftJ3tUpu7IH5xDw==	None
 демон	В христианской мифологии - дьявол, злой дух	C1sbRBFGp8NWaDK4AyK701hJOIwq6JPRqq1Gvg==	None
 демон	Опера А.Г.Рубинштейна	bLFzeJB2sY4WJh03B-QyVkmV4uAjt-YpVoSstg==	None
-демон	По религиозным представлениям злой дух	fZvqEYu4AB62DY8-C3G9KldBhcEi5S1mgqO1Yg==	None
+демон	По религиозным представлениям: злой дух	g36HUSDR3C_fA-0ioHkpNtp_U4tDMXzMxUXsuw==	None
 погост	Крупное селение с церковью и кладбищем на Руси	7gpdMKZatEj4U0EBPFQlv216PrDzHz7klb5C4Q==	None
 погост	Постоялый двор вдали от селений	1XG_e0fZ4McD-d9sh852UOMnhCz8LIGVFZIBNg==	None
 погост	Сельское кладбище	aI6P50lvsdy_yXK668KyPKkSCX2eDo1MQSrEZQ==	None
@@ -4935,7 +4915,7 @@
 лоск	Глянец, блеск гладкой поверхности	R9aIM6OnLXwz43NyYOPKSSjqx3gTZwnwX36GfQ==	None
 сурок	Грызун из семейства беличьих	f9bXN38606a_rDELdG6ScUlnUvuh3Rq_BBYC-Q==	None
 сурок	Небольшое животное из отряда грызунов, живущее в подземных норах	cdSYPLAnK4yUuJedSYa2m1ojwGz-J9Uz4HgiMQ==	None
-сурок	Небольшое животное из отряда грызунов зимой впадающее в спячку	KnHt0L_tgoZUF1hD6TSeUVaUYPqJfVazgcFVbQ==	None
+сурок	Небольшое животное из отряда грызунов, зимой впадающее в спячку	iY9Q1qHIArRdJgQJ274Iuza_1ikDDxIO1b_r3Q==	None
 сурок	Небольшое животное семейства беличьих, зимой впадающее в спячку	puweBrmE19663F2OoZcZHpAuvtlkJrGZl1AKxw==	None
 титул	В феодальном и буржуазном обществе: почетное звание, наследственное или пожалованное	qu5vn8sl4TaMp2fOTBsUfSdL24ZM7LPqgDLIJA==	None
 титул	Заглавие книги	4MH-JNnUMEzfa8fCf7ivkbgXGfZn598Et8jEKg==	None
@@ -5466,7 +5446,6 @@
 кино	Фильм	EGLevDutDjKx9YuyOqIUS3fZUyPc-lJNiOTAkg==	None
 фараон	В Древнем Египте: титул монарха	hidf0qWSsds6Xs_kK0GAUuufsTSfafBmmc0W_A==	None
 фараон	В Древнем Египте: титул царей	HhIo0wvDoIYRy7yIT8zUvgITatYrpEzLKse8Pw==	None
-фараон	В Древнем Египте титул монарха	s5bGhUfUjzI2fs4r5g65E_a9keiUUxg29TBJ3A==	None
 фараон	Древнеегипетский царь	zqMuUd01nVIX-tFb1xKCak9KKroKrcmR3tyIGQ==	None
 фараон	Старинная азартная игра в карты	CeG-7Of6fh5uIh0PN2Bm9AvKRoqwPovNqXw14Q==	None
 фараон	Титул древнеегипетских царей	USArSj7VgrKXF44vJSofRGRUusBNVcbM_OVnug==	None
@@ -5856,7 +5835,7 @@
 ротонда	Верхняя теплая женская одежда без рукавов	v0E_b51vn1s3ASCm55ir8ITlWhEAlooJ8Oq-fA==	None
 ротонда	Длинная женская накидка без рукавов	p0imeutSA2Ct28ON_sriAQW9duqnJoj8EzyAEA==	None
 ротонда	Круглая постройка, увенчанная куполом	LzxA6E7vmxH7_5WLBcI6Mg3VyF1udWEv-SukAw==	None
-ротонда	Круглая постройка окруженная колоннами и увенчанная куполом	zdUHbsvQXbNOUkTyszEI5qK-uTjbUl-tJUt3-g==	None
+ротонда	Круглая постройка, окруженная колоннами и увенчанная куполом	37Gtj6TPpBWtXsgNVrPutjhsTIC9pYpN2lHwfw==	None
 ротонда	Круглое или полукруглое небольшое здание с куполом	aS4lppvkYjWvExPfClA3YA-Lk0BmjawZW3W7lg==	None
 ротонда	Цилиндрическое здание с куполом	EYjOlcHCC_SvJUhhkH2rx_8olZN_koVzCGGnVw==	None
 насест	Перекладина в курятнике	aKbAyXqt5KZaa58WRzyjrwlkrXhVdaImP9Semw==	None
@@ -6291,7 +6270,6 @@
 котомка	Дорожный мешок, носимый за плечами	UG6IofML4QQzDT0PKCq46wMc1S6wQTl3Agzbqg==	None
 котомка	Мешок, носимый за плечами	LJaaeEBH5FyU4UtgvqWgGX0LcVhZiXvZ_PbyKQ==	None
 котомка	Сумка, носимая за плечами	SxTSSQgvKni8h4CNxRUiumvX-UEpiVsCCsQ51Q==	None
-котомка	Сумка носимая за плечами	BCUOiQe3u0P5tjNt2yoaxgVmeBISPwa7Qvb3MQ==	None
 актёр	Артист — исполнитель ролей в театральных представлениях, в кино, на телевидении	Yssu31mcBXvssv9gRvWvpoKSa2mcofEObqjdRA==	None
 актёр	Исполнитель ролей в театральных представлениях	8uN-A9_wVGFyjI7txg2xlUtwAXKwA17I63TuiA==	None
 актёр	Персонаж пьесы М.Горького "На дне"	vl6Qbxzha42j5dwJbMnRt2QCgdhUz9Fs9plidw==	None
@@ -6559,7 +6537,7 @@
 прок	Польза, выгода, толк	gWYpqsFenv9Tz0h8xPfcFF5a-8n96DXDGpKbsQ==	None
 центнер	Единица массы	1ULy5KgGjLyKCRloJld4R7tw4-8zIrLmmzpfYQ==	None
 центнер	Сто килограммов	Iw-twwNVfQOX1NpQrN7fLUrZnyj98k6aONC2jw==	None
-передел	В России до 1917 г. способ распределения общинной земли по числу едоков в семье	cPS6dLXTmv5p2y5txzAYDKg9jCJ4olUFfn4r3A==	None
+передел	В России до 1917 г.: способ распределения общинной земли по числу едоков в семье	sn2izOxRAcUalbYVfU31VddDqLOuIUgZdA4U3Q==	None
 передел	В дореволюционной России: раздел общинной земли по числу едоков	7AOSfMFZ2KW6XtRMK9ww6HVCqCP9PyaB2YfiUQ==	None
 передел	В металлургии, стадия получения или переработки металла	ClAVOG7qjPPhUoSt1WjGGO1zwrLAhFAUQ4-Ttg==	None
 передел	Переработка, переплавка какого-либо металла	ZSf350osPks_Ps-lSekhtmxLKI-Ml2ecGnNFqQ==	None
@@ -7146,7 +7124,7 @@
 ищейка	Полицейский шпион	WqmjLwjPtR5261ul90hqYKvQ-1nf-ZrhUhNhgQ==	None
 ищейка	Служебная собака с тонким чутьем	7vWCiOIkINLuPW5BIHWmELeh0v-16pS2zxEtAg==	None
 ситро	Прохладительный напиток	iLlbBd6oBq1oW4lJhy8L09oebnUfCoREoZd5iA==	None
-гарем	В мусульманских странах часть дома, предназначенная только для жен и наложниц	nnsjpA_05rG-j2mHJCedvfB3vDtRUKfhYukhQA==	None
+гарем	В мусульманских странах: часть дома, предназначенная только для жен и наложниц	QdzJNJAsrc_Uph53gG9axdFVnZVSzkKPmWDZDA==	None
 гарем	Женская половина дома у мусульман	ZskbReZ6awWzkX3ceHarwfDYgACQPi-P_nD8ZA==	None
 гарем	Женское помещение в мусульманском доме	BcYFWg2OVEj5ErYCXatqip-wJIbpDgaxSzpdHQ==	None
 дирижабль	Воздухоплавательный аппарат	jjYHZYBLkljoaRkLFbyu77Ejgu81j0ql0iBvUg==	None
@@ -7156,7 +7134,7 @@
 корма	Задняя часть корабля	w3Ov47cu5zSkadRcl0HQj4_OKgeMJpUMQu8XOA==	None
 корма	Задняя часть самолета, танка	5U4IoI0yYM8W7EOhEcJHX9Awt-xDu24Am0Uxhw==	None
 корма	Задняя часть судна, лодки и некоторых других транспортных средств	PVf2n9qEXdFBZ5ve_Cxla3g26bK8Gni1NHnKZg==	None
-карат	0 2 грамма	mgIUIQcC7OpxRBUW-Q8KSELUIiERe5YtzRPe4Q==	None
+карат	0, 2 грамма	5SRv9Se8S41Vcnh0_Gude7w3XJACggkEdhJHoQ==	None
 карат	Дольная единица массы, применяемая в ювелирном деле	6Mk20E1EbRKOnlN3LAqW1V0qAD75_Sifn8Q0vw==	None
 карат	Единица измерения массы драгоценных камней	48Q0PlJgS67E2Qib34AG-YqQRfdmKuZ38ugGsw==	None
 карат	Единица измерения содержания золота в сплавах	ncsq-IGCyoBYygQtE6D7hX0EHnjdSg0xj7Qb5g==	None
@@ -7507,7 +7485,7 @@
 шпора	Роговой шип на ногах у некоторых птиц	zqlk5TxGIIlo8IleA6aURp2wDuyXbSzkAp97EA==	None
 нектар	В греческой мифологии: напиток богов, дававший им бессмертие	Za2fd2LAkASJg8uP_KzoSIW5mI6Vi4FwV58FQw==	None
 нектар	В греческой мифологии: напиток олимпийских богов	u0nPBdJjELU-T_0lmawD9zVOjtq7kuWW-ntJeQ==	None
-нектар	В греческой мифологии напиток богов, дававший им вечную юность и красоту	6Qb8fgKdqls2C6aoYLDzwOf9YK_v7UCfNahUIg==	None
+нектар	В греческой мифологии: напиток богов, дававший им вечную юность и красоту	tmvlaLy7_7yZK8Ap1qBAHEehL-nQDDGua5BXBQ==	None
 нектар	Напиток богов в греческой мифологии	xQ0kUAGzoCk6nVO3ZLG5_pSDbeGz_elzLlrDwA==	None
 нектар	Сахаристый сок, выделяемый растениями	EdRi1XyqyJ9mDMND2HqKNiAPb0nzMG4oPAWFhA==	None
 нектар	Сахаристый сок, выделяемый цветками растений	s_Cn7QIHbuPspNeJb7rjt8n-vkFfHNT1-L7UHg==	None
@@ -7978,7 +7956,7 @@
 ятаган	Кривой меч у народов Ближнего и Среднего Востока	nuejkMF90wztmFwapHVPCmnDVnDOpbSlo-XT6g==	None
 ятаган	Кривой турецкий кинжал, отточенный с одной стороны	gXZaCg_bxjax7BVG-qslc9DpGEZspgty9Ma5cQ==	None
 ятаган	Рубящее и колющее оружие с изогнутым концом клинка	XTS04CSz1ZJ29zcP-P6y_zpGTtarJ7B8eo2WzQ==	None
-голова	В России до 1917 г. руководитель некоторых выборных органов	WDn7CwXOja9fCyO8gsD6LeM1oAoMUAGJcIlmdQ==	None
+голова	В России до 1917 г.: руководитель некоторых выборных органов	auPWmTcfStEAOfyaP7qI8OUlVS5AKeu33W5JLA==	None
 голова	В дореволюционной России: начальник самоуправления	4h9Ee236k75F6R3ymY7JTA1D28tQQM2M-GiDZA==	None
 голова	Умственные способности, разум	zovb5e0YB6mjYuNMBdAyCWdrtDN--6mbWicM-w==	None
 голова	Часть туловища	5GeZ9QeYDgNyHLbpU0lDOtKnVHa6vWD9fCJzUQ==	None
@@ -8731,7 +8709,6 @@
 барак	Отдельное больничное здание	_zQ1e3LSYaJA9f3GzMS0tut_xCLCsXuurOZhHg==	None
 самум	Знойный сухой ветер в пустыне	F5_ixT0Y_aGNH6XAQAfXiCzCRLbLsstgA-cLqQ==	None
 банкомат	Автомат, выдающий наличные по кредитной карточке	3Idtat0kUGHYEHrk3Mf8v3dEMRkK_wV7KMFsfQ==	None
-банкомат	Автомат выдающий наличные по кредитной карточке	9qKaITLVNcrvMALmWXD3m988ZIMFZuonJLkVDg==	None
 банкомат	Автоматическое устройство для выдачи денег	pdWBYfktHjxnMBXi3E0QSc2y4VyW6fIHRuDUKA==	None
 банкомат	Автоматическое устройство для получения наличных денег по кредитной карточке	Atzmzdos6v0E6q5xteOLedvd8r2n0yUrTnie8Q==	None
 банкомат	Аппарат для выдачи наличных денег по кредитной карте	FwQaSKbF8ZfwvoEEo_KDXpYLHCn97PNv4tgn-w==	None
@@ -8808,7 +8785,7 @@
 кисея	Тонкая, прозрачная ткань	L4bqJTP4iGw7Ajj4zP-n6oa9oq5Taz-Zgd0CTQ==	None
 раунд	В боксе: одна из схваток, вместе составляющих бой	AvnRVnTSTOm5MRMQik97HRlmIvRgXsbn0aEebg==	None
 раунд	В боксе: промежуток времени, в течение которого происходит бой	sLUMjDC71q3un7HYJ8CuANq7iCNvo-c55sXLdw==	None
-раунд	В боксе одна из составляющих бой схваток определенной продолжительности	XSZGgrq2K_HXXpW3aM9hDaOp5lySs-A-DjRPWQ==	None
+раунд	В боксе: одна из составляющих бой схваток определенной продолжительности	NfqX_RVRvN6IZ1gCbD1eA5_36MLH4SJ1g_qZnA==	None
 раунд	Промежуток времени в боксе	O20ZtLJO5K9k4V7--uNh_qc1sglpQk_7YdD2Ow==	None
 хиппи	Движение молодежного протеста, возникшее на рубеже 1960-х гг	AYA2gwXGvNjRxF4Lm2CG3ifcaF0cbrpuC5YZTg==	None
 хиппи	Молодежное течение запада 70-х годов	rKzbMS7Gb1erWn6AUMvml_BT9vOtKEgfaTUuCg==	None
@@ -10741,7 +10718,6 @@
 дыба	Орудие пытки, на котором растягивали тело истязуемого	FMiM8pNyqp5RQc3x0aJMJF9cCHjYaDx5JLa7qg==	None
 дыба	Орудие пытки, на котором растягивали тело обвиняемого	PeZiW0WCM3CPr0tWH1UEco21sNy3LUiu9cdcuA==	None
 лиса	Животное, разводимое для получения ценного меха	f2LhUShQ-xYMJlaJtmxbgLUxKMieKWpdEhxwrg==	None
-лиса	Животное разводимое для получения ценного меха	xoNhqb072IWoN78VFTWVcR70_e_jLeRuPaxoGw==	None
 лиса	Замаскированный в лесу радиопередатчик, периодически подающий кратковременные сигналы	a_f16Qdlk6ZYgWbW0sVqm5TK5tuJjiejN4-2iQ==	None
 лиса	Льстец, хитрый обманщик	Uz6KrnVS4yswaScPmalXx7ZeECXymngE4ceXJw==	None
 лиса	Хитрый, льстивый человек	R2KoZ3XpZPiSARbubx5mV_AD5RQyaLAp6vXuMA==	None
@@ -11135,7 +11111,7 @@
 мимоза	Род растений семейства бобовых	PxGkcOlMokuXWlYXjySnbKQ4TgNhGOVc-0OBKg==	None
 мимоза	Рыбный салат	UkVCcOKsWZ5Zq4YXIb4zgH2Pxm40eK58uHiRaw==	None
 мимоза	Субтропическая вечнозеленая акация, имеющая желтые пушистые цветки	TPb12DOWg6--XmW5DZt-Ilewm7XrALn_3j9TBQ==	None
-мимоза	Тропическое растение отдельные виды которого свертывают листья при прикосновении к ним	IvnPNXAZ-vUu-m6RxyvHO9JkveJcL2U2Jijd1g==	None
+мимоза	Тропическое растение, отдельные виды которого свертывают листья при прикосновении к ним	bKJSbPdnDKsiAna-ZXeNJ6P2-WIi_HPRbXf6bQ==	None
 мимоза	Южная акация с мелкими пушистыми желтыми цветками	0FU1Q7p5sDq42Vl8EuWUv-YwrmvQxARyulQ5dg==	None
 мимоза	Южное растение	_JcIqC2L7O6QXaUs0O8Fu2b1Dy8u3yNO9mLpEg==	None
 экранизация	Создание кинофильма на основе литературного произведения	4r1YwRa84iZQ7jg4Smk7W_ehqwh5muxMaDAC9w==	None
@@ -11213,7 +11189,7 @@
 ковбой	Конный пастух в западных штатах США	2IxuZU_4AI-Px60vFH1KLbQreHcRiApp_zMx7w==	None
 ковбой	На североамериканском западе: пастух, объезжающий стада верхом	bcjiXNJpOTZ82aaJ1tAhMAGNVKR2biNQ-4o5bw==	None
 чертог	Великолепное здание, дворец	_j1Hu7ymbAWLzPmS6eClEsEC19Mbb6qLNLld3w==	None
-чертог	Великолепное здание дворец(устар.)	WKYrH-In9X72A67NuqYHEIQICQnbUZFFLW9KwA==	None
+чертог	Великолепное здание, дворец(устар.)	2zytcQAQjnBNkPqLljmuk3nFh9R8cQms79GkoA==	None
 чертог	Дворец	bCnfhwebPL5aHVdV7mNVlFbitaCtJQMcI0zVOQ==	None
 чертог	Пышное помещение или здание	Nl6TMp0m6pKidyF49JC4hfrjQ0GBG8SksYA1vw==	None
 чертёж	Изображение механизма на бумаге	R0crR6bDc_PYl-tqVKcS8AebiWUQyt4IsgcbzQ==	None
@@ -11993,7 +11969,7 @@
 кориандр	Род растений семейства зонтичных	aj9BRckTD5l1gDA_K219PrqDuK-jhsVU_EW32A==	None
 кориандр	Эфиромасличное растение семейства зонтичных	WQXvUYUJuNUN1dUPZUcoeE8hrWucSrbyRnYrvg==	None
 гироскоп	Волчок	WGNG9X4y02H5ucNMbhu9UcD22Oulp88sQ-rhfQ==	None
-гироскоп	Вращающееся с большой скоростью симметричное твердое тело ось вращения которого может изменять свое направление в пространстве	TGdIAVIBKFMk-JUlsR_GC3hXS5xGDM1h-PLF2g==	None
+гироскоп	Вращающееся с большой скоростью симметричное твердое тело, ось вращения которого может изменять свое направление в пространстве	Eue3eviOa4_H6Jqm92HGRP_YdNqhJbuj34Px2w==	None
 гироскоп	Прибор с диском и свободной осью, всегда сохраняющей неизменное положение	Ew-JCR6TS6fQNCL5kJquZjM4wP_kqfVbLQgBqA==	None
 гироскоп	Прибор, используемый для автоматического регулирования устойчивости	hGoPuwPuvctTem0dX4qtqENvWa0ki9bgntQ6lg==	None
 гироскоп	Свободно подвешенное, быстро вращающееся тело	pKA7dYt6tbGm2r1R-4dOZdVBuzGe4nIAsQ9zKw==	None
@@ -12078,7 +12054,7 @@
 шпионаж	Похищение сведений, составляющих военную тайну	I0nindekESV_eiRdgcJICD_EL4g9r-U4-skRsA==	None
 шпионаж	Преступление, состоящее в сборе и передаче секретной информации другому государству	r9qqtQR3VOx6eKlbaO2TsqwI38Sn_G7KpGfxsg==	None
 кишлак	В Средней Азии: селение оседлых жителей	Yg0Y4mX4ZGaLEBtWN4WF6Gp5M9ibC0mM8PJ3_w==	None
-кишлак	В Средней Азии небольшое селение	quqSGT9AT1472F2iuLry5TfAvS0Tuk2GA-hkoQ==	None
+кишлак	В Средней Азии: небольшое селение	iUSZgf-f365JrlYm0ugWKZ7_XuLb7IGp1gO0cg==	None
 кишлак	Селение в Средней Азии	9fmClyWS9k_ViNUABHtQMHRKVIr2T9x7mLYAOg==	None
 лепта	Вклад в какое-либо общее дело	--L2Faqqka38NOV3jaWTJM6M3i2aLEmOyCjRWA==	None
 лепта	Вклад, взнос в какое-либо дело	Lb6ZFvLYhtjgFcXFdlBMSceeyDzXirFG80b9WQ==	None
@@ -12720,7 +12696,7 @@
 ветвление	Образование новых отростков у растений	Wd4wuTf_xPfwLDkGFAsemGVg12oM3LixUojeBg==	None
 ветвление	Образование новых побегов у кустарников	TocEo40WpWNxkat96INTcFUSrHFk4p4c3Cgu4Q==	None
 ветвление	Образование новых побегов у растений	VUkaz2q6wv6JmEC4fPBZHjJ_M7ZtdSMw8Yaaag==	None
-ветвление	Расчленение тела у грибов водорослей и пр	4_rnUM-a-ulQeOlWp_daFpp-VaVYtFqr65seeg==	None
+ветвление	Расчленение тела у грибов, водорослей и пр	JeDaJySKM-0j5z_P6BGS5dp6ODOzwpczF0JHaw==	None
 аптечка	Набор лекарств для оказания первой помощи	3uDIzYDQnJKAonAHJWb65ocrqi1pJSqThck3Mg==	None
 аптечка	Шкафчик, коробка с лекарствами для оказания первой помощи	wfk78iKGI4S8pzclASVoEw3bPvRgWTphGoxAEw==	None
 забрало	В старинном вооружении: часть шлема, прикрывавшая лицо	xb2IFL36HTFHXpegEAfShYBVyC-c7tFhBWT8Pw==	None
@@ -13401,7 +13377,7 @@
 ров	Длинное углубление, вырытое в земле	L1q0MWUz5tDy0hCgrm5e9-Ois9OO5piFVtyDlQ==	None
 ров	Длинное, с высокими откосами углубление в земле	S8IY6vPuD2n1QLzxzSVAT5-vZEljMRSmokoBVQ==	None
 фланг	Боковая часть войска	Z36qwXAksECEtkIMNow4UW7y4f-EQGDvP6oqrw==	None
-фланг	В шахматной игре одна из сторон доски	TInUWu68Eh4OPa_xOGODXbwBlslwEmQFq3Hihg==	None
+фланг	В шахматной игре: одна из сторон доски	36K79RCQLHTCf4XCHsQClR40e9xJxv5D28mYfg==	None
 фланг	Левая или правая сторона шеренги, строя	aaClAvsq0DnNoMDMWN89IzbdhUf9FdioGX7TIg==	None
 фланг	Одна из сторон футбольного поля	l39cIOvb6wujE9GQ8yOlt35WJs7r3SfzBhLNjQ==	None
 фланг	Правая или левая оконечность строя или боевого расположения войск	TO1J8OO6B5P7CH4Hrzm_0J3WvNa4nmWPIwAm6A==	None
@@ -14605,7 +14581,6 @@
 девиз	Изречение, выражающее руководящую идею, цель	9GbXIm47-bOSVGwdrtt2327p9igqE-O10fb22w==	None
 девиз	Коротко высказанная мысль, в которой выражается главная цель деятельности	Io2OCIA8JjXvyknozOgGt6_ng-Hf0z3v59Ekpg==	None
 девиз	Краткое изречение идеи поведения, деятельности	oB9hu9iNFxMQHo7LHMdDOMWDX4BIGz0O5dBXaw==	None
-девиз	Краткое изречение идеи поведения деятельности	_tC6ZJ7448mZvFeKnHc4pYPoOW2kung4FAu4-w==	None
 прицеп	Безмоторное колесное транспортное средство, буксируемое тягачом	8_oS2NyK5Qk_ic2EygE62clVtLRYOwCGQdVJ3g==	None
 прицеп	Веревка, на которой висит бадья у колодца	L2xhSSaI0w7FNOkU4oz4NritN-Gok3xTs8-dOQ==	None
 прицеп	Повозка, буксируемая тягачом	a85sAipDrQTK1fz3BjIuh9m5Zz7LIZVN6r4Akg==	None
@@ -15555,7 +15530,6 @@
 обечайка	В музыке — боковая часть корпуса музыкальных инструментов	87b7NYsa0IbkFIWrFnMDx3C8BT1W8oSDTK1Ttw==	None
 обечайка	В технике — конический или цилиндрический барабан без днищ	8j6MyIva0-HgP7hV6M1AAFfKCTIemcpaAg8-Qw==	None
 обечайка	Заготовка для котлов, резервуаров	uA6RbMefyu9HmrD43w2bXzKlxKpdoU8Zp-tFwA==	None
-обечайка	Заготовка для котлов резервуаров	D_0Dn50Xfb76lj8V2FTKBXT2Xj4e3TYaGl92aA==	None
 обечайка	Ободок у решета, сита, лукошка	_FyERMOPsQDOGGBpi_UQemXbmlzES0Gzb56WSw==	None
 методика	Изложение способов выполнения какой-нибудь работы	9ROHtuHt2_y2UZcvR_s9Fs5Osk8BbWHLNB74ug==	None
 методика	Совокупность приемов выполнения чего-либо	FNb8x-lzp4Hb4_uVIqtaf4YbK1U3rn3e5hl5Nw==	None
@@ -16296,7 +16270,6 @@
 равелин	Вспомогательное укрепление в крепостных сооружениях	VbKy93_ljvk1P8g6mbZFwZxt76QkWCT7pAVWYQ==	None
 равелин	Фортификационное сооружение треугольной формы в крепостях перед рвом	1Ij3JantWpQoxUvWEa8Hh3l8iC1K4PJaZ_2k6g==	None
 гистерезис	Явление, при котором тело проявляет остаточные свойства внешнего воздействия после его прекращения	9QbzLs_GKBtTSDUGEd_psKSwV6vfpIJP9wYaFQ==	None
-гистерезис	Явление при котором тело проявляет остаточные свойства внешнего воздействия после его прекращения	tl2mzr7KmjDFrEnKTZgnxcSzo58Y4EC9DR7LIQ==	None
 гибрид	Животное или растение, происходящее от скрещивания разных пород	ZfQ6yo9ikrc-54lGCcKzwMsIPZIzUlr_Vb2ipA==	None
 гибрид	Результат скрещивания различных видов растений или животных	Zor6rcJQa8qPGMWczCjhMTJEGOmmIftAVoSStQ==	None
 троица	Знаменитая икона А.Рублева 10-20 гг. XV в., хранящаяся в Государственной Третьяковской галерее	TAefUzsWY6pn0W4HfMf-R3WciovtAYqciihJbg==	None
@@ -16421,7 +16394,7 @@
 амнистия	Освобождение от уголовного наказания или замена назначенного судом наказания более мягким	l4x2IShwuLekoKOI_P5rknNfeJ1Vto4jLVj2Yg==	None
 амнистия	Полное или частичное освобождение от наказания лиц, совершивших преступления	fU4gIBQJI5kM0Rgzycoov4zrtjnjLhbtN3cijA==	None
 амнистия	Прощение или смягчение наказания	QReD6QUHSxKGAlziQXzimbR3po29oTkHwI3fDg==	None
-амнистия	Частичное или полное освобождение от наказания лиц, осужденных судом осуществляемое актом верховной власти	7uTZbdU_7THoKOXjRatS6T4y-2298jwyA48-eQ==	None
+амнистия	Частичное или полное освобождение от наказания лиц, осужденных судом, осуществляемое актом верховной власти	ZKtd03uXClSNMj2y3NQ8LvombakeMlfWC8o7HA==	None
 амнистия	Частичное или полное освобождение от судебного наказания	d4bQGe_ZLoPKWinx-k0TkOqvHHqBFw-GZ2NAWQ==	None
 согласие	Административная процедура одобрения чего-либо	TqzofjJebvvzRxrBSJ9eAOyH88s-xUXo_W9bXw==	None
 согласие	Мирные, дружественные отношения	YG1dTditdT-KY6d46nNC0PZ6-tI-4vIKwOM98w==	None
@@ -16873,7 +16846,7 @@
 угодье	Место, территория как объект сельскохозяйственного использования	S9AAs8WH0hHPOKQtgLVUvfZGQRq9XZT6v4lkzQ==	None
 угодье	То, что приносит пользу	nTueiIbZUSQgrspMp_LxrU9VY6YuFUUsuuYh8g==	None
 угодье	То, что является предметом сельскохозяйственной эксплуатации	E7KZVLLJcDnipuWjJ5mfzcNcAJ2nxbZCpdAZmQ==	None
-микрон	0 001 доля миллиметра	wV9gGXleAC7qRKJpmZQKfTq0cFPHCexVX1y9bg==	None
+микрон	0, 001 доля миллиметра	CViAUaArDJO4FwxEOzbtRHqEDQ49b0unoqw2GA==	None
 микрон	Дольная единица длины	TScK7Zfcvfzt7x-tN3rglrcFZCN4xRsAsFYspg==	None
 микрон	Мера длины	o4mhcWgi4ij8bg8TWIFVlVyTsYMiMUVg6ZpLnQ==	None
 микрон	Миллионная часть метра	lnNdim8Q40n-ll3gve1LTDtkXb9fo_lsK6G9aQ==	None
@@ -17061,7 +17034,6 @@
 лачуга	Небольшая, плохо построенная изба	lG5fYO_FNM_7gkdVqgUopidZ9xzAZYf2YNsk8w==	None
 лачуга	Небольшое убогое жилище	72e0WbObQggJcRGj6UkXrF3yM2McJ9GsGgDVpQ==	None
 лачуга	Плохая изба, хижина	RhvhOcs3uZUybAcdhao1rAYms6wT9WkPrUyvLQ==	None
-лачуга	Плохая изба хижина	WoJ-EgpEJQAPqRax4Hf0dE1FPS7o11hp3QwgIA==	None
 политика	Деятельность органов государственной власти, отражающая общественно-*пропуск* строй страны	yzwAsq8iYRV9lLE7cOWgdFFmbXfZ3_Nv9beNXg==	None
 каштан	Красив и силен, справедлив и настойчив, философ и мечтатель будет родившийся под знаком этого дерева в середине мая	lzr276scGnPJNNoC8jCuwAUTnXPqXRt0ko1tcA==	None
 каштан	Плод особого дерева, употребляемый в пищу	ETAlksszEFcMRhIO41aDcc_BkWq-soaxoxHxOw==	None
@@ -17371,7 +17343,6 @@
 правописание	Правила написания слов и их форм	_NhHu-y_UvxFKzwN1ZPWt5tpxyUhi5SbbIrHBA==	None
 библиотекарь	Работник книгохранилища	Pp-cMw1aowMcMlKjVB-RDtyhW4hlva2qbk7qfA==	None
 валюта	Денежная единица, положенная в основу денежной системы страны	1xFs5ygxp3W1oJxr4NbsibJtSj4yzYyMQtzueg==	None
-валюта	Денежная единица положенная в основу денежной системы страны	NLCeDF_ic6xmJiOKpZooIlvPdQOa2cIpwdPz4w==	None
 валюта	Деньги, находящиеся в обращении	LPVRhuPe-pAR1DT-cql-tpBdK4bjn99Q3tAm0w==	None
 валюта	Тип денежной системы	BXdittorABvt8zdq0Wqnw18jYF2v8kVNqLdz0w==	None
 балансировка	Сохранение равновесия посредством телодвижений	un0VbyrHAQEKR9yqAonOc51wRJPk_-HHUNyHpg==	None
@@ -17510,8 +17481,8 @@
 стайер	Спортсмен, состязающийся на длинных дистанциях	PoTqf8JU01Q697_L7emUqW_KS-1BuNXLUFjstA==	None
 стайер	Спортсмен, специализирующийся в преодолении длинных дистанций	w4uLRhyEBGB-y9K7D69-MXhzrD0uzVclExM48w==	None
 гармония	Благозвучие	MTkqc3kgfKLsH2A6BOUSF05if3YPGjmIHiYXFQ==	None
-гармония	Согласованность, стойное сочетание разных качеств, предметов, явлений частей целого	spICy1g_wGiV0gZ9fKXxMHoaI4P6Hpcr2eQhAg==	None
-гармония	Согласованность, стройное сочетание разных качеств, предметов, явлений частей целого	7e7CjMrobRsD4mW2VBjLFjyeLK_sS0GED_B7NA==	None
+гармония	Согласованность, стойное сочетание разных качеств, предметов, явлений, частей целого	epbcsA9eO3jIGiHOJFVEw9PBL0GXTEDZjJJ_6Q==	None
+гармония	Согласованность, стройное сочетание разных качеств, предметов, явлений, частей целого	7J5EnSrg5w3UxcwZU9iYDd9tyVO9BVT68_J3Iw==	None
 сель	Бурный грязе-каменный поток	SQGHeOzIw67THqDZJDUCNhINZ9Mq291j5f5u1Q==	None
 сель	Бурный грязекаменный поток	CHgNEqpaLRM7tVovj79BZszfb6_t9cTp9UozVg==	None
 сель	Грязе-каменный горный поток	VDzWJoDbEEXZp8LIO7UIXcH-y3DLmfASO9vRDQ==	None
@@ -17553,7 +17524,7 @@
 посиделки	Вечеринка сельской молодежи, устраиваемая в зимнее время	mirunyTS2cO7YOF0t0tPoXFfxjc-YLNHnpXp1Q==	None
 посиделки	Зимняя вечеринка молодежи в старой русской деревне	zt4n7ePqKTz7LaATPwJDvqcXV2tCUxGiYNEQiA==	None
 баталист	Художник, изображающий сражения, походы и другие военные события	WZHQvePXujbZ9ZZZmgeGbYn-x_awH6Jio6YfEQ==	None
-баталист	Художник изображающий военные сюжеты	Mtd8AMHczE56EYpgnjAD6zyGVVIr8B2d0cFqNw==	None
+баталист	Художник, изображающий военные сюжеты	q3Pr7rWdiOGrI_S2ftTjHO4XJCw1wP8CshVtvw==	None
 перловка	Вид крупы	PTooaD13LszrQj_QvS9TbmhV4faWQpbiuof60Q==	None
 шарнир	Подвижное соединение двух или нескольких деталей	_YNPZLiZvXcGWL0dCaJH9f3LujijECmmENxTPw==	None
 шарнир	Подвижное соединение двух частей механизма	c7nlK55AHDz7ZEfN9lRuh9qTrOwvThJsjNwfGg==	None
@@ -17600,7 +17571,7 @@
 самосвал	Разновидность грузового автомобиля с опрокидывающейся для разгрузки платформой	u3FJFvxQ2ZDzrl3RDHauAbfkZXYZxA2pUMAhgQ==	None
 миссия	Задание, поручение	FDaqMsZjR4fYVffxNk00SEu2xMrViIHbkbdt3A==	None
 миссия	Представители одного государства, посылаемые в другое государство со специальной целью	wgRKH6mnZjPCYUHuOg9UUKRq0w3hVnj7Sqg5dw==	None
-бутлегер	Лицо незаконно торгующее спиртными напитками	adsrvU9jHAD0sAfeyq29m5Gk6o89NnNgbSBaYg==	None
+бутлегер	Лицо, незаконно торгующее спиртными напитками	g9bsyj7O1ONn7qf6vxavnJWCBeogrZBapZO7OA==	None
 бутлегер	Подпольный торговец спиртным во время сухого закона в США	DMsAT-oKIFwvMlXLNzcT5HkBqalkJ_CurxQpeA==	None
 высота	Качество звука, связанное с его частотой	t_38UHIF3AWXgSoS8bl2qxAwZ09JzmRIV47rIw==	None
 высота	Отрезок перпендикуляра, опущенного из вершины геометрической фигуры на ее основание	Iv_CF13N2z1fjHzj54MzFRXnd8knyKSlfnpe5w==	None
@@ -17820,7 +17791,7 @@
 критерий	Мерило оценки, суждения	rbMizEhBigMjQ5hNyInOH_AjARA0-87ZFd5HRw==	None
 критерий	Признак, на основании которого производятся классификация	hIECww5nnFnvQmeUpFUdJYH__yQWzDEmn_wcDw==	None
 скорпион	Ядовитое насекомое	QLSpGJSTFrW6lOgVDXoeRkVbB73O6FQnOyvyww==	None
-фут	30 48 см	1aneykA7sTitQvXoBrriJopH7oAxwuIIxyFWEw==	None
+фут	30, 48 см	YxpTfdpahPuX2dA4NMXdGhhxIqtTjrsMxNxY2Q==	None
 фут	Английская и старая русская мера длины	_Nmd9bG7DbhB6Galbg13rKuMc-Nn8PbXaXdstA==	None
 фут	Мера длины	o4m-rq89Op2OesRYHk_U9ufoqNjUUvtk3mfoNw==	None
 борона	Земледельческое орудие для мелкого рыхления почвы	rVhnnFydSpoLwI68J8TlgG4jalCLeqIJa-RaIQ==	None
@@ -18480,7 +18451,7 @@
 интермедия	Комическая пьеска, исполняемая между актами драматического представления	RR14slxMlTSHwXyOVpKXY0hjP75Uzx8IiDQdAw==	None
 скептицизм	Стремление все подвергать сомнению	EZTHjv1V0qcMNHHEMbUKFh0KswwpN68iav9PeQ==	None
 омовение	В некоторых религиях символическое очищение при помощи воды	5B-Qb366sm-gJ0OwHrRw4241tBBbqf4EgfRMAA==	None
-омовение	В религиозных обрядах умывание какой-либо части тела как символ очищения	ZSSDsof55e02Fr_d30lQGvs1BCuRU408vpzG8g==	None
+омовение	В религиозных обрядах: умывание какой-либо части тела как символ очищения	YghRdM9ydCKVA5QB7_eAlCLkygpN2zEA9H9q7A==	None
 омовение	Мусульманский обряд ритуального очищения водой	ADcqk0DWAvQhwfwevtSMxEBdwZAHKFJFWw48zw==	None
 балюстрада	Перила из фигурных столбиков	qoF5S0JPz6ZawgzcFqAw9_E3zeXVg3lBWnj2Nw==	None
 камеристка	Служанка, горничная	K58PKJUxRMER8qpcoEHPatqrohMw9dDMnBEfWg==	None
@@ -18606,7 +18577,7 @@
 привет	Выражение дружеского расположения	3d2JmgeP-WaLPGFHz8_d5ULJkxO2TzHPjyke1Q==	None
 привет	Дружеское или фамильярное обращение при встрече или расставании	_Ch7DoWQrsH-SltePlnQsMvQKwrCKPlUXi0jRA==	None
 привет	Обращенное к кому-нибудь доброе пожелание	BNjdZv-AhAYWvQmNNsdow_fCMuPs2a3LwPoJKA==	None
-дружина	В Древней Руси приближенные князя, составлявшие ядро его войска	bEgs-zXODhJiXSk0256gdwJACZqd6sF2vd_PmQ==	None
+дружина	В Древней Руси: приближенные князя, составлявшие ядро его войска	zMvQfwKqbvuoofBNkFHgcZHKgTwrKB_g-SQkgg==	None
 дружина	В старой армии — отдельная войсковая часть в ополчении	BfsOwUBXH8W1d09OHI8M84efgUnwrmoivtbyEw==	None
 дружина	Вооруженные отряды при князе в Древней Руси	IioNgtz0jkVeB0MayJMYAf9wZLDf7znksB07_g==	None
 дружина	Группа вооруженных людей, нанимавшаяся в складчину русскими купцами для сопровождения торговых караванов	2EfSiPoUCzgYp38_ZaCNywpnudaeBhvguriotw==	None
@@ -19473,7 +19444,7 @@
 металлург	Специалист в одной из отраслей тяжелой промышленности	CvQxv4JAqD0PLM4AzZvjkpaCNo6IRGZwbGEQPA==	None
 архангел	В Библии: старший Ангел	RYsokXsTUejbqkLFsnhgB-zKpSz3gzenAy_5Fg==	None
 архангел	В Библии: старший ангел	5HWD8bhivd5z3HeCv-P1y8TWifmduqsOqluytw==	None
-архангел	В христианской мифологии ангел высшего чина	QlQRie_u6NJpK3-GdYnVBlPg3lKvuk2SU5IXMg==	None
+архангел	В христианской мифологии: ангел высшего чина	2vU52k_Rw0DeNzEwuSJVwhp2z3Nbp7Sz1aVUMA==	None
 архангел	По Библии: высший по чину ангел	9ma9falRUY4AcpyW_fuqFsxuphCeZMm1Ih1zDg==	None
 мушкетёр	Солдат, вооруженный мушкетом	_IaC-BEPzamN83krgVgEOKdBIyvbH3ATS-BHfw==	None
 мушкетёр	Фехтовальщик	c_dWGIszjwZhQHfgiWnxdX_3o4FbUsUNsEJCPg==	None
@@ -19755,7 +19726,6 @@
 мелодрама	Жанр театрального произведение	zihB_K55UPxdre_DEZMNRm9f9qfJDSJbCAfKsg==	None
 мелодрама	Театральное произведение с преобладанием в сюжете внешне ужасного и чувствительного	zIqEnVZyYuMV7ynVJGCwlTdekt74G9cs4ks7DQ==	None
 соболь	Животное, разводимое для получения ценного меха	X2y2NAQKBNoItMkmZCY3LZxsFPrYsipQ7gooyA==	None
-соболь	Животное разводимое для получения ценного меха	-2mXjg_WpJWHrF-e47Hd7aFoYyn1olKaHxJbFg==	None
 соболь	Небольшой хищный зверек семейства куниц	OtxuY7cw0vp08BDd-GODsyXvtAzJePPk5kUm-g==	None
 соболь	Хищный пушной зверек с черноватой шелковистой и блестящей шерстью	JPKjV7MSREjb32pTKpS7Dcrjtxhy0Y6N68pDrw==	None
 соболь	Ценный пушной зверек семейства куньих	FVJhG3K107n0Ou7TzxblemcNKJMtMp_YDzYk_g==	None
@@ -19950,7 +19920,7 @@
 живопись	Вид изобразительного искусства	sQuVVyA20NAyjdYFxRFQJhB0rIlmf9JS89eiCw==	None
 живопись	Вид искусства	kkxr9-BuaoWo4_arVBDeRreZYfI-2u4yNKCVBQ==	None
 живопись	Изобразительное искусство	ms-Um71NqgCavekLpHfw6Oy_oLXd-KJ_ETFbYw==	None
-папироса	Бумажная трубочка с мундштуком набитая курительным табаком	hUHSmgYXaexb0wPIILBEG_Y3mcAQvxpE41ulmQ==	None
+папироса	Бумажная трубочка с мундштуком, набитая курительным табаком	nrgcZnL_DIr6Tb4F26J0_CN12sEF8OwgOSXlmQ==	None
 папироса	Бумажная трубочка, набитая табаком для курения	BLvd09A0LCZh1ZvXjUFH_JKXTy6K1kUguGa_0Q==	None
 папироса	Табачное изделие	Tmq6IhOPatrlSlDcQ3JtQtRZyPt1B_FrFNdqVA==	None
 гороскоп	В астрологии: таблица взаимного расположения планет и звезд	_QUyGvwI-gT5uxx0OctYYI-ARM7tWV3hmiO0Jw==	None
@@ -20248,7 +20218,7 @@
 генетика	Наука, изучающая наследственность организмов	toufzBuPkcWb_EzScxMeT1DDmOFkSbDAN3ITgw==	None
 генетика	Раздел биологии, изучающий законы наследственности и изменчивости организмов	xfuUcw-vQuBZcRO5q52f4bnbqNWJ3x87J1Jlwg==	None
 жалюзи	Многостворчатые ставни из жестких поперечных параллельных пластинок	j8j1SfFQI9GWfYmZm7ZT_yQAMKSoCrYLrTZjtQ==	None
-жалюзи	Многостворчатые ставни из жестких поперечных параллельных пластинок	0bfy0RX3bC1-5R-p4lHugaurJr3jtarpiPzEFQ==	None
+жалюзи	Многостворчатые ставни из жестких поперечных, параллельных пластинок	isQ9HM9ijzxAvRT3J8sSG30O4IG32MicmlU5iA==	None
 жалюзи	Оконные шторы из деревянных пластинок	ErEaf46-wer_9qxW_WVvuaJJMVtKMLe_e71tew==	None
 жалюзи	Шторы из узких пластинок, связанных между собой	PDkNFsK79M1miOPxd_KLvmMPUGllk2L9rOPyrg==	None
 жалюзи	Шторы или ставни из жестких поперечных параллельных пластинок	cAs6ViHbYiFq3An8xP5ZZ33coZAWLBOOqtYsbA==	None
@@ -20698,7 +20668,7 @@
 саркофаг	Гроб, гробница в древних захоронениях	_0ENM42EzvQTQDTYdJDp1X8688aC_QqrBYLYXw==	None
 саркофаг	Массивное сооружение, закрывающее возникший в результате катастрофы источник экологической опасности	zg3d0gXtzilLzuwXrZLReb9JharsTLohwWAZ0g==	None
 саркофаг	Надгробие в форме каменного гроба	z_xuztdhJzJsIDX6ztqNwDbTnINnkS8WJ5imdQ==	None
-саркофаг	Надгробие обычно в виде каменного гроба	JJ8QsB4n7X3GLRdGWoYp2qv2MUtTuluZegjydQ==	None
+саркофаг	Надгробие, обычно в виде каменного гроба	Gf9czs4TFV7BhPGGL0aa_mctwtpTaHWTs28GvA==	None
 двуколка	Конная повозка	IX_VUwUIb5bp6Gu8Jq52k1DPrWIdTt6993rnMw==	None
 двуколка	Конный экипаж	bdj6vBJZhaOtqCjkhW4VztM4pHaOCHWONJlbaA==	None
 истребитель	Военный самолет	5VEc3nQmrrD7uP3z_fsOEpk7vU3xMR4wQXi6xA==	None
@@ -21149,7 +21119,7 @@
 горбыль	Крайняя доска, получаемая при распиловке бревна	u4m1K6hsYznWdE_G2oUrHhQaacu54nmhdGzy1A==	None
 нежность	Сорт сладкого перца, рекомендуемый для выращивания в зимних теплицах	7En_BLlWxD7zG2p1kaGYklD4XlyWeZmYi7YqQQ==	None
 гусеница	Одна из стадий развития бабочки	ef-79KGgAg4x0cCkAlNjAhjcjX7b8MNu3gjJcw==	None
-водевиль	Пьеса, в которой диалоги чередуются с пением куплетов танцами	A1re8NcNwuUP18a6wXsPl4v-NbsNaPheColZMw==	None
+водевиль	Пьеса, в которой диалоги чередуются с пением куплетов, танцами	9kh6Zgp6bq42I40jhBMlHjzsFnhb0PAd8ACdlA==	None
 ступень	В музыке: любой из тонов звукоряда	cC4befcgr7X9EYeszSlXPvzn2GzK0gJ-saO-bw==	None
 ступень	Отделяемая составная часть ракеты	aQi5Z3dMjLhlwnB5SmVYevZR2P9_rDUe-5GqgA==	None
 ведомство	Ряд учреждений одной отрасли	MXcooWb5muS4RsEnYnz3UfoM8YHdmbZF30tsxw==	None
@@ -21716,7 +21686,6 @@
 пудинг	Кулинарное изделие из творога	skv564-d8_LAdJ4_YxwVt-z3bH-YozxluINabA==	None
 пудинг	Творожное блюдо	gDzcsuYIm6JmcVw1rZlhgUFAhNKv_f11ZwmPpw==	None
 куница	Животное, разводимое для получения ценного меха	XAACMmkeNEMh3MDiCAqe68JOSyqFb8-5Kvd6mQ==	None
-куница	Животное разводимое для получения ценного меха	-1kXBuTIZ5IP4K1ab_pQRlLLl3zVSoe5TSiUog==	None
 куница	Небольшое хищное животное с ценным светло-коричневым пушистым мехом	KoYgzEGxLy0lSylbfDXwKsZ4W_txJSeqSGHQpw==	None
 куница	Хищный лесной зверек с темно-бурой шерстью	Z5df2Lw19QmXTcK_eGj3nAnDd42dnPjBzieQJw==	None
 изменник	Нарушитель верности в любви	tmY8dioDkSAAyYFYsdBxAZTorgW1LksziLMTUg==	None
@@ -22130,7 +22099,7 @@
 бандитизм	Занятие грабежом и разбоем	cM_pwCXCcA-rORoUu_JRjETFiAtNcGYHsPGikg==	None
 бандитизм	Преступление против общественной безопасности	uJIyc66rn4FLWsvdYVO1QnbKrdoYwRAj8L_o_A==	None
 делегация	Группа представителей	LCIs9pPxSkrZ2v6EeqjuIr46VN4TSoga_noDLw==	None
-делегация	Группа представляющая государство организацию коллектив	jvdBTpFcizLaVJt8IzRnc2rlzlFi7aM4KxujGw==	None
+делегация	Группа представляющая государство, организацию, коллектив	DidMCWn06TvO0wTtDJunIe8LprQtfsK-7cNv6A==	None
 миллиметр	Мера длины	42cT7vMtFbEJO_c7AlM7RIa97KXuyYnsrhz1bQ==	None
 миллиметр	Одна тысячная доля метра	UuslL_jWMoESUZcre1_hQYqVLLT6vRS-WLWmZg==	None
 скороход	В старину: гонец, посыльный	uhRWU1mg_u_QPPMpqUBsDAXkfZ_s_A8cxp2ORQ==	None
@@ -22294,7 +22263,7 @@
 курятник	Сарай, помещение для содержания домашней птицы	Ym7V-jKqqE5VRu1T_s4AADhg_61hwToZ3PlAdQ==	None
 дифракция	Огибание волнами встречающихся на пути препятствий	JkXP7S-BAud4NbP6z11HWH6xC9qqxDhPhPFcfg==	None
 дифракция	Отклонение светового луча от прямолинейного распространения при прохождении сквозь узкую щель	wLQdPYkh8Pf65sbyAZqJjzk0qReEUE3IYzSzNw==	None
-дифракция	Отклонение рассеивание	p83OsPiLBjtGdwEt6Om6HTcOQJIrRtokTxAJjQ==	None
+дифракция	Отклонение, рассеивание	Wj2j79IWpqptnXjx8yOkcGaI8BBmbntQ3bVZyw==	None
 дифракция	Распространение волны при прохождении сквозь узкое отверстие	ZaMzakLnq3qzceAd3eUkNqkUPO0QXUwvsQ_bWA==	None
 музыкант	Артист, с помощью особых инструментов, играющий звуки	5MyCx1NkyCHSV6V-QS7UpmEwOzLqh159zjm9wQ==	None
 музыкант	Профессионал или любитель, играющий на каком-нибудь инструменте	3UVajyzEyrVlzm3z5qN7CaiHqPsf1--LatonRA==	None
@@ -22637,8 +22606,8 @@
 папа	Титул епископов Римских	xayAWEgdHuIfsiIbSCzHqwnExQtmoU45Wy4jfg==	None
 выставка	Бьеннале по своей сути	dtEHJ-0pTjVZeRjU0gKh3X-K8YW1Cjl1RK04fA==	None
 мартышка	Узконосая обезьяна	f7TqqYE_ZahDaVk2fLlH9kfe1gNx5mq_wLp3fA==	None
-лата	Денежная единица Латвии	IEaU_BwQ77q3psKpDkK8qMIDfNz6aIWf1nJDKw==	None
-лата	Денежная единица одной из прибалтийских стран	6ez7mDkJBUjz9HQCiAumJ4dAwbbhDUIdxr-yFQ==	None
+лат	Денежная единица Латвии	C25jZBLT2DUAeEQPgwVo7_KMlhN3En1ierbsgQ==	None
+лат	Денежная единица одной из прибалтийских стран	ilDg5ZakoFWdUDI6-wwzEUQ-z4i-g1wjVq03BQ==	None
 базилик	Полукустарниковое и кустарниковое растение семейства губоцветных	89Wr4YGtb7X8YAXVlNv0xGlB6qUeoRJT8oDFSA==	None
 базилик	Растение, выращиваемое как пряность и для получения эфирных масел	IVlDpehqIq2M4EZ4LPnFgK87JLPIPu1KtEbZXg==	None
 базилик	Растение, используемое при изготовлении ликеров «Бенедиктин» и «Шартрез»	mTo22OS_nXlfmsHwseUnD1Q3YvYvhr97_7lrQA==	None
@@ -22837,7 +22806,7 @@
 гвоздь	Вид крепежа, которым не пользовались русские плотники	lM9h_pWC-AlBBk80_rks5WVz8HB0FD_WAaf2aQ==	None
 гвоздь	Заостренный железный стержень со шляпкой на тупом конце	5-u5mJSQ3uMps_nX5zV4t8OXTGU39HPdxlLiUw==	None
 гвоздь	Заостренный металлический стержень со шляпкой на тупом конце	LF7imsfE2UHP7hTpBH7gdetOyUXfKNGMC-hp1w==	None
-гвоздь	Заостренный металлический стержень служащий для скрепления чего-либо	mNiFULISnxXz15ixzSgvIVazpCADhzA7AdIpyg==	None
+гвоздь	Заостренный металлический стержень, служащий для скрепления чего-либо	MdrtapNva0zt3ph-qwSmtv32NphWbF6L8q7pKw==	None
 гвоздь	Самое главное, значительное в чем-либо	_uWsBs-jMqXJgv9pu3OWWPSbmmmJa7GtMk6xXw==	None
 физиотерапевт	Профессия врача	FN8Kg9NCihMn0BbFzd0d2GqtF7jwty8zPfdXtA==	None
 гибискус	Китайская роза	Qt9AIM1sGTec3bJk_PypKNKf33cX-Y2nKeEiaA==	None
@@ -22970,7 +22939,7 @@
 агентство	Представительство, отделение более крупного учреждения, предприятия, фирмы	RkEwKkVrIPnxss5GZEx1r-GJ5H78jRWm3WTwug==	None
 агентство	Учреждение информационного, посреднического характера	tOAYkCZReG1Zg7ArqYtiOjuS2dg8-DqBUXUanw==	None
 агентство	Учреждение, выполняющее определенную государственную, общественную, социальную функцию	NXy2yBP_nzcmU3VCdzsCaO-W1_cVgZEK9dMfMA==	None
-абсолют	В идеалистической философии вечная, неизменная первооснова всего существующего	UNBAxA1uh2v0cNxCrluL27-6vqwLIM8HpBgSoQ==	None
+абсолют	В идеалистической философии: вечная, неизменная первооснова всего существующего	ER3kC68yRbIgrBQENFJj5NuMJY8HY5aPaVuEXQ==	None
 абсолют	В философии и религии: безусловное, совершенное начало бытия	jk4GM3yuYbUBrWY_DoDUv5ci9pdy_A5oRX9SDw==	None
 абсолют	В философии: вечная, неизменная первооснова всего существующего	Qfa_8XdTRuO2DYnpJLfLMhQ2FwpVpAPEwcjdjQ==	None
 абсолют	Нечто самодовлеющее, независимое от каких-нибудь условий и отношений	WxpoGePAY6cGvXq6fjv63sHGjwtTQdjiYkY7WA==	None
@@ -23105,7 +23074,7 @@
 дьявол	В религиозной мифологии: злой дух, противостоящий Богу	D1jSaEiwTQuVZohNSEmovU_7hvMoCewUO9rIDg==	None
 дьявол	В религиозных представлениях — злой дух, сатана	AUnMBZtCjNDaMdY6y9znyjY6nFB-S35Hid9Hhg==	None
 дьявол	В христианстве — главный антагонист Бога	6YOKLLMhdLnGjxEvaPpVeeTaj_JblMVRJezbnw==	None
-дьявол	По религиозным представлениям злой дух, черт, сатана	mLwkmeE2TrdWbtCgAURkkJA6qA7hX6h09irnRQ==	None
+дьявол	По религиозным представлениям: злой дух, черт, сатана	6YfgThP_1dvmyVcqFLFuiaKxJPC5hSlPBwaqnQ==	None
 миндалина	Железа, расположенная в зеве человека	J3Gkkkv9bqyHR5HipEPBmlLk1eAwLdo8Sj0o8w==	None
 миндалина	Парная железа по бокам неба и глотки	WDJq4aedNlE8IQSgseNBpsw_sLuhsO28ugDnVg==	None
 миндалина	Парный орган лимфатической системы, расположенный на стенке ротовой полости и глотки	CXDUUkcPAp0zOs8hw-fDM6LHWPH3LN5OZQrN6g==	None
@@ -23213,7 +23182,7 @@
 щетинник	Род трав семейства злаков	iYxntFuqBGSOTYwWX1wV2m4EMEY6jkRQsgUYFg==	None
 щетинник	Травянистое растение семейства злаков	b4UzJxsHXzFwybeMzklEk_Q8sui9gkoii_pLbw==	None
 гастрономия	Пищевые продукты	G4sICmnYlfb7L32IZyCJu30O8JvldUeM8qaHIQ==	None
-капонир	В старых крепостях каменная сводчатая постройка для продольного обстрела рвов во время штурма	c2_7r2HHfbp0-eGXTfg8dCvhPEnyhaxt7IgClg==	None
+капонир	В старых крепостях: каменная сводчатая постройка для продольного обстрела рвов во время штурма	3oogpCzgw069DrB33QEwwWAwnTf5Ne95D2OQWw==	None
 капонир	Оборонительное сооружение для ведения огня в двух противоположных направлениях	RxbqnLp2I9EpJsoZCIHL48e1DKsfyET2OmiI4Q==	None
 капонир	Фортификационное сооружение	GmEndfhusXCbfy2f4ZeT_Vl3YcX2w4YoewG0yQ==	None
 дежа	Железный сосуд на хлебозаводе, где происходит замешивание теста	312xuXcZIx0w0cZFG-ObLbLxL5akRhyA-TIlUA==	None
@@ -24021,7 +23990,7 @@
 гарпун	Орудие китобоев	tQewvVhTel-ujQSzI_j0JXtL57ecYSL9fbpjUA==	None
 ратуша	В Польше и Прибалтике — орган городского самоуправления	lpJaBaQxq3rJYvvW8aVt6yl8Pt1dbYzo532JTg==	None
 ратуша	В России 18 в.: орган городского самоуправления	jsCQdwPxQ1tmnphJo7RplDRv3OqWjwaat-_CMw==	None
-ратуша	В некоторых европейских государствах орган городского самоуправления	7_LxYSUnQvjryFfjs-SI95_j06w-hVCShpiA9A==	None
+ратуша	В некоторых европейских государствах: орган городского самоуправления	e7tHkqUNzWWaPiBHphDTPNlj5LuEK-zWaQxi3Q==	None
 ратуша	Здание городского самоуправления в ряде европейских стран	f1OPBrYheM8bPA-qmyOa-V1mMnmHhupQIwNVjA==	None
 ратуша	Орган городского самоуправления в некоторых европейских странах	Fa1W49jDxdGki5F9IEnM9y7muOSs2AT78M-w4g==	None
 канитель	Длительное, с задержками и помехами, однообразное и нудное занятие	ySr6fZpaE3yL6sSuA1hrxWTf4Pea2hfztzPEGg==	None
@@ -24071,7 +24040,7 @@
 стычка	Ссора, перебранка	3SBsTqrpu3dByaMKj_lHwBqU9e93dDWBdvzUeg==	None
 траление	Проделывание проходов в минных полях	gAN8K_IULp63pBD2Si-Ifyr-Mpk1Wxufc3i5Pg==	None
 траление	Промышленный лов рыбы	Nrng1zCR3H_nPN6euKZm4rd3mdY7LJ848x8E8Q==	None
-взятка	В карточной игре карты, покрытые старшей картой или козырем	NywLcxIMQLLITg-jju5DP5VDz4R6Erc7ULnCqg==	None
+взятка	В карточной игре: карты, покрытые старшей картой или козырем	mQ2PrmXQrZIB5lIvIrdK-Jf8D9QQKy4Rx14ItA==	None
 взятка	Деньги или материальные ценности, даваемые как подкуп	oXeJ_lRGl6x_pZQfBI6J7eXnBmeeV2TnHNVe6g==	None
 взятка	Деньги, даваемые должностному лицу как подкуп	8CrODkT-l6XBXfK1f3Mma6uWHvcGcFln3boEaA==	None
 взятка	Плата должностному лицу за совершение каких-либо незаконных действий	Kk_xmSoY-GJ0Ph0IZnbai9OJthsQl5DJsDUpjQ==	None
